@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>JavaScript Objects of Person with function</h2>
+
+<p id="demo"></p>
+
+<script>
+// Create an object:
+var person = {
+  firstName: "John",
+  lastName : "Doe",
+  id       : 5566,
+  fullName : function() {
+    return this.firstName + " " + this.lastName;
+  }
+};
+
+// Display some data from the object:
+document.getElementById("demo").innerHTML = "The person fullname is " + person.fullName() +"<br>"+
+"His/Her id is " + person["id"];
+</script>
+
+</body>
+</html>

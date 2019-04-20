@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>JavaScript Functions</h2>
+
+<p>Accessing a function without () will return the function definition instead of the function result:</p>
+<p id="demo1"></p>
+<p id="demo2"></p>
+
+<script>
+function toCelsius(f) {
+  return (5/9) * (f-32);
+}
+// call function w/o () will return the difinition of function
+document.getElementById("demo1").innerHTML = toCelsius;
+document.getElementById("demo2").innerHTML = toCelsius(5);
+</script>
+
+</body>
+</html>

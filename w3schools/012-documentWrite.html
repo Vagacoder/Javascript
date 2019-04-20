@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>My First Web Page</h2>
+<p>My first paragraph.</p>
+
+<p>Never call document.write after the document has finished loading.
+It will overwrite the whole document.</p>
+
+<p id='newDisplay'>old new display</p>
+
+<!-- Using document.write() after an HTML document is loaded, will delete all existing HTML: -->
+<!-- click on this button will re-write whole webpage -->
+<button type="button" onclick='rewrite()'>I hate all these, erease them all!</button>
+<script>
+document.write(5 + 6);
+
+// function to re-write whole webpage
+function rewrite(){
+    document.write("Now I feel better!");
+}
+</script>
+
+</body>
+</html> 

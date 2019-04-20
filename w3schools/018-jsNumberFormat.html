@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>JavaScript Numbers</h2>
+
+<p>Number can be written with or without decimals.</p>
+
+<button type="button" onclick="showNumbers()">Show numbers</button>
+
+<p id="demo"></p>
+<p id="demo1"></p>
+<p id="text1"></p>
+<p id="text2"></p>
+<p id="text3"></p>
+<script>
+function showNumbers(){
+   var x = 10.548, y = 10, z="Which is float number?", w = undefined;
+document.getElementById("demo").innerHTML = x;
+document.getElementById("demo1").innerHTML = 6* y; 
+
+// since w is undefined, it prints "undeifined"
+document.getElementById("text1").innerHTML= z +" "+ x + " or " + y + " w is: " + w;
+document.getElementById("text2").innerHTML= "5" + (2 + 3);
+document.getElementById("text3").innerHTML= "5" + 2 + 3;
+//document.getElementById("text1").innerHTML= "a";
+}
+</script>
+
+</body>
+</html>
