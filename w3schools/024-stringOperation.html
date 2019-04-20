@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>JavaScript String Properties</h2>
+
+<p>The length property returns the length of a string:</p>
+
+<p id="demo1"></p>
+<p id="demo2"></p>
+<p id="demo3"></p>
+<p id="demo4"></p>
+<p id="demo5"></p>
+<p id="demo6"></p>
+<p id="demo7"></p>
+<p id="demo8"></p>
+<p id="demo9"></p>
+<p id="demo10"></p>
+<p id="demo11"></p>
+<p id="demo12"></p>
+<p id="demo13"></p>
+<p id="demo14"></p>
+
+<script>
+    // there are 2 ways to define strings
+    var x = "John";
+    var y = new String("John");
+    var z = new String("John");
+    var txt = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    var txt1 = "ABCDEFGHIJKLmnopqRSTUVWXYZ";
+    var txt2 = "ABCDEFGHIJKLmnopqRSABCDEFG";
+
+document.getElementById("demo1").innerHTML = txt.length;
+
+// notice 2 js object are always not equal
+if (x == y && y==z && x==z){
+    document.getElementById("demo2").innerHTML = "All x y z Equal";
+} else {
+    document.getElementById("demo2").innerHTML = "x y z are Not equal";
+}
+
+// find index 
+document.getElementById("demo3").innerHTML = txt.indexOf('H');
+document.getElementById("demo4").innerHTML = txt.indexOf('H', 3);
+document.getElementById("demo5").innerHTML = txt.search('MNO');
+
+// slice string, get substring
+document.getElementById("demo6").innerHTML = txt.slice(4, 21);
+document.getElementById("demo7").innerHTML = txt.slice(-23, -4);
+document.getElementById("demo8").innerHTML = txt.slice(23);
+document.getElementById("demo9").innerHTML = txt.replace('ABCDEFG', 'abcdefg');
+
+// using regex
+document.getElementById("demo10").innerHTML = txt1.replace(/KLMN/i, '%%^^%%');
+document.getElementById("demo11").innerHTML = txt2.replace(/ABCDEFG/g, '**&&^^');
+document.getElementById("demo12").innerHTML = txt2[2] + " " + txt2.charAt(2) + " " + txt2.charCodeAt(2);
+
+// split a string 
+var str = "a,b,c,d,e,f";
+  var arr = str.split(",");
+  for (var i = 0; i < arr.length; i++){
+  document.getElementById("demo13").innerHTML += (" " + arr[i]);}
+
+
+var str = "Hello";    
+var arr = str.split("");
+var text = "";
+var i;
+for (i = 0; i < arr.length; i++) {
+  text += arr[i] + "<br>"
+}
+document.getElementById("demo14").innerHTML = text;
+</script>
+
+</body>
+</html>
