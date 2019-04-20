@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JavaScript Numbers</title>
+</head>
+<body>
+
+<h2>JavaScript Numbers</h2>
+
+<p>Extra large or extra small numbers can be written with scientific (exponent) notation:</p>
+
+<p id="demo1"></p>
+<p id="demo2"></p>
+<p id="demo3"></p>
+<p id="demo4"></p>
+<p id="demo5"></p>
+<p id="demo6"></p>
+<p id="demo7"></p>
+<p id="demo8"></p>
+<p id="demo9"></p>
+<p id="demo10"></p>
+<p id="demo11"></p>
+<p id="demo12"></p>
+<p id="demo13"></p>
+<p id="demo14"></p>
+
+
+<script>
+    // javascript number is always 64 bit float number (double precision float number)
+    var x = 123e5;
+    var y = 123e-5;
+    document.getElementById("demo1").innerHTML = x + "<br>" + y;
+
+    // Integers (numbers without a period or exponent notation) are accurate up to 15 digits.
+    var r = 999999999999999;   // r will be 999999999999999
+    var s = 9999999999999999;  // s will be 10000000000000000
+    document.getElementById("demo2").innerHTML = r + "<br>" + s;
+
+    // The maximum number of decimals is 17, but floating point arithmetic is not always 100% accurate:
+    var t = 0.2 + 0.1;         // x will be 0.30000000000000004
+    document.getElementById("demo3").innerHTML = "0.2 + 0.1 = " + t;
+    document.getElementById("demo4").innerHTML = "(0.2 * 10 + 0.1 * 10) /10 = " + ((0.2 * 10 + 0.1 * 10) /10);
+
+    // javascript convert numeric string to numbers
+    var u = "1000";
+    var v = "50";
+    document.getElementById("demo5").innerHTML = '"1000" / "50" = ' + u /v;
+    document.getElementById("demo6").innerHTML = '"1000" - "50" = ' + (u - v);
+
+    // NaN "Not a Number", its type is number
+    document.getElementById("demo7").innerHTML = 100/'Apple';
+    document.getElementById("demo8").innerHTML = isNaN(100/'Apple');
+    document.getElementById("demo9").innerHTML = typeof NaN;
+
+    // Infinity and -Inifinity
+    document.getElementById('demo10').innerHTML = 2/0;
+    document.getElementById('demo11').innerHTML = typeof (-2/0);
+    
+    // hex starts with 0x, octal starts with 0
+    document.getElementById("demo12").innerHTML = "0xFF = " + 0xFF;
+    document.getElementById("demo13").innerHTML = "012 = " + 012;
+
+    // to string with different formats
+    var myNumber = 32;
+    document.getElementById("demo14").innerHTML =
+        "32 = " + "<br>" + 
+        " Decimal " + myNumber.toString(10) + "<br>" +
+        " Hexadecimal " + myNumber.toString(16) + "<br>" +
+        " Octal " + myNumber.toString(8) + "<br>" +
+        " Binary " + myNumber.toString(2);
+</script>
+
+</body>
+</html>
