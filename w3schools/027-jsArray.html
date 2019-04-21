@@ -20,16 +20,31 @@
 <p id="demo4"></p>
 <p id="demo5"></p>
 
+<p>4) get array length</p>
 <p id="demo6"></p>
+
+<p>5) access array element through index</p>
 <p id="demo7"></p>
 <p id="demo8"></p>
+
+<p>6) loop the array elements</p>
 <p id="demo9"></p>
+
+<p>7) array.foreach()</p>
 <p id="demo10"></p>
-<p id="demo11"></p>
+
+<p>8) add element to array</p>
+<button onclick="addItem('Lemon')">Add Lemon</button>
+<p id="demo11">11</p>
+
+<p>9) Adding elements with high indexes can create undefined "holes" in an array</p>
 <p id="demo12"></p>
+
+<p>10) typeof array</p>
 <p id="demo13"></p>
 <p id="demo14"></p>
 <p id="demo15"></p>
+<p id="demo16"></p>
 
 <script>
 var cars = ["Saab", "Volvo", "BMW"];
@@ -39,10 +54,50 @@ document.getElementById('demo2').innerHTML = cars[1];
 cars[1] = 'Opel';
 document.getElementById('demo3').innerHTML = cars[1];
 
+// array
 var person = ["John", "Doe", 46];
 document.getElementById('demo4').innerHTML = person[0];
+// object
 var person = {firstName:"John", lastName:"Doe", age:46}
 document.getElementById('demo5').innerHTML = person.firstName;
+
+
+var fruits = ["Banana", "Orange", "Apple", "Mango"];
+document.getElementById("demo6").innerHTML = fruits.length;
+document.getElementById('demo7').innerHTML = fruits[1];
+document.getElementById('demo8').innerHTML = fruits[fruits.length - 1];
+
+var text = "<ul>";
+for (i = 0; i < fruits.length; i++){
+    text += '<li>' + fruits[i] + '</li>';
+}
+text += '</ul>';
+document.getElementById('demo9').innerHTML = text;
+
+text = "<ul>";
+fruits.forEach(showItem);
+text += '</ul>';
+document.getElementById('demo10').innerHTML = text;
+
+function showItem(item){
+    text +='<li>' + item + '</li>';
+}
+
+
+document.getElementById('demo11').innerHTML = fruits;
+function addItem(newItem){
+    fruits.push(newItem);
+    document.getElementById('demo11').innerHTML = fruits;
+}
+
+var newFruits = ["Banana", "Orange", "Apple", "Mango"];
+newFruits[10] = "Guava";
+document.getElementById('demo12').innerHTML = newFruits;
+
+document.getElementById('demo13').innerHTML = (typeof newFruits);
+document.getElementById('demo14').innerHTML = (Array.isArray(newFruits));
+document.getElementById('demo15').innerHTML = newFruits.constructor.toString().indexOf("Array");
+document.getElementById('demo16').innerHTML = (newFruits instanceof Array);
 </script>
 
 </body>
