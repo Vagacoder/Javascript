@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>        JavaScript Array Sort</title>
+</head>
+<h2>JavaScript Array Sort</h2>
+
+<p>1) sort()</p>
+<button type="button" onclick='sortArray()'>Sort array</button>
+<p id='demo1'></p>
+
+<p>2) reverser()</p>
+<p id='demo2'></p>
+
+<P>3) numeric sorting</P>
+<p id='demo3'></p>
+<button type="button" onclick="sortNumericArray()">Sort numeric array</button>
+<p id='demo4'></p>
+
+<p>4) shuffle array, random order</p>
+<button type="button" onclick='shuffleArray()'>shuffle array</button>
+<p id='demo5'></p>
+
+<p>5) Max and Min()</p>
+<p id='demo6'></p>
+
+<p>6) Math.max() and Math.min()</p>
+<p id='demo7'></p>
+
+<p>7) home made Min/Max()</p>
+<p id='demo8'></p>
+<button type="button" onclick="findArrayMax(points1)">Find Max </button>
+<p id='demo9'></p>
+
+<p>8) sort array of objects</p>
+<p id='demo10'></p>
+<button onclick="sortObjects()">Sort Objects</button>
+
+<p>9) sort array of objects by string property</p>
+<p id='demo11'></p>
+<button onclick="sortObjectsByString()">Sort Objects</button>
+
+<p id='demo12'></p>
+<p id='demo13'></p>
+<p id='demo14'></p>
+<p id='demo15'></p>
+<p id='demo16'></p>
+
+
+<script>
+
+var fruits = ["Banana", "Orange", "Apple", "Mango"];
+document.getElementById("demo1").innerHTML = fruits;
+
+var points = [40, 100, 1, 5, 25, 10];
+document.getElementById('demo3').innerHTML = points;
+document.getElementById('demo5').innerHTML = points;
+
+sortNumericArray();
+document.getElementById('demo6').innerHTML = "MAX is " + points[points.length-1] + " Min is " + points[0];
+
+var points1 = [40, 100, 1, 5, 25, 10, 300, 60, 7, 800,90];
+document.getElementById('demo7').innerHTML = "Min is " + Math.min.apply(null, points1) + " Max is " + Math.max.apply(null, points1);
+
+points1 = [40, 100, 1, 5, 25, 10, 300, 60, 7, 800,90];
+document.getElementById('demo8').innerHTML = points1;
+
+var cars = [
+  {type:"Volvo", year:2016},
+  {type:"Saab", year:2001},
+  {type:"BMW", year:2010}
+];
+
+displayCars();
+
+
+function sortArray() {
+  fruits.sort();
+  document.getElementById("demo1").innerHTML = fruits;
+  fruits.reverse();
+  document.getElementById('demo2').innerHTML = fruits;
+}
+
+function sortNumericArray(){
+    points.sort(function(a,b) {return a-b;});
+    document.getElementById('demo4').innerHTML = points;
+}
+
+function shuffleArray(){
+    points.sort(function(a, b){return 0.5 - Math.random()});
+    document.getElementById('demo5').innerHTML = points;
+}
+
+function findArrayMax(Arr){
+    var len = Arr.length
+    var max = Arr[Arr.length-1];
+  while (len--) {
+    if (Arr[len] > max) {
+      max = Arr[len];
+    }
+  }
+    document.getElementById('demo9').innerHTML = max;
+}
+
+function sortObjects() {
+  cars.sort(function(a, b){return a.year - b.year});
+  displayCars();
+}
+
+function sortObjectsByString(){
+    cars.sort(function(a,b){
+     var x = a.type.toLowerCase();
+     var y = b.type.toLowerCase();
+     if (x > y){
+         return 1;
+     } else if (x < y){
+         return -1;
+     } else {
+         return 0;
+     }
+    })
+    displayCars();
+}
+
+function displayCars() {
+  document.getElementById("demo10").innerHTML =
+  cars[0].type + " " + cars[0].year + "<br>" +
+  cars[1].type + " " + cars[1].year + "<br>" +
+  cars[2].type + " " + cars[2].year;
+}
+
+
+</script>
+</html>
