@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>
+            JavaScript Array Iteration
+    </title>
+</head>
+<body>
+
+<h2>JavaScript Array.forEach()</h2>
+
+<p>1) Array.forEach() Calls a function once for each array element.</p>
+<p id="demo1"></p>
+
+<p>2) Array.map()</p>
+<p id="demo2"></p>
+
+<p>3) Array.filter()</p>
+<p id="demo3"></p>
+<p id="demo4"></p>
+
+<p>4) Array.total()</p>
+<p id="demo5"></p>
+
+<p>5) Array.every()</p>
+<p id="demo6"></p>
+
+<p id="demo7"></p>
+<p id="demo8"></p>
+<p id="demo9"></p>
+<p id="demo10"></p>
+<p id="demo11"></p>
+<p id="demo12"></p>
+<p id="demo13"></p>
+<p id="demo14"></p>
+<p id="demo15"></p>
+<p id="demo16"></p>
+<p id="demo17"></p>
+<p id="demo18"></p>
+
+
+<script>
+var txt = "";
+var numbers = [45, 4, 9, 16, 25];
+numbers.forEach(showEach);
+// both works
+//document.getElementById("demo1").innerHTML = txt;
+
+
+var numbers1 = [45, 4, 9, 16, 25];
+var numbers2 = numbers1.map(mapToAnother);
+document.getElementById("demo2").innerHTML = numbers2;
+
+
+var over18 = numbers.filter(filterArray);
+document.getElementById("demo3").innerHTML = over18;
+
+var numbers3 = numbers.map(filterArray);
+document.getElementById("demo4").innerHTML = numbers3;
+
+
+var sum = numbers.reduce(sumArray);
+document.getElementById("demo5").innerHTML = "The sum is " + sum;
+
+var allOver18 = numbers.every(checkEvery);
+document.getElementById("demo6").innerHTML = "All over 18 is " + allOver18;
+
+// Functions defined below ================================
+function showEach(value, index, array) {
+  txt = txt + value + "<br>"; 
+  document.getElementById("demo1").innerHTML = txt;
+}
+
+
+function mapToAnother(value, index, array) {
+  return value * 2;
+}
+
+
+function filterArray(value, index, array) {
+  return value > 18;
+}
+
+
+function sumArray(total, value, index, array) {
+  return total + value;
+}
+
+
+function checkEvery(value, index, array) {
+  return value > 18;
+}
+</script>
+
+</body>
+</html>
