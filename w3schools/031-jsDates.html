@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>-- JavaScript Dates --</title>
+</head>
+<body>
+<h2>JavaScript Dates</h2>
+
+<p>1) Date()</p>
+<p>current date and time is Date()</p>
+<p id="demo1"></p>
+<p>methods of Date class</p>
+<p id="demo2"></p>
+<p id="demo3"></p>
+
+<p>Using new Date(7 numbers), creates a new date object with the specified date and time:</p>
+<p id="demo4"></p>
+<p>6 numbers specify year, month, day, hour, minute and second:</p>
+<p id="demo5"></p>
+<p>down to 2 numbers specify year and  month:</p>
+<p id="demo6"></p>
+<p>One parameter will be interpreted as new Date(milliseconds).</p>
+<p id="demo7"></p>
+<p id="demo8"></p>
+<p id="demo9"></p>
+<p id="demo10"></p>
+<p id="demo11"></p>
+<p id="demo12"></p>
+<p id="demo13"></p>
+<p id="demo14"></p>
+<p id="demo15"></p>
+<p id="demo16"></p>
+<p id="demo17"></p>
+<p id="demo18"></p>
+<p id="demo19"></p>
+<p id="demo20"></p>
+
+</body>
+<script>
+var currentDate = new Date();
+document.getElementById("demo1").innerHTML= currentDate;
+document.getElementById("demo2").innerHTML= currentDate.getDate();
+document.getElementById("demo3").innerHTML= currentDate.getTime();
+
+var d7 = new Date(2018, 11, 24, 10, 33, 30, 275);
+document.getElementById("demo4").innerHTML = d7;
+var d6 = new Date(2014, 1, 17, 21, 48, 20);
+document.getElementById("demo5").innerHTML = d6;
+var d2 = new Date(2032, 8);
+document.getElementById("demo6").innerHTML = d2;
+var d1 = new Date(2018);
+document.getElementById("demo7").innerHTML = d1;
+</script>
+
+</html>

@@ -25,14 +25,25 @@
 <p>5) Array.every(), check if all array values pass a test.</p>
 <p id="demo6"></p>
 
+<p>6) Compare Array.Map() and 5), Map() return a new array of boolean</p>
 <p id="demo7"></p>
+
+<p>7) check if some array values pass a test.</p>
 <p id="demo8"></p>
+
+<p>8) Array.IndexOf()</p>
 <p id="demo9"></p>
 <p id="demo10"></p>
 <p id="demo11"></p>
 <p id="demo12"></p>
+
+<p>9) Array.lastIndexOf()</p>
 <p id="demo13"></p>
+
+<p>10) Array.find()</p>
 <p id="demo14"></p>
+
+<p>11) Array.findIndex()</p>
 <p id="demo15"></p>
 <p id="demo16"></p>
 <p id="demo17"></p>
@@ -47,7 +58,7 @@ numbers.forEach(showEach);
 //document.getElementById("demo1").innerHTML = txt;
 
 
-var numbers1 = [45, 4, 9, 16, 25];
+var numbers1 = [12, 36, 45, 4, 9, 16, 25];
 var numbers2 = numbers1.map(mapToAnother);
 document.getElementById("demo2").innerHTML = numbers2;
 
@@ -62,8 +73,32 @@ document.getElementById("demo4").innerHTML = numbers3;
 var sum = numbers.reduce(sumArray);
 document.getElementById("demo5").innerHTML = "The sum is " + sum;
 
-var allOver18 = numbers.every(checkEvery);
+var allOver18 = numbers.every(checkEveryLargerThan18);
 document.getElementById("demo6").innerHTML = "All over 18 is " + allOver18;
+
+var isOver18 = numbers.map(checkEveryLargerThan18);
+document.getElementById("demo7").innerHTML = "Is every over 18: " + isOver18;
+
+var someOver18 = numbers.some(checkEveryLargerThan18);
+document.getElementById("demo8").innerHTML = "Is some over 18: " + someOver18;
+
+var fruits= ["Apple", "Orange", "Apple", "Mango"];
+document.getElementById("demo9").innerHTML = "fruit array is " + fruits;
+var appleIndex1 = fruits.indexOf("Apple")
+document.getElementById("demo10").innerHTML = "The index of Apple is: " + appleIndex1;
+var appleIndex2 = fruits.indexOf("Apple", appleIndex1+1);
+document.getElementById("demo11").innerHTML = "The index of Apple afer " + appleIndex1 +" is: " + appleIndex2;
+var KiwiIndex = fruits.indexOf("Kiwi");
+document.getElementById("demo12").innerHTML = "The index of Kiwi is: " + KiwiIndex;
+
+var appleLastIndex = fruits.lastIndexOf("Apple");
+document.getElementById("demo13").innerHTML = "The last index of apple is: " + appleLastIndex;
+
+var firstLargerThan18 = numbers1.find(checkEveryLargerThan18);
+document.getElementById("demo14").innerHTML = "The firt number larger than 18 is " + firstLargerThan18;
+
+var indexOfFirstLargerThan18 = numbers1.findIndex(checkEveryLargerThan18);
+document.getElementById("demo15").innerHTML = "The firt number larger than 18 is " + indexOfFirstLargerThan18;
 
 // Functions defined below ================================
 function showEach(value, index, array) {
@@ -87,7 +122,7 @@ function sumArray(total, value, index, array) {
 }
 
 
-function checkEvery(value, index, array) {
+function checkEveryLargerThan18(value, index, array) {
   return value > 18;
 }
 </script>
