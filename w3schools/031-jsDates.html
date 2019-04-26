@@ -21,12 +21,23 @@
 <p id="demo6"></p>
 <p>One parameter will be interpreted as new Date(milliseconds).</p>
 <p id="demo7"></p>
+<p>Two digit years will be interpreted as 19xx:</p>
 <p id="demo8"></p>
+<p>A Date object can be created with a specified date and time:</p>
 <p id="demo9"></p>
+<p>Using new Date(milliseconds), creates a new date object as 
+        January 1, 1970, 00:00:00 Universal Time (UTC) plus the milliseconds:</p>
 <p id="demo10"></p>
+
+<p>2) Date method toString()</p>
 <p id="demo11"></p>
+
+<p>3) toUTCstring()</p>
 <p id="demo12"></p>
+
+<P>4) toDateString()</P>
 <p id="demo13"></p>
+
 <p id="demo14"></p>
 <p id="demo15"></p>
 <p id="demo16"></p>
@@ -50,6 +61,17 @@ var d2 = new Date(2032, 8);
 document.getElementById("demo6").innerHTML = d2;
 var d1 = new Date(2018);
 document.getElementById("demo7").innerHTML = d1;
-</script>
+var dxx = new Date(91, 3, 14)
+document.getElementById("demo8").innerHTML = dxx;
+var dstring = new Date("October 13, 2014 11:13:00");
+document.getElementById("demo9").innerHTML = dstring;
+var d1day = new Date(86400000);
+document.getElementById("demo10").innerHTML = d1day;
 
+document.getElementById("demo11").innerHTML = currentDate.toString();
+document.getElementById("demo12").innerHTML = currentDate.toUTCString();
+document.getElementById("demo13").innerHTML = currentDate.toDateString();
+
+
+</script>
 </html>
