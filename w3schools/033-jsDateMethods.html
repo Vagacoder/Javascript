@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            JavaScript Date Methods
+        </title>
+    </head>
+    <body>
+<h2>JavaScript Date Methods</h2>
+<h3>The internal clock in JavaScript counts from midnight January 1, 1970.</h3>
+
+<p>1) getTime() returns the number of milliseconds since January 1, 1970:</p>
+<p id="demo1"></p>
+
+<P>2) The getFullYear() method returns the year of a date as a four digit number:</P>
+<p id="demo2"></p>
+
+<P>3) The getMonth() method returns the month of a date as a number (0-11):</P>
+<p style="color:crimson">Note: January is 0, December is 11</p>
+<p id="demo3"></p>
+<p>using an array of names of months to get actual name</p>
+<p id="demo4"></p>
+
+<P>4) The getDate() method returns the day of a date as a number (1-31):</P>
+<p id="demo5"></p>
+
+<P>5) The getHours() method returns the hours of a date as a number (0-23):</P>
+<p id="demo6"></p>
+
+<p>6) The getMinutes() method returns the minutes of a date as a number (0-59):</p>
+<p id="demo7"></p>
+
+<P>7) The getSeconds() method returns the seconds of a date as a number (0-59):</P>
+<p id="demo8"></p>
+
+<p>8) The getMilliseconds() Method returns the milliseconds of a date as a number (0-999):</p>
+<p id="demo9"></p>
+
+<p>9) The getDay() method returns the weekday of a date as a number (0-6):</p>
+<p id="demo10"></p>
+<p style="color:crimson">Note: 0 is Sunday, 1 is Monday, 6 is Saturday</p>
+<p id="demo11"></p>
+
+<p>10) The setFullYear() method sets the year of a date object</p>
+<p id="demo12"></p>
+<p>The setFullYear() method can <b>optionally</b> set month and day:</p>
+<p id="demo13"></p>
+
+<p>11) setMonth()</p>
+<p id="demo14"></p>
+
+<p>12) setDate()</p>
+<p id="demo15"></p>
+<p style="color:darksalmon">The setDate() method can also be used to add days to a date:</p>
+<p id="demo16"></p>
+
+<p>skip the setSeconds, setMilliSeconds, setHours</p>
+<p>13) Compare Dates</p>
+<p id="demo17"></p>
+<p id="demo18"></p>
+<p id="demo19"></p>
+<p id="demo20"></p>
+
+    </body>
+    <script>
+        var d1 = new Date();
+        document.getElementById("demo1").innerHTML=d1.getTime();
+        document.getElementById("demo2").innerHTML=d1.getFullYear();
+        document.getElementById("demo3").innerHTML=d1.getMonth();
+
+        var months = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+        document.getElementById("demo4").innerHTML=months[d1.getMonth()];
+        document.getElementById("demo5").innerHTML=d1.getDate();
+        document.getElementById("demo6").innerHTML=d1.getHours();
+        document.getElementById("demo7").innerHTML=d1.getMinutes();
+        document.getElementById("demo8").innerHTML=d1.getSeconds();
+        document.getElementById("demo9").innerHTML=d1.getMilliseconds();
+        document.getElementById("demo10").innerHTML=d1.getDay();
+
+        var days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+        document.getElementById("demo11").innerHTML=days[d1.getDay()];
+
+        var d2 = new Date();
+        d2.setFullYear(2020)
+        document.getElementById("demo12").innerHTML= d2;
+        d2.setFullYear(2020, 11, 3);
+        document.getElementById("demo13").innerHTML= d2;
+        d2.setMonth(4);
+        document.getElementById("demo14").innerHTML= d2;
+        d2.setDate(25);
+        document.getElementById("demo15").innerHTML= d2;
+        d2.setDate(25+50);
+        document.getElementById("demo16").innerHTML= d2;
+
+        var today, someday, text;
+        today = new Date();
+        someday = new Date();
+        someday.setFullYear(2100, 0, 14);
+
+        if (someday > today){
+            text = "Today is before Jan 4, 2100.";
+        } else {
+            text = "Today is after Jan 4, 2100.";
+        }
+        document.getElementById("demo17").innerHTML= text;
+    </script>
+</html>
