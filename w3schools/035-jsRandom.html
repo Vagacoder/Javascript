@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Javascript Math.Random</title>
+</head>
+<body>
+<h2>Javascript Math.random</h2>
+
+<p>1) Javascript random integer 0-9</p>
+<p id="demo1"></p>
+<p>2) Javascript random integer 0-10</p>
+<p id="demo2"></p>
+<p>3) Javascript random integer 1-10</p>
+<p id="demo3"></p>
+
+<p>4) random min-max</p>
+<button type="button" onclick="RandInteger(0, 9)">get Random number 0 - 9</button>
+<p id="demo4"></p>
+<button type="button" onclick="RandInteger(1, 10)">get Random number 1 - 10</button>
+<p id="demo5"></p>
+<p id="demo6"></p>
+<p id="demo7"></p>
+<p id="demo8"></p>
+<p id="demo9"></p>
+<p id="demo10"></p>
+<p id="demo11"></p>
+<p id="demo12"></p>
+<p id="demo13"></p>
+<p id="demo14"></p>
+<p id="demo15"></p>
+<p id="demo16"></p>
+<p id="demo17"></p>
+<p id="demo18"></p>
+<p id="demo19"></p>
+<p id="demo20"></p>
+
+</body>
+<script>
+document.getElementById("demo1").innerHTML = Math.floor(Math.random() * 10);
+document.getElementById("demo2").innerHTML = Math.floor(Math.random() * 11);
+document.getElementById("demo3").innerHTML = Math.floor(Math.random() * 10 + 1);
+
+function RandInteger(min, max) {
+    document.getElementById("demo4").innerHTML = Math.round(Math.random()*(max - min)) + min;
+    document.getElementById("demo4").style="color:green";
+}
+</script>
+</html>
