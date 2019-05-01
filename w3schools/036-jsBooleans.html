@@ -22,16 +22,35 @@
 <p>3) Boolean can be Object: new Boolean(true)</p>
 <p style="color: crimson">Never create booleans as objects.</p>
 <p>Booleans and objects cannot be safely compared.</p>
+
 <p id="demo4"></p>
 <p id="demo5"></p>
 <p id="demo6"></p>
 <p id="demo7"></p>
 <p id="demo8"></p>
+
+<p>4) Comparison operator == and ===</p>
 <p id="demo9"></p>
+
+<p>5) != not equal and !=== not equal value or not equal type</p>
 <p id="demo10"></p>
+
+<p>6) Ternary operator ?: input age below</p>
+<input id="age" value="18" />
+<button onclick="ageJudge()">Try it</button>
 <p id="demo11"></p>
+
+<p>7) Comparing different types</p>
+<p>When comparing a string with a number, JavaScript will convert the string 
+    to a number when doing the comparison. An empty string converts to 0. 
+    A non-numeric string converts to NaN which is always false</p>
 <p id="demo12"></p>
+
+<p>8) To secure a proper result, variables should be converted to the proper type before comparison</p>
+<input id="age1" value = "18"/>
+<button type="button" onclick = "ageJudge1()">Try again</button>
 <p id="demo13"></p>
+
 <p id="demo14"></p>
 <p id="demo15"></p>
 <p id="demo16"></p>
@@ -87,6 +106,33 @@ document.getElementById("demo5").innerHTML = "Compare boolean and object using =
 document.getElementById("demo6").innerHTML = "Compare boolean and object using ===: " + (r === s);
 document.getElementById("demo7").innerHTML = "Compare 2 objects using ==: " + (t == s);
 document.getElementById("demo8").innerHTML = "Compare 2 objects using ===: " + (t === s);
+
+var u = 5;
+document.getElementById("demo9").innerHTML = "u=5: <br> u == 5 is: " + (u==5) + "<br>" +
+'u == "5" is ' + (u=="5") +"<br>" + 'u === 5 is ' + (u===5) +"<br>" +
+'u === "5" is ' + (u==="5");  
+
+document.getElementById("demo10").innerHTML = "u=5: <br> u!=5 is: " + (u!=5) + "<br>" +
+'u !== 5 is ' + (u !== 5) +"<br>" + 'u !== "5" is ' + (u!=="5") +"<br>" +
+'u !== 8 is ' + (u !==8);
+
+function ageJudge(){
+    var age = document.getElementById("age").value;
+    document.getElementById("demo11").innerHTML = ((age < 18)? "Too young" : "Old enough") + " to vote!";}
+
+document.getElementById("demo12").innerHTML = "'2' < 12: " + ('2' < 12) +"<br>" +
+    '2 > "" is ' + (2 > "") + "<br>" + '"2" > "12" is ' + ('2' > '12');
+
+function ageJudge1(){
+    var age = document.getElementById("age1").value;
+    age = Number(age);
+    if (isNaN(age)) {
+        document.getElementById("demo13").innerHTML = "Input is not a number";
+    } else {
+        document.getElementById("demo13").innerHTML = ((age < 18)? "Too young" : "Old enough") + " to vote!";
+    }
+    
+}
 
 </script>
 </html>
