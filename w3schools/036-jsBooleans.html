@@ -1,138 +1,152 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>JavaScript Booleans</title>
 </head>
+
 <body>
-<h2>JavaScript Booleans Comparison Condition</h2>
+    <h2>JavaScript Booleans Comparison Condition</h2>
 
-<p>1) Display the value of Boolean(10>9)</p>
-<button type="button" onclick="document.getElementById('demo1').innerHTML=Boolean(10 > 9)">Get Boolean !</button>
-<p id="demo1"></p>
+    <p>1) Display the value of Boolean(10>9)</p>
+    <button type="button" onclick="document.getElementById('demo1').innerHTML=Boolean(10 > 9)">Get Boolean !</button>
+    <p id="demo1"></p>
 
-<p>2) For a easier way 10 > 9</p>
-<button type="button" onclick="document.getElementById('demo2').innerHTML=10 > 9">Get Boolean !</button>
-<p id="demo2"></p>
+    <p>2) For a easier way 10 > 9</p>
+    <button type="button" onclick="document.getElementById('demo2').innerHTML=10 > 9">Get Boolean !</button>
+    <p id="demo2"></p>
 
-<p style="color:crimson">3) Any (not empty) string is true;
-    Even the string 'false' is true;
-    Any expression (except zero) is true</p>
-<p id="demo3"></p>
+    <p style="color:crimson">3) Any (not empty) string is true;
+        Even the string 'false' is true;
+        Any expression (except zero) is true</p>
+    <p id="demo3"></p>
 
-<p>3) Boolean can be Object: new Boolean(true)</p>
-<p style="color: crimson">Never create booleans as objects.</p>
-<p>Booleans and objects cannot be safely compared.</p>
+    <p>3) Boolean can be Object: new Boolean(true)</p>
+    <p style="color: crimson">Never create booleans as objects.</p>
+    <p>Booleans and objects cannot be safely compared.</p>
 
-<p id="demo4"></p>
-<p id="demo5"></p>
-<p id="demo6"></p>
-<p id="demo7"></p>
-<p id="demo8"></p>
+    <p id="demo4"></p>
+    <p id="demo5"></p>
+    <p id="demo6"></p>
+    <p id="demo7"></p>
+    <p id="demo8"></p>
 
-<p>4) Comparison operator == and ===</p>
-<p id="demo9"></p>
+    <p>4) Comparison operator == and ===</p>
+    <p id="demo9"></p>
 
-<p>5) != not equal and !=== not equal value or not equal type</p>
-<p id="demo10"></p>
+    <p>5) != not equal and !=== not equal value or not equal type</p>
+    <p id="demo10"></p>
 
-<p>6) Ternary operator ?: input age below</p>
-<input id="age" value="18" />
-<button onclick="ageJudge()">Try it</button>
-<p id="demo11"></p>
+    <p>6) Ternary operator ?: input age below</p>
+    <input id="age" value="18" />
+    <button onclick="ageJudge()">Try it</button>
+    <p id="demo11"></p>
 
-<p>7) Comparing different types</p>
-<p>When comparing a string with a number, JavaScript will convert the string 
-    to a number when doing the comparison. An empty string converts to 0. 
-    A non-numeric string converts to NaN which is always false</p>
-<p id="demo12"></p>
+    <p>7) Comparing different types</p>
+    <p>When comparing a string with a number, JavaScript will convert the string
+        to a number when doing the comparison. An empty string converts to 0.
+        A non-numeric string converts to NaN which is always false</p>
+    <p id="demo12"></p>
 
-<p>8) To secure a proper result, variables should be converted to the proper type before comparison</p>
-<input id="age1" value = "18"/>
-<button type="button" onclick = "ageJudge1()">Try again</button>
-<p id="demo13"></p>
+    <p>8) To secure a proper result, variables should be converted to the proper type before comparison</p>
+    <input id="age1" value="18" />
+    <button type="button" onclick="ageJudge1()">Try again</button>
+    <p id="demo13"></p>
 
-<p id="demo14"></p>
-<p id="demo15"></p>
-<p id="demo16"></p>
-<p id="demo17"></p>
-<p id="demo18"></p>
-<p id="demo19"></p>
-<p id="demo20"></p>
+    <p>9) Switch using strict comparison "==="</p>
+    <p>compare "0" with 0, 1. It return "no value found"</p>
+    <p id="demo14"></p>
+
 
 </body>
 <script>
-var b1 = Boolean(100);
-var b2 = Boolean(3.14);
-var b3 = Boolean(-15);
-var b4 = Boolean("Hello");
-var b9 = Boolean("");
+    var b1 = Boolean(100);
+    var b2 = Boolean(3.14);
+    var b3 = Boolean(-15);
+    var b4 = Boolean("Hello");
+    var b9 = Boolean("");
 
-var b5 = Boolean('false');
-var y = false;
-var b12 = Boolean(y);
+    var b5 = Boolean('false');
+    var y = false;
+    var b12 = Boolean(y);
 
-var b6 = Boolean(1 + 7 + 3.14);
-var b7 = Boolean(0);
-var b8 = Boolean(-0);
+    var b6 = Boolean(1 + 7 + 3.14);
+    var b7 = Boolean(0);
+    var b8 = Boolean(-0);
 
-var x;
-var b10 = Boolean(x);
-var b11 = Boolean(null);
+    var x;
+    var b10 = Boolean(x);
+    var b11 = Boolean(null);
 
-var z = 10 / 'a';
-var b13 = Boolean(z);
+    var z = 10 / 'a';
+    var b13 = Boolean(z);
 
 
-document.getElementById("demo3").innerHTML =
-"100 is " + b1 + "<br>" +
-"3.14 is " + b2 + "<br>" +
-"-15 is " + b3 + "<br>" +
-"Any (not empty) string is " + b4 + "<br>" +
-"Even the string 'false' is " + b5 + "<br>" +
-"Empty string is " + b9 + "<br>" +
-"Any expression (except zero) is " + b6 + "<br>" +
-"Number 0 is " + b7 + "<br>" +
-"Number -0 is " + b8 +"<br>" +
-"Undefined var is " + b10 + "<br>" +
-"null is " + b11 + "<br>" +
-"Boolean false is " + b12 + "<br>" + 
-"NaN is " + b13;
+    document.getElementById("demo3").innerHTML =
+        "100 is " + b1 + "<br>" +
+        "3.14 is " + b2 + "<br>" +
+        "-15 is " + b3 + "<br>" +
+        "Any (not empty) string is " + b4 + "<br>" +
+        "Even the string 'false' is " + b5 + "<br>" +
+        "Empty string is " + b9 + "<br>" +
+        "Any expression (except zero) is " + b6 + "<br>" +
+        "Number 0 is " + b7 + "<br>" +
+        "Number -0 is " + b8 + "<br>" +
+        "Undefined var is " + b10 + "<br>" +
+        "null is " + b11 + "<br>" +
+        "Boolean false is " + b12 + "<br>" +
+        "NaN is " + b13;
 
-var r = false;
-var s = new Boolean(false);
-var t = new Boolean(false);
-document.getElementById("demo4").innerHTML = typeof r + "<br>" + typeof s;
-document.getElementById("demo5").innerHTML = "Compare boolean and object using ==: " + (r == s);
-document.getElementById("demo6").innerHTML = "Compare boolean and object using ===: " + (r === s);
-document.getElementById("demo7").innerHTML = "Compare 2 objects using ==: " + (t == s);
-document.getElementById("demo8").innerHTML = "Compare 2 objects using ===: " + (t === s);
+    var r = false;
+    var s = new Boolean(false);
+    var t = new Boolean(false);
+    document.getElementById("demo4").innerHTML = typeof r + "<br>" + typeof s;
+    document.getElementById("demo5").innerHTML = "Compare boolean and object using ==: " + (r == s);
+    document.getElementById("demo6").innerHTML = "Compare boolean and object using ===: " + (r === s);
+    document.getElementById("demo7").innerHTML = "Compare 2 objects using ==: " + (t == s);
+    document.getElementById("demo8").innerHTML = "Compare 2 objects using ===: " + (t === s);
 
-var u = 5;
-document.getElementById("demo9").innerHTML = "u=5: <br> u == 5 is: " + (u==5) + "<br>" +
-'u == "5" is ' + (u=="5") +"<br>" + 'u === 5 is ' + (u===5) +"<br>" +
-'u === "5" is ' + (u==="5");  
+    var u = 5;
+    document.getElementById("demo9").innerHTML = "u=5: <br> u == 5 is: " + (u == 5) + "<br>" +
+        'u == "5" is ' + (u == "5") + "<br>" + 'u === 5 is ' + (u === 5) + "<br>" +
+        'u === "5" is ' + (u === "5");
 
-document.getElementById("demo10").innerHTML = "u=5: <br> u!=5 is: " + (u!=5) + "<br>" +
-'u !== 5 is ' + (u !== 5) +"<br>" + 'u !== "5" is ' + (u!=="5") +"<br>" +
-'u !== 8 is ' + (u !==8);
+    document.getElementById("demo10").innerHTML = "u=5: <br> u!=5 is: " + (u != 5) + "<br>" +
+        'u !== 5 is ' + (u !== 5) + "<br>" + 'u !== "5" is ' + (u !== "5") + "<br>" +
+        'u !== 8 is ' + (u !== 8);
 
-function ageJudge(){
-    var age = document.getElementById("age").value;
-    document.getElementById("demo11").innerHTML = ((age < 18)? "Too young" : "Old enough") + " to vote!";}
-
-document.getElementById("demo12").innerHTML = "'2' < 12: " + ('2' < 12) +"<br>" +
-    '2 > "" is ' + (2 > "") + "<br>" + '"2" > "12" is ' + ('2' > '12');
-
-function ageJudge1(){
-    var age = document.getElementById("age1").value;
-    age = Number(age);
-    if (isNaN(age)) {
-        document.getElementById("demo13").innerHTML = "Input is not a number";
-    } else {
-        document.getElementById("demo13").innerHTML = ((age < 18)? "Too young" : "Old enough") + " to vote!";
+    function ageJudge() {
+        var age = document.getElementById("age").value;
+        document.getElementById("demo11").innerHTML = ((age < 18) ? "Too young" : "Old enough") + " to vote!";
     }
-    
-}
 
+    document.getElementById("demo12").innerHTML = "'2' < 12: " + ('2' < 12) + "<br>" +
+        '2 > "" is ' + (2 > "") + "<br>" + '"2" > "12" is ' + ('2' > '12');
+
+    function ageJudge1() {
+        var age = document.getElementById("age1").value;
+        age = Number(age);
+        if (isNaN(age)) {
+            document.getElementById("demo13").innerHTML = "Input is not a number";
+        } else {
+            document.getElementById("demo13").innerHTML = ((age < 18) ? "Too young" : "Old enough") + " to vote!";
+        }
+
+    }
+
+    var x = "0";
+
+    switch (x) {
+        case 0:
+            text = "Off";
+            break;
+        case 1:
+            text = "On";
+            break;
+        default:
+            text = "No value found";
+    }
+    document.getElementById("demo14").innerHTML = text;
 </script>
+
 </html>
