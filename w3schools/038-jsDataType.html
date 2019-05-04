@@ -2,32 +2,55 @@
 <html>
 
 <head>
-    <title>JavaScript Data Type</title>
+    <title>JavaScript Data Type and Type Conversion</title>
 </head>
 
 <body>
     <h2>JavaScript Data Type</h2>
     <p>1) typeof</p>
     <p id="demo1"></p>
-    <p id="demo1"></p>
-    <p id="demo1"></p>
-    <p id="demo1"></p>
-    <p id="demo1"></p>
-    <p id="demo1"></p>
-    <p id="demo1"></p>
-    <p id="demo1"></p>
-    <p id="demo1"></p>
-    <p id="demo1"></p>
-    <p id="demo1"></p>
-    <p id="demo1"></p>
-    <p id="demo1"></p>
-    <p id="demo1"></p>
-    <p id="demo1"></p>
-    <p id="demo1"></p>
-    <p id="demo1"></p>
-    <p id="demo1"></p>
-    <p id="demo1"></p>
-    <p id="demo1"></p>
+
+    <p>2) Contructor</p>
+    <p id="demo2"></p>
+
+    <p>3) This "home made" isArray() function returns true when used on an array:</p>
+    <p> by find whether Array in function signature</p>
+    <p id="demo3"></p>
+    <p id="demo4"></p>
+
+    <p>4) directly check if the object is an Array function, using === Array</p>
+    <p id="demo5"></p>
+    <p id="demo6"></p>
+
+    <h3 style="color:crimson">Type Conversion</h3>
+    <p>5) convert number to string</p>
+    <p id="demo7"></p>
+
+    <p> toString() does same thing</p>
+    <p id="demo8"></p>
+
+    <p>6) Convert string to number</p>
+    <p id="demo9"></p>
+    <p>7) The <b>unary + </b>operator can be used to convert a variable to a number</p>
+    <p id="demo10"></p>
+    <p id="demo11"></p>
+    
+    <p>8) If the variable cannot be converted, it will still become a number, but with the value NaN (Not a Number)</p>
+    <p id="demo12"></p>
+
+    <p>9) convert booleans to numbers</p>
+    <p id="demo13"></p>
+    <p id="demo14"></p>
+
+    <p>10) convert dates to numbers</p>
+    <p id="demo15"></p>
+    <p id="demo16"></p>
+
+    <P>11) Automatic type conversion</P>
+    <p id="demo17"></p>
+    <p id="demo18"></p>
+    <p id="demo19"></p>
+    <p id="demo20"></p>
 </body>
 <script>
     document.getElementById("demo1").innerHTML =
@@ -41,6 +64,64 @@
         typeof function () { } + "<br>" +
         typeof myCar + "<br>" +
         typeof null;
+
+    document.getElementById("demo2").innerHTML = 
+        "john".constructor + "<br>" +
+        (3.14).constructor + "<br>" +
+        false.constructor + "<br>" +
+        [1,2,3,4].constructor + "<br>" +
+        {name:'john', age:34}.constructor + "<br>" +
+        new Date().constructor + "<br>" +
+        function () {}.constructor;
+
+    var x = 10
+    var fruits = ["Banana", "Orange", "Apple", "Mango"];
+    document.getElementById("demo3").innerHTML = isArray(fruits);
+    document.getElementById("demo4").innerHTML = isArray(x);
+    function isArray(myArray) {
+        return myArray.constructor.toString().indexOf("Array") > -1;
+        }
+        
+    document.getElementById("demo5").innerHTML = isArray2(fruits);
+    document.getElementById("demo6").innerHTML = isArray2(x);
+    function isArray2(myArray) {
+        return myArray.constructor === Array;
+        }
+
+    document.getElementById("demo7").innerHTML =
+        String(x) + "<br>" +
+        String(123) + "<br>" +
+        String(100 + 23);
+    document.getElementById("demo8").innerHTML =
+        x.toString() + "<br>" +
+        (123).toString() + "<br>" +
+        (100 + 23).toString();
+
+    document.getElementById("demo9").innerHTML =
+        Number("3.14") + "<br>" +
+        Number(" ") + "<br>" +
+        Number("") + "<br>" +
+        Number("99 88") + "<br>";
+
+    var y = "5";
+    document.getElementById("demo10").innerHTML = (+ y);
+    document.getElementById("demo11").innerHTML = typeof(+ y);
+    document.getElementById("demo12").innerHTML = (+ "Hello");
+
+    document.getElementById("demo13").innerHTML = Number(true);
+    document.getElementById("demo14").innerHTML = Number(false);
+    
+    d = new Date();
+    document.getElementById("demo15").innerHTML = Number(d);
+    document.getElementById("demo16").innerHTML = d.getTime();
+
+    document.getElementById("demo17").innerHTML =
+        (5 + null) + "<br>"  +
+        ("5" + null) + "<br>" +
+        ("5" + 2) + "<br>" +
+        ("5" - 2) + "<br>" +
+        ("5" * "2") + "<br>" +
+        ("5" / "2") + "<br>"
 </script>
 
 </html>
