@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>JavaScript Regular Expressions</title>
+</head>
+<body>
+<h2>JavaScript Regular Expressions</h2>
+<h3>Syntax:</h3>
+<p>/pattern/modifiers;</p>
+<p>e.g. var patt = /w3schools/i;</p>
+<p><b>/w3schools/</b> is a regex</p>
+<p><b>i</b> is modifier (case-insensitive)</p>
+
+<p>1) Search string using regex</p>
+<p>Directly search using string in ""</p>
+<p id="demo1"></p>
+<p>Successfully found will return the starting index</p>
+<p id="demo2"></p>
+<p>No found will return -1</p>
+<p id="demo3"></p>
+
+<p>2) Replace string using regex</p>
+<p id="demo4"></p>
+
+<p>3) regex modifier: <b>i</b> (case-insensitive)</p>
+<p>string is "Microsoft", regex is /micro/i</p>
+<p id="demo5"></p>
+
+<p>4) regex modifier: <b>g</b> (find all matches ) </p>
+<p>string is "Is this all there is?", regex is /is/g</p>
+<p id="demo6"></p>
+
+<p>5) regex modifier: <b>m</b> (multiline matching)</p>
+<p>string is "\nIs th\nis it?", regex is /^is/m (multiline and beginning of line)</p>
+<p id="demo7"></p>
+
+
+<p id="demo8"></p>
+<p id="demo9"></p>
+<p id="demo10"></p>
+<p id="demo11"></p>
+<p id="demo12"></p>
+<p id="demo13"></p>
+<p id="demo14"></p>
+<p id="demo15"></p>
+<p id="demo16"></p>
+<p id="demo17"></p>
+<p id="demo18"></p>
+<p id="demo19"></p>
+<p id="demo20"></p>
+
+
+</body>
+<script>
+var str = "Visit W3Schools!";
+document.getElementById("demo1").innerHTML = str.search("W3Schools");
+var n = str.search(/W3schools/i);
+document.getElementById("demo2").innerHTML = n;
+n = str.search(/shools/i);
+document.getElementById("demo3").innerHTML = n;
+
+var str1 = "Made by Microsoft!";
+var m = str1.replace(/Microsoft/i, "W3Schools");
+document.getElementById("demo4").innerHTML = m;
+
+var l = str1.match(/micro/i);
+document.getElementById("demo5").innerHTML = l;
+
+var str2 = "Is this all there is?";
+var q = str2.match(/is/g);
+document.getElementById("demo6").innerHTML = q;
+
+var str3 = "\nIs th\nis it?"
+var p = str3.match(/^is/m);
+document.getElementById("demo7").innerHTML = p;
+
+</script>
+</html>
