@@ -34,19 +34,44 @@
 <p>string is "\nIs th\nis it?", regex is /^is/m (multiline and beginning of line)</p>
 <p id="demo7"></p>
 
-
+<p>6) [abc]  Find <b style="color:crimson">any ONE</b> of the characters between the brackets</p>
+<p>Find h in "Is this all there is?"</p>
 <p id="demo8"></p>
+<p>Find h a in "Is this all there is?"</p>
 <p id="demo9"></p>
+<p>Find 1, 2, 3, 4 in "1234567890"</p>
 <p id="demo10"></p>
+
+<p>7) | : Find any of the alternatives separated with |</p>
 <p id="demo11"></p>
+
+<p>8) \d : Find a digit</p>
 <p id="demo12"></p>
+
+<p>9) \s : Find a whitespace character</p>
 <p id="demo13"></p>
+
+<p>10) \b : Find a match at the beginning or at the end of a word</p>
 <p id="demo14"></p>
+
+<p>11) \uxxxx 	Find the Unicode character specified by the hexadecimal number xxxx</p>
 <p id="demo15"></p>
+
+<p>12) n+ :	Matches any string that contains at least one n</p>
 <p id="demo16"></p>
+
+<P>13) n* : Matches any string that contains zero or more occurrences of n</P>
 <p id="demo17"></p>
+
+<p>14) n? : Matches any string that contains zero or one occurrences of n</p>
 <p id="demo18"></p>
+
+<p id="in1">15) test() method: searches a string for a regex, and returns true or false, depending on the result.</p>
 <p id="demo19"></p>
+
+<p>16) exec() method searches a string for a specified pattern, and returns the found text as an object.
+
+    If no match is found, it returns an empty (null) object.</p>
 <p id="demo20"></p>
 
 
@@ -74,5 +99,41 @@ var str3 = "\nIs th\nis it?"
 var p = str3.match(/^is/m);
 document.getElementById("demo7").innerHTML = p;
 
+var o = str2.match(/[h]/g);
+document.getElementById("demo8").innerHTML = o;
+var o = str2.match(/[ah]/g);
+document.getElementById("demo9").innerHTML = o;
+
+var str4="1234567890";
+var n = str4.match(/[1-4]/g);
+document.getElementById("demo10").innerHTML = n;
+
+var str5 = "re, green, red, green, gren, gr, blue, yellow";
+var m = str5.match(/(red|green)/g);
+document.getElementById("demo11").innerHTML = m;
+
+var str6 = "Give 100%!";
+var l = str6.match(/\d/g);
+document.getElementById("demo12").innerHTML = l;
+
+document.getElementById("demo13").innerHTML = (str2.match(/\s/g));
+
+document.getElementById("demo14").innerHTML = (str.match(/\b!/g));
+
+document.getElementById("demo15").innerHTML = (str.match(/\u0057/g));
+
+var str7 = "Hellooo World! Hello W3Schools!"; 
+document.getElementById("demo16").innerHTML = (str7.match(/\o+/g));
+document.getElementById("demo17").innerHTML = (str7.match(/\lo*/g));
+
+var str8 = "1, 100 or 1000?";
+document.getElementById("demo18").innerHTML = (str8.match(/10?/g));
+
+var str9 = document.getElementById("in1").innerHTML;
+document.getElementById("demo19").innerHTML = /v/.test(str9);
+
+var obj = /e/.exec("The best things in life are free!");
+document.getElementById("demo20").innerHTML =
+"Found " + obj[0] + " in position " + obj.index + " in the text: " + obj.input;
 </script>
 </html>
