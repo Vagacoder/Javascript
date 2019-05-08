@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Javascript Scope</title>
+</head>
+<body>
+<h2>Javascript Function Scope</h2>
+
+<p>1) Local scope</p>
+<button type="button" onclick="showScope()">Show Scope</button>
+<p id="demo1"></p>
+<p id="demo2"></p>
+
+<p>2) If you assign a value to a variable that has not been declared, 
+    it will automatically become a GLOBAL variable.</p>
+<p id="demo3"></p>
+
+<p id="demo4"></p>
+<p id="demo5"></p>
+<p id="demo6"></p>
+<p id="demo7"></p>
+<p id="demo8"></p>
+<p id="demo9"></p>
+<p id="demo10"></p>
+<p id="demo11"></p>
+<p id="demo12"></p>
+<p id="demo13"></p>
+<p id="demo14"></p>
+<p id="demo15"></p>
+<p id="demo16"></p>
+<p id="demo17"></p>
+<p id="demo18"></p>
+<p id="demo19"></p>
+<p id="demo20"></p>
+
+</body>
+<script>
+function showScope(){
+    var carName = "Volvo";
+    document.getElementById("demo1").innerHTML = typeof carName + " " + carName;
+}
+document.getElementById("demo2").innerHTML = typeof carName;
+
+showAutoGlobal();
+// code here can use carName as a global variable
+document.getElementById("demo3").innerHTML = "I can display " + fruitName;
+function showAutoGlobal() {
+  fruitName = "Banana";
+}
+</script>
+</html>

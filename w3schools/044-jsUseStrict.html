@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>JavaScript Use Strict</title>
+</head>
+<body>
+<h2>JavaScript Use Strict</h2>
+<p>"use strict" directive</p>
+<p>Activate debugging in your browser (F12) to see the error report.</p>
+
+<p>1) deleting a variable is not allowed</p>
+<p id="demo1"></p>
+
+<p id="demo2"></p>
+<p id="demo3"></p>
+<p id="demo4"></p>
+
+
+</body>
+<script>
+
+x = 3.14;  // This will cause an error (x is not defined).
+
+myFunction();
+
+function myFunction() {
+  // "use strict";
+  y = 3.14;  // This will cause an error (y is not defined).
+}
+
+"use strict";
+var x = 3.14;
+try{
+delete x;      
+}
+catch (e){
+    document.getElementById("demo1").innerHTML = e.message();
+}
+
+var x = "\010";
+
+function x(p1, p2){};
+delete  x;
+</script>
+</html>

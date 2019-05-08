@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>JavaScript Errors</title>
+</head>
+<body>
+<h2>JavaScript Errors</h2>
+<p>The <b>try</b> statement lets you test a block of code for errors.</p>
+<p>The <b>catch</b> statement lets you handle the error.</p>     
+<p>The <b>throw</b> statement lets you create custom errors.</p>
+<p>The <b>finally</b> statement lets you execute code, after try and catch, regardless of the result.</p>
+
+<p>1) JS try-catch errors</p>
+<p id="demo1"></p>
+
+<p>2) JS throw an error</p>
+<p id="demo2"></p>
+<p id="demo3"></p>
+
+<p>3) Input validate example</p>
+<input id="in01" type="text" min="5" max="10">
+<button type="button" onclick="validateInput()">Test input!</button>
+<p id="demo4"></p>
+
+<p>Error object</p>
+<p>4) Range error. set the number of significant digits of a number to 500:</p>
+<p id="demo5"></p>
+
+<p>5) Reference error, use (reference) a variable that has not been declared:</p>
+<p id="demo6"></p>
+
+<p>6) Syntax error</p>
+<p id="demo7"></p>
+
+<p>7) type error</p>
+<p id="demo8"></p>
+
+<p>8) URI error</p>
+<p id="demo9"></p>
+
+
+<p id="demo10"></p>
+<p id="demo11"></p>
+<p id="demo12"></p>
+<p id="demo13"></p>
+<p id="demo14"></p>
+<p id="demo15"></p>
+<p id="demo16"></p>
+<p id="demo17"></p>
+<p id="demo18"></p>
+<p id="demo19"></p>
+<p id="demo20"></p>
+</body>
+<script>
+
+try {
+  adddlert("Welcome guest!");
+}
+catch(err) {
+  document.getElementById("demo1").innerHTML = err.message;
+}
+
+try{
+    throw "too big";
+}
+catch(e){
+    document.getElementById("demo2").innerHTML = e;
+}
+
+try{
+    throw 500;
+}
+catch(e){
+    document.getElementById("demo3").innerHTML = e;
+}
+
+var num = 1;
+
+try {
+  num.toPrecision(500);
+}
+catch(err) {
+  document.getElementById("demo5").innerHTML = err.name;
+}
+
+var x;
+try {
+  x = y + 1;   // y cannot be referenced (used)
+}
+catch(err) {
+  document.getElementById("demo6").innerHTML = err.name;
+}
+
+try {
+  eval("alert('Hello)");   // Missing ' will produce an error
+}
+catch(err) {
+  document.getElementById("demo7").innerHTML = err.name;
+} 
+
+var num = 1;
+try {
+  num.toUpperCase();   // You cannot convert a number to upper case
+}
+catch(err) {
+  document.getElementById("demo8").innerHTML = err.name;
+}
+
+try {
+  decodeURI("%%%");   // You cannot URI decode percent signs
+}
+catch(err) {
+  document.getElementById("demo9").innerHTML = err.name;
+}
+
+
+
+function validateInput(){
+    var inputMessage = document.getElementById("in01").value; 
+    document.getElementById("demo4").innerHTML = "";
+    try{
+        if (inputMessage == "") throw "Empty";
+        if (isNaN(inputMessage)) throw "Not a number";
+        inputMessage = Number(inputMessage);
+        if(inputMessage < 5) throw "too small";
+        if (inputMessage > 10) throw "too large";
+    }
+    catch (e){
+        document.getElementById("demo4").innerHTML = "Input is " + e;
+    }
+    finally {
+        document.getElementById("in01").value = ""
+    }
+}
+</script>
+</html>

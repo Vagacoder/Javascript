@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>JavaScript Hoisting</title>
+</head>
+<body>
+<h2>JavaScript Declarations are Hoisted</h2>
+<p>1) Hoisting is JavaScript's default behavior of moving declarations to the top.</p>
+<p style="color:crimson">a variable can be used before it has been declared.</p>
+<p id="demo1"></p>
+
+<p style="color:blue"><b>Variables and constants declared with let or const are not hoisted!</b></p>
+
+<p>2) JS initialization are not hoisted</p>
+<p id="demo2"></p>
+
+<p><b>Note: To avoid bugs, always declare all variables at the beginning of every scope.</b></p>
+<p id="demo3"></p>
+<p id="demo4"></p>
+<p id="demo5"></p>
+<p id="demo6"></p>
+
+
+
+</body>
+<script>
+x = 5; // Assign 5 to x
+
+elem = document.getElementById("demo1"); // Find an element 
+elem.innerHTML = x;           // Display x in the element
+
+var x; // Declare x
+
+//==========================================================
+var z = 5; // Initialize x
+
+elem = document.getElementById("demo2"); // Find an element
+elem.innerHTML = z + " " + y;           // Display x and y
+
+var y = 7; // Initialize y 
+</script>
+</html>
