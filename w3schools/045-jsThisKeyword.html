@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>JavaScript this Keyword</title>
+</head>
+<body>
+<h2>JavaScript this Keyword</h2>
+<p>
+
+    It has different values depending on where it is used:<br>
+    
+        In a method, this refers to the owner object.<br>
+        Alone, this refers to the global object.<br>
+        In a function, this refers to the global object.<br>
+        In a function, in strict mode, this is undefined.<br>
+        In an event, this refers to the element that received the event.<br>
+        Methods like call(), and apply() can refer this to any object.<br>
+    
+    </p>
+<p>1) In a method, <b>this</b> refers to the owner object.</p>
+<p id="demo1"></p>
+
+<p>2) <b>this</b> alone refers to the window Object</p>
+<p id="demo2"></p>
+
+<p>3) <b>this</b> in a Function refers to the Global object [object Window].</p>
+<p id="demo3"></p>
+
+<p>4) <b>this</b> in a Function <b>Strict</b> refers to undefined.</p>
+<p id="demo4"></p>
+
+<p>5) In HTML event handlers, <b>this</b> refers to the HTML element that received the event:</p>
+<button onclick="this.style.color='crimson'">Click to RED Me!</button>
+
+<p>6)  <b>this</b> represents the person object that "owns" the getSelf().</p>
+<p id="demo5"></p>
+
+<p>7) The call() and apply() methods are predefined JavaScript methods.<br>
+
+    They can both be used to call an object method with another object as argument.<br>
+    Here, <b>this</b> refer to person2</p>
+<p id="demo6"></p>
+<p id="demo7"></p>
+<p id="demo8"></p>
+<p id="demo9"></p>
+<p id="demo10"></p>
+<p id="demo11"></p>
+<p id="demo12"></p>
+</body>
+<script>
+var person = {
+    firstName: "John",
+    lastName:"Doe",
+    id : 5566,
+    fullName: function(){
+        return this.firstName + " " + this.lastName;
+    },
+    getSelf: function(){
+        return this;
+    }
+};
+
+document.getElementById("demo1").innerHTML = person.fullName();
+
+var x = this;
+document.getElementById("demo2").innerHTML = x;
+
+document.getElementById("demo3").innerHTML = callThis();
+
+function callThis()
+{return this;};
+
+document.getElementById("demo4").innerHTML = callThat();
+
+function callThat()
+{"use strict";
+    return this;
+};
+
+document.getElementById("demo5").innerHTML =person.getSelf();
+
+var person1 = {
+  fullName: function() {
+    return this.firstName + " " + this.lastName;
+  }
+}
+var person2 = {
+  firstName:"Kent",
+  lastName: "Smith",
+}
+document.getElementById("demo6").innerHTML = person1.fullName.call(person2);
+document.getElementById("demo7").innerHTML = person1.fullName.apply(person2);
+</script>
+</html>
