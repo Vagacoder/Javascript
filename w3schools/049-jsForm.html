@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>JavaScript Form</title>
+</head>
+<body>
+
+
+<h2>JavaScript Form</h2>
+
+<p>1) validate whether form is filled</p>
+<form name="form1" action="php/049-jsForm.php" onsubmit="return validateForm()" method="post">
+    Name: <input type="text" name="fname">
+    <input type="submit" value="Submit">
+  </form>
+
+
+<p>2) validate whether input number is in range</p>
+<p>Please input a number between 1 and 10:</p>
+    <input id="numb">
+    <button type="button" onclick="validateNumber()">Submit</button>
+<p id="demo1"></p>
+
+
+<p>3)If you click submit, without filling out the text field,
+        your browser will display an error message.</p>
+<form action="php/049-jsForm.php" method="post">
+    <input type="text" name="fname" required>
+    <input type="submit" value="Submit">
+</form>
+
+<p id="demo2"></p>
+<p id="demo3"></p>
+<p id="demo4"></p>
+<p id="demo5"></p>
+<p id="demo6"></p>
+<p id="demo7"></p>
+<p id="demo8"></p>
+<p id="demo9"></p>
+<p id="demo10"></p>
+<p id="demo11"></p>
+<p id="demo12"></p>
+<p id="demo13"></p>
+<p id="demo14"></p>
+<p id="demo15"></p>
+<p id="demo16"></p>
+<p id="demo17"></p>
+<p id="demo18"></p>
+<p id="demo19"></p>
+<p id="demo20"></p>
+<p id="demo21"></p>
+</body>
+<script>
+function validateForm() {
+  var x = document.forms["form1"]["fname"].value;
+  if (x == "") {
+    alert("Name must be filled out");
+    return false;
+  }
+}
+
+function validateNumber() {
+  var x, text;
+
+  // Get the value of the input field with id="numb"
+  x = document.getElementById("numb").value;
+
+  // If x is Not a Number or less than one or greater than 10
+  if (isNaN(x) || x < 1 || x > 10) {
+    text = "Input not valid";
+  } else {
+    text = "Input OK";
+  }
+  document.getElementById("demo1").innerHTML = text;
+}
+
+</script>
+</html>
