@@ -29,9 +29,31 @@
     <input type="submit" value="Submit">
 </form>
 
+<h2>JavaScript Validation API</h2>
+<p>4) checkValidity() Method</p>
+<p>Please enter a number and click ok</p>
+<input id="input1" type="number" min="100" max="300" required>
+<button onclick="validateInput()">OK</button>
+<p>If the number is less than 100 or greater than 300, an error message will be displayed.</p>
 <p id="demo2"></p>
+
+<h3>Constraint Validation DOM Properties</h3>
+<p>5) rangeOverflow Property</p>
+<p>Please enter a number and click ok</p>
+<input id="input2" type="number" max="100">
+<button onclick="validateInput1()">OK</button>
+<p>If the number is greater than 100 (the input's max attribute), an error message will be displayed.</p>
 <p id="demo3"></p>
+
+
+<p>6) rangeUnderflow property</p>
+<p>Please enter a number and click ok</p>
+<input id="input3" type="number" min="100">
+<button onclick="validateInput2()">OK</button>
+<p>If the number is less than 100 (the input's min attribute), an error message will be displayed.</p>
 <p id="demo4"></p>
+
+
 <p id="demo5"></p>
 <p id="demo6"></p>
 <p id="demo7"></p>
@@ -74,5 +96,32 @@ function validateNumber() {
   document.getElementById("demo1").innerHTML = text;
 }
 
+function validateInput() {
+  var inpObj = document.getElementById("input1");
+  if (!inpObj.checkValidity()) {
+    document.getElementById("demo2").innerHTML = inpObj.validationMessage;
+  } else {
+    document.getElementById("demo2").innerHTML = "Input OK";
+  } 
+} 
+
+
+function validateInput1() {
+  var txt = "";
+  if (document.getElementById("input2").validity.rangeOverflow) {
+    txt = "Value too large";
+  }
+  document.getElementById("demo3").innerHTML = txt;
+}
+
+function validateInput2() {
+  var txt = "";
+  if (document.getElementById("input3").validity.rangeUnderflow) {
+    txt = "Value too small";
+  } else {
+    txt = "Input OK";
+  } 
+  document.getElementById("demo4").innerHTML = txt;
+}
 </script>
 </html>

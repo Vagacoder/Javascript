@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<tile>JavaScript Objects</tile>
+</head>
+<body>
+<h2>JavaScript Objects</h2>
+<h4>A JavaScript object is a collection of <u>named values</u></h4>
+<p>The values are written as <b>name : value</b> pairs (name and value separated by a colon).</p>
+
+<p>1) Create object using literal</p>
+<p id="demo1"></p>
+
+<p>2) Create object using new </p>
+<p id="demo2"></p>
+<p id="demo3"></p>
+<p id="demo4"></p>
+<p id="demo5"></p>
+<p id="demo6"></p>
+<p id="demo7"></p>
+<p id="demo8"></p>
+<p id="demo9"></p>
+<p id="demo10"></p>
+<p id="demo11"></p>
+<p id="demo12"></p>
+<p id="demo13"></p>
+<p id="demo14"></p>
+<p id="demo15"></p>
+<p id="demo16"></p>
+<p id="demo17"></p>
+<p id="demo18"></p>
+<p id="demo19"></p>
+<p id="demo20"></p>
+</body>
+<script>
+var person = {firstName:"John", lastName:"Doe", age:50, eyeColor:"blue"};
+document.getElementById("demo1").innerHTML = person.firstName + " " +person.lastName;
+var lady = new Object();
+lady.firstName = "Jennifer";
+lady.lastName = "Smith";
+lady.age = 23;
+lady.eyeColor = "green";
+document.getElementById("demo2").innerHTML = lady.firstName + " " + lady.lastName;
+</script>
+</html>
