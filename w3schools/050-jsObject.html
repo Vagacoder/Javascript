@@ -13,10 +13,17 @@
 
 <p>2) Create object using new </p>
 <p id="demo2"></p>
+
+<p>3) Object property is access by "." or ["propertyName"]</p>
 <p id="demo3"></p>
+
+<p>4) for...in loop to iterate object's properties</p>
 <p id="demo4"></p>
+
+<p>5) getter and setter</p>
 <p id="demo5"></p>
 <p id="demo6"></p>
+
 <p id="demo7"></p>
 <p id="demo8"></p>
 <p id="demo9"></p>
@@ -41,5 +48,30 @@ lady.lastName = "Smith";
 lady.age = 23;
 lady.eyeColor = "green";
 document.getElementById("demo2").innerHTML = lady.firstName + " " + lady.lastName;
+
+document.getElementById("demo3").innerHTML = "The age of person is " + person["age"];
+
+var txt = "";
+var x;
+for (x in person) {
+  txt += person[x] + " ";
+}
+document.getElementById("demo4").innerHTML = txt;
+
+var sir = {
+    firstName: "Bob",
+    lastName: "Underwood",
+    language: "English",
+    get lang(){
+        return this.language;
+    },
+    set lang(x){
+        this.language = x;
+    }
+}
+
+document.getElementById("demo5").innerHTML = sir.lang;
+sir.lang = "en"
+document.getElementById("demo6").innerHTML = sir.lang;
 </script>
 </html>
