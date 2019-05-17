@@ -24,11 +24,14 @@
 <p id="demo5"></p>
 <p id="demo6"></p>
 
+<p>6) An example of counter</p>
 <p id="demo7"></p>
 <p id="demo8"></p>
 <p id="demo9"></p>
 <p id="demo10"></p>
 <p id="demo11"></p>
+
+<p>6) object define property</p>
 <p id="demo12"></p>
 <p id="demo13"></p>
 <p id="demo14"></p>
@@ -66,12 +69,71 @@ var sir = {
         return this.language;
     },
     set lang(x){
-        this.language = x;
+        this.language = x.toUpperCase();
     }
 }
 
 document.getElementById("demo5").innerHTML = sir.lang;
 sir.lang = "en"
 document.getElementById("demo6").innerHTML = sir.lang;
+
+var counter ={
+  count: 0,
+  get reset(){
+    this.count = 0;
+  },
+  get increament(){
+    this.count ++;
+  },
+  get decrement(){
+    this.count --;
+  },
+  set add(x){
+    this.count += x;
+  },
+  set subtract(x){
+    this.count -= x;
+  }
+}
+
+counter.increament;
+document.getElementById("demo7").innerHTML = counter.count;
+counter.add = 5;
+document.getElementById("demo8").innerHTML = counter.count;
+counter.decrement;
+document.getElementById("demo9").innerHTML = counter.count;
+counter.subtract = 2;
+document.getElementById("demo10").innerHTML = counter.count;
+counter.reset;
+document.getElementById("demo11").innerHTML = counter.count;
+
+var obj = {counter : 0};
+
+// Define setters
+Object.defineProperty(obj, "reset", {
+  get : function () {this.counter = 0;}
+});
+Object.defineProperty(obj, "increment", {
+  get : function () {this.counter++;}
+});
+Object.defineProperty(obj, "decrement", {
+  get : function () {this.counter--;}
+});
+Object.defineProperty(obj, "add", {
+  set : function (value) {this.counter += value;}
+});
+Object.defineProperty(obj, "subtract", {
+  set : function (value) {this.counter -= value;}
+});
+obj.increament;
+document.getElementById("demo12").innerHTML = obj.counter;
+obj.add = 5;
+document.getElementById("demo13").innerHTML = obj.counter;
+obj.decrement;
+document.getElementById("demo14").innerHTML = obj.counter;
+obj.subtract = 2;
+document.getElementById("demo15").innerHTML = obj.counter;
+obj.reset;
+document.getElementById("demo16").innerHTML = obj.counter;
 </script>
 </html>
