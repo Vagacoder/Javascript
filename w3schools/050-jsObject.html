@@ -37,6 +37,8 @@
 <p id="demo14"></p>
 <p id="demo15"></p>
 <p id="demo16"></p>
+
+<p>7) Object constructor function</p>
 <p id="demo17"></p>
 <p id="demo18"></p>
 <p id="demo19"></p>
@@ -135,5 +137,15 @@ obj.subtract = 2;
 document.getElementById("demo15").innerHTML = obj.counter;
 obj.reset;
 document.getElementById("demo16").innerHTML = obj.counter;
+
+function Person(first, last, age, eye){
+  this.firstName = first;
+  this.lastName = last; 
+  this.age = age;
+  this.eye = eye;
+}
+
+var father = Person("John", "Doe", 50, "blue");
+document.getElementById("demo17").innerHTML = "My father is " + father.age +".";
 </script>
 </html>
