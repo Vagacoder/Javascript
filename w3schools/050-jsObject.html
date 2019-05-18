@@ -40,9 +40,37 @@
 
 <p>7) Object constructor function</p>
 <p id="demo17"></p>
+
+<p>8) Object can add property</p>
 <p id="demo18"></p>
+
+<p>9) Constructor can NOT add property</p>
 <p id="demo19"></p>
+
+<p>10) Contructor can include functions</p>
 <p id="demo20"></p>
+
+<p>11) Build-in constructor</p>
+<p id="demo21"></p>
+<p id="demo22"></p>
+
+<p style="color:crimson">12) Add prototype property to Constructor, Notice difference from 9)</p>
+<p id="demo23"></p>
+<p style="background-color:lightpink">Only modify your <b>own</b> prototypes. Never modify the prototypes of standard JavaScript objects.</p>
+
+<p><b style="color:fuchsia">Note: </b>Use object literals {} instead of new Object().</p>
+
+<p>Use string literals "" instead of new String().</p>
+
+<p>Use number literals 12345 instead of new Number().</p>
+
+<p>Use boolean literals true / false instead of new Boolean().</p>
+
+<p>Use array literals [] instead of new Array().</p>
+
+<p>Use pattern literals /()/ instead of new RegExp().</p>
+
+<p>Use function expressions () {} instead of new Function().</p>
 </body>
 <script>
 var person = {firstName:"John", lastName:"Doe", age:50, eyeColor:"blue"};
@@ -142,10 +170,50 @@ function Person(first, last, age, eye){
   this.firstName = first;
   this.lastName = last; 
   this.age = age;
-  this.eye = eye;
+  this.eyeColor = eye;
+  this.showName = function () {return this.firstName + " " + this.lastName;};
+  this.changeName = function (newName) {this.lastName = newName;};
 }
 
-var father = Person("John", "Doe", 50, "blue");
-document.getElementById("demo17").innerHTML = "My father is " + father.age +".";
+Person.news = "News";
+
+var father = new Person("John", "Doe", 50, "blue");
+father.info = "Working";
+
+document.getElementById("demo17").innerHTML = "My father is " + father.firstName + ".";
+document.getElementById("demo18").innerHTML = "My father is " + father.info + ".";
+document.getElementById("demo19").innerHTML = "My father is " + father.news + ".";
+document.getElementById("demo20").innerHTML = "My father is " + father.showName() + ".";
+
+var x1 = new Object({name:"News"});   // A new Object object
+var x2 = new String("Welcome");   // A new String object
+var x3 = new Number(12345);   // A new Number object
+var x4 = new Boolean(true);  // A new Boolean object
+var x5 = new Array();  // A new Array object
+var x6 = new RegExp();   // A new RegExp object
+var x7 = new Function(); // A new Function object
+var x8 = new Date();   // A new Date object
+
+document.getElementById("demo21").innerHTML =
+"x1: " + typeof x1 + "<br>" +
+"x2: " + typeof x2 + "<br>" +
+"x3: " + typeof x3 + "<br>" +
+"x4: " + typeof x4 + "<br>" +
+"x5: " + typeof x5 + "<br>" +
+"x6: " + typeof x6 + "<br>" +
+"x7: " + typeof x7 + "<br>" +
+"x8: " + typeof x8 + "<br>";
+document.getElementById("demo22").innerHTML =
+"x1: " + x1.name + "<br>" +
+"x2: " + x2 + "<br>" +
+"x3: " + x3 + "<br>" +
+"x4: " + x4 + "<br>" +
+"x5: " + x5 + "<br>" +
+"x6: " + x6 + "<br>" +
+"x7: " + x7 + "<br>" +
+"x8: " + x8 + "<br>";
+
+Person.prototype.news = "News";
+document.getElementById("demo23").innerHTML = "My father has " + father.news;
 </script>
 </html>
