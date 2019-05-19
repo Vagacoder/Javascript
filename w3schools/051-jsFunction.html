@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>JavaScript Function</title>
+</head>
+<body>
+<h2>JavaScript Function</h2>
+
+<p>1) Function can be stored in variable</p>
+<p id="demo1"></p>
+<p id="demo2"></p>
+
+<p>2) Function constructor</p>
+<p id="demo3"></p>
+<p style="color:hotpink">Note: most time, no need using new keyword</p>
+
+<p>3) Self-Invoking Functions</p>
+<p>A self-invoking expression is invoked (started) automatically, without being called.</p>
+<p>Function expressions will execute automatically if the expression is followed by ().</p>
+<p>You have to add parentheses around the function to indicate that it is a function expression</p>
+<p>You cannot self-invoke a function declaration.</p>
+
+<p id="demo4"></p>
+<p id="demo5"></p>
+
+<p>4) Function is object</p>
+<p id="demo6"></p>
+
+<p>5) Arrow functions</p>
+<p id="demo7"></p>
+<p style="color:hotpink">Note: Arrow functions do not have their own this. They are not well suited for defining object methods.<br>
+
+        Arrow functions are not hoisted. They must be defined before they are used. <br>
+        
+        Using const is safer than using var, because a function expression is always constant value.<br>
+        
+        You can only omit the return keyword and the curly brackets if the function is a single statement. Because of this, it might be a good habit to always keep them.</p>
+
+<p id="demo8"></p>
+<p id="demo9"></p>
+<p id="demo10"></p>
+<p id="demo11"></p>
+<p id="demo12"></p>
+<p id="demo13"></p>
+<p id="demo14"></p>
+<p id="demo15"></p>
+<p id="demo16"></p>
+<p id="demo17"></p>
+<p id="demo18"></p>
+<p id="demo19"></p>
+<p id="demo20"></p>
+
+</body>
+<script>
+var f1 = function(a, b){return a * b;};
+document.getElementById("demo1").innerHTML = f1;
+document.getElementById("demo2").innerHTML = f1(2, 5);
+
+var f2 = new Function("a", "b", "return a * b");
+document.getElementById("demo3").innerHTML = f2(3, 6);
+
+(function () {
+  document.getElementById("demo4").innerHTML = "Hello! I called myself";
+})();
+
+(function (){document.getElementById("demo5").innerHTML = 3*4;})();
+
+function f3 (a, b){
+    return arguments.length;
+}
+
+document.getElementById("demo6").innerHTML = f3(4,3);
+
+const f4 = (a, b) => {return a + b};
+document.getElementById("demo7").innerHTML = f4(7, 10);
+</script>
+</html>
