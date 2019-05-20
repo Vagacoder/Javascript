@@ -36,18 +36,55 @@
         
         You can only omit the return keyword and the curly brackets if the function is a single statement. Because of this, it might be a good habit to always keep them.</p>
 
+<p>JavaScript function definitions do not specify data types for parameters.</p>
+<p>JavaScript functions do not perform type checking on the passed arguments.  </p>
+<p style="color:blueviolet">JavaScript functions do not check the number of arguments received.</p>
+
+<p>6) missed arguments is undefined</p>
 <p id="demo8"></p>
+
+<p>7) default parameters</p>
 <p id="demo9"></p>
 <p id="demo10"></p>
 <p id="demo11"></p>
+
+<p>8) arguments object</p>
 <p id="demo12"></p>
+<p style="color:chocolate">Note: If a function is called with too many arguments (more than declared), 
+  these arguments can be reached using the arguments object.</p>
+
+<p>9) Invoking a function</p>
+<p>(1) no calling object </p>
+<p>But in JavaScript there is always a default global object.<br>
+  In HTML the default global object is the HTML page itself, so the function f1() "belongs" to the HTML page.<br>
+  In a browser the page object is the browser window. The function f1() automatically becomes a window function.<br>
+  f1(10, 2)  === window.f1(10, 2)
+</p>
 <p id="demo13"></p>
 <p id="demo14"></p>
+
+<p>10) When a function is called without an owner object, the value of this becomes the global object.</p>
 <p id="demo15"></p>
+<p style="background-color: deeppink">Using the window object as a variable can easily crash your program.</p>
+
+<p>11) JavaScript call()</p>
+<p style="color:blue">With call(), an object can use a method belonging to another object.</p>
 <p id="demo16"></p>
+
+<p>12) JavaScript call() can include parameters</p>
 <p id="demo17"></p>
+
+<p>13) JavaScript apply()</p>
+<p style = "background-color: darkcyan">The call() method takes arguments separately.<br>
+
+  The apply() method takes arguments as an array.</p>
 <p id="demo18"></p>
+
+<p>14) Simulate a Max() on arrays</p>
 <p id="demo19"></p>
+
+<p>15) ** JavaScript Closure**</p>
+<button type="button" onclick="addOne()">add one</button>
 <p id="demo20"></p>
 
 </body>
@@ -56,7 +93,7 @@ var f1 = function(a, b){return a * b;};
 document.getElementById("demo1").innerHTML = f1;
 document.getElementById("demo2").innerHTML = f1(2, 5);
 
-var f2 = new Function("a", "b", "return a * b");
+var f2 = new Function("a", "b", "c = a ** b ; return c;");
 document.getElementById("demo3").innerHTML = f2(3, 6);
 
 (function () {
@@ -73,5 +110,79 @@ document.getElementById("demo6").innerHTML = f3(4,3);
 
 const f4 = (a, b) => {return a + b};
 document.getElementById("demo7").innerHTML = f4(7, 10);
+
+function f5(x, y){
+  if (y===undefined){
+    y = 0;
+  }
+  return x + y;
+}
+document.getElementById("demo8").innerHTML = f5(2);
+
+function f6(x=2, y =3){
+  return x**y;
+}
+document.getElementById("demo9").innerHTML = f6();
+document.getElementById("demo10").innerHTML = f6(3);
+document.getElementById("demo11").innerHTML = f6(3, 4);
+
+function f7(){
+  var i, max = -Infinity;
+  for (i = 0; i < arguments.length; i++){
+    if (arguments[i] > max){
+      max = arguments[i];
+    }
+  }
+  return max;
+}
+
+document.getElementById("demo12").innerHTML = f7(1, -23, 99, 385, 5, -60,789);
+
+document.getElementById("demo13").innerHTML = f1(10, 2);
+document.getElementById("demo14").innerHTML = window.f1(10, 2);
+
+function f8(){
+  return this;
+}
+
+var a1 = f8();
+document.getElementById("demo15").innerHTML = a1;
+
+var person = {
+  fullName: function() {
+    return this.firstName + " " + this.lastName;
+  }
+};
+var person1 = {
+  firstName:"John",
+  lastName: "Doe"
+};
+var person2 = {
+  firstName:"Mary",
+  lastName: "Doe"
+};
+
+document.getElementById("demo16").innerHTML = person.fullName.call(person2);  
+
+var info = {
+  fullName: function(city, country){
+    return this.firstName + " " + this.lastName + ", " + city + " " + country;
+  }
+}
+
+document.getElementById("demo17").innerHTML = info.fullName.call(person1, "Oslo", "Norway");
+document.getElementById("demo18").innerHTML = info.fullName.apply(person1, ["Oslo", "Norway"]);
+document.getElementById("demo19").innerHTML = Math.max.apply(null, [1, 2, 3, 4]);
+
+var add = (function () {
+  var counter = 0;    // this is executed only once.
+  return function () {counter += 1; return counter;}  // this is what var add holds, counter is defined outside scope, so that counter value is closure
+})();
+
+console.dir(add);
+
+function addOne(){  
+  document.getElementById("demo20").innerHTML = add();
+}
 </script>
 </html>
