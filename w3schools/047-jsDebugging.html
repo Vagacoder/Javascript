@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>JavaScript Debugging</title>
+</head>
+<body>
+<h2>JavaScript Debugging</h2>
+
+<p>1) debugging info to console, browser interface press F12</p>
+<p>2) In debugger window, set breakpoints in JS code.</p>
+<p>3) <b>debugger</b> keyword stops the JS code as breakpoints</p>
+<p id="demo1"></p>
+
+<p id="demo2"></p>
+
+
+</body>
+<script>
+var a = 5;
+var b = 6;
+var c = a + b;
+console.log(c);
+
+var x = 15*5;
+debugger;
+document.getElementById("demo1").innerHTML = x;
+</script>
+</html>

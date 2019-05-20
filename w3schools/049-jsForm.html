@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>JavaScript Form</title>
+</head>
+<body>
+
+
+<h2>JavaScript Form</h2>
+
+<p>1) validate whether form is filled</p>
+<form name="form1" action="php/049-jsForm.php" onsubmit="return validateForm()" method="post">
+    Name: <input type="text" name="fname">
+    <input type="submit" value="Submit">
+  </form>
+
+
+<p>2) validate whether input number is in range</p>
+<p>Please input a number between 1 and 10:</p>
+    <input id="numb">
+    <button type="button" onclick="validateNumber()">Submit</button>
+<p id="demo1"></p>
+
+
+<p>3)If you click submit, without filling out the text field,
+        your browser will display an error message.</p>
+<form action="php/049-jsForm.php" method="post">
+    <input type="text" name="fname" required>
+    <input type="submit" value="Submit">
+</form>
+
+<h2>JavaScript Validation API</h2>
+<p>4) checkValidity() Method</p>
+<p>Please enter a number and click ok</p>
+<input id="input1" type="number" min="100" max="300" required>
+<button onclick="validateInput()">OK</button>
+<p>If the number is less than 100 or greater than 300, an error message will be displayed.</p>
+<p id="demo2"></p>
+
+<h3>Constraint Validation DOM Properties</h3>
+<p>5) rangeOverflow Property</p>
+<p>Please enter a number and click ok</p>
+<input id="input2" type="number" max="100">
+<button onclick="validateInput1()">OK</button>
+<p>If the number is greater than 100 (the input's max attribute), an error message will be displayed.</p>
+<p id="demo3"></p>
+
+
+<p>6) rangeUnderflow property</p>
+<p>Please enter a number and click ok</p>
+<input id="input3" type="number" min="100">
+<button onclick="validateInput2()">OK</button>
+<p>If the number is less than 100 (the input's min attribute), an error message will be displayed.</p>
+<p id="demo4"></p>
+
+
+<p id="demo5"></p>
+<p id="demo6"></p>
+<p id="demo7"></p>
+<p id="demo8"></p>
+<p id="demo9"></p>
+<p id="demo10"></p>
+<p id="demo11"></p>
+<p id="demo12"></p>
+<p id="demo13"></p>
+<p id="demo14"></p>
+<p id="demo15"></p>
+<p id="demo16"></p>
+<p id="demo17"></p>
+<p id="demo18"></p>
+<p id="demo19"></p>
+<p id="demo20"></p>
+<p id="demo21"></p>
+</body>
+<script>
+function validateForm() {
+  var x = document.forms["form1"]["fname"].value;
+  if (x == "") {
+    alert("Name must be filled out");
+    return false;
+  }
+}
+
+function validateNumber() {
+  var x, text;
+
+  // Get the value of the input field with id="numb"
+  x = document.getElementById("numb").value;
+
+  // If x is Not a Number or less than one or greater than 10
+  if (isNaN(x) || x < 1 || x > 10) {
+    text = "Input not valid";
+  } else {
+    text = "Input OK";
+  }
+  document.getElementById("demo1").innerHTML = text;
+}
+
+function validateInput() {
+  var inpObj = document.getElementById("input1");
+  if (!inpObj.checkValidity()) {
+    document.getElementById("demo2").innerHTML = inpObj.validationMessage;
+  } else {
+    document.getElementById("demo2").innerHTML = "Input OK";
+  } 
+} 
+
+
+function validateInput1() {
+  var txt = "";
+  if (document.getElementById("input2").validity.rangeOverflow) {
+    txt = "Value too large";
+  }
+  document.getElementById("demo3").innerHTML = txt;
+}
+
+function validateInput2() {
+  var txt = "";
+  if (document.getElementById("input3").validity.rangeUnderflow) {
+    txt = "Value too small";
+  } else {
+    txt = "Input OK";
+  } 
+  document.getElementById("demo4").innerHTML = txt;
+}
+</script>
+</html>

@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+<head>
+<tile>JavaScript Objects</tile>
+</head>
+<body>
+<h2>JavaScript Objects</h2>
+<h4>A JavaScript object is a collection of <u>named values</u></h4>
+<p>The values are written as <b>name : value</b> pairs (name and value separated by a colon).</p>
+
+<p>1) Create object using literal</p>
+<p id="demo1"></p>
+
+<p>2) Create object using new </p>
+<p id="demo2"></p>
+
+<p>3) Object property is access by "." or ["propertyName"]</p>
+<p id="demo3"></p>
+
+<p>4) for...in loop to iterate object's properties</p>
+<p id="demo4"></p>
+
+<p>5) getter and setter</p>
+<p id="demo5"></p>
+<p id="demo6"></p>
+
+<p>6) An example of counter</p>
+<p id="demo7"></p>
+<p id="demo8"></p>
+<p id="demo9"></p>
+<p id="demo10"></p>
+<p id="demo11"></p>
+
+<p>6) object define property</p>
+<p id="demo12"></p>
+<p id="demo13"></p>
+<p id="demo14"></p>
+<p id="demo15"></p>
+<p id="demo16"></p>
+
+<p>7) Object constructor function</p>
+<p id="demo17"></p>
+
+<p>8) Object can add property</p>
+<p id="demo18"></p>
+
+<p>9) Constructor can NOT add property</p>
+<p id="demo19"></p>
+
+<p>10) Contructor can include functions</p>
+<p id="demo20"></p>
+
+<p>11) Build-in constructor</p>
+<p id="demo21"></p>
+<p id="demo22"></p>
+
+<p style="color:crimson">12) Add prototype property to Constructor, Notice difference from 9)</p>
+<p id="demo23"></p>
+<p style="background-color:lightpink">Only modify your <b>own</b> prototypes. Never modify the prototypes of standard JavaScript objects.</p>
+
+<p><b style="color:fuchsia">Note: </b>Use object literals {} instead of new Object().</p>
+
+<p>Use string literals "" instead of new String().</p>
+
+<p>Use number literals 12345 instead of new Number().</p>
+
+<p>Use boolean literals true / false instead of new Boolean().</p>
+
+<p>Use array literals [] instead of new Array().</p>
+
+<p>Use pattern literals /()/ instead of new RegExp().</p>
+
+<p>Use function expressions () {} instead of new Function().</p>
+</body>
+<script>
+var person = {firstName:"John", lastName:"Doe", age:50, eyeColor:"blue"};
+document.getElementById("demo1").innerHTML = person.firstName + " " +person.lastName;
+var lady = new Object();
+lady.firstName = "Jennifer";
+lady.lastName = "Smith";
+lady.age = 23;
+lady.eyeColor = "green";
+document.getElementById("demo2").innerHTML = lady.firstName + " " + lady.lastName;
+
+document.getElementById("demo3").innerHTML = "The age of person is " + person["age"];
+
+var txt = "";
+var x;
+for (x in person) {
+  txt += person[x] + " ";
+}
+document.getElementById("demo4").innerHTML = txt;
+
+var sir = {
+    firstName: "Bob",
+    lastName: "Underwood",
+    language: "English",
+    get lang(){
+        return this.language;
+    },
+    set lang(x){
+        this.language = x.toUpperCase();
+    }
+}
+
+document.getElementById("demo5").innerHTML = sir.lang;
+sir.lang = "en"
+document.getElementById("demo6").innerHTML = sir.lang;
+
+var counter ={
+  count: 0,
+  get reset(){
+    this.count = 0;
+  },
+  get increament(){
+    this.count ++;
+  },
+  get decrement(){
+    this.count --;
+  },
+  set add(x){
+    this.count += x;
+  },
+  set subtract(x){
+    this.count -= x;
+  }
+}
+
+counter.increament;
+document.getElementById("demo7").innerHTML = counter.count;
+counter.add = 5;
+document.getElementById("demo8").innerHTML = counter.count;
+counter.decrement;
+document.getElementById("demo9").innerHTML = counter.count;
+counter.subtract = 2;
+document.getElementById("demo10").innerHTML = counter.count;
+counter.reset;
+document.getElementById("demo11").innerHTML = counter.count;
+
+var obj = {counter : 0};
+
+// Define setters
+Object.defineProperty(obj, "reset", {
+  get : function () {this.counter = 0;}
+});
+Object.defineProperty(obj, "increment", {
+  get : function () {this.counter++;}
+});
+Object.defineProperty(obj, "decrement", {
+  get : function () {this.counter--;}
+});
+Object.defineProperty(obj, "add", {
+  set : function (value) {this.counter += value;}
+});
+Object.defineProperty(obj, "subtract", {
+  set : function (value) {this.counter -= value;}
+});
+obj.increament;
+document.getElementById("demo12").innerHTML = obj.counter;
+obj.add = 5;
+document.getElementById("demo13").innerHTML = obj.counter;
+obj.decrement;
+document.getElementById("demo14").innerHTML = obj.counter;
+obj.subtract = 2;
+document.getElementById("demo15").innerHTML = obj.counter;
+obj.reset;
+document.getElementById("demo16").innerHTML = obj.counter;
+
+function Person(first, last, age, eye){
+  this.firstName = first;
+  this.lastName = last; 
+  this.age = age;
+  this.eyeColor = eye;
+  this.showName = function () {return this.firstName + " " + this.lastName;};
+  this.changeName = function (newName) {this.lastName = newName;};
+}
+
+Person.news = "News";
+
+var father = new Person("John", "Doe", 50, "blue");
+father.info = "Working";
+
+document.getElementById("demo17").innerHTML = "My father is " + father.firstName + ".";
+document.getElementById("demo18").innerHTML = "My father is " + father.info + ".";
+document.getElementById("demo19").innerHTML = "My father is " + father.news + ".";
+document.getElementById("demo20").innerHTML = "My father is " + father.showName() + ".";
+
+var x1 = new Object({name:"News"});   // A new Object object
+var x2 = new String("Welcome");   // A new String object
+var x3 = new Number(12345);   // A new Number object
+var x4 = new Boolean(true);  // A new Boolean object
+var x5 = new Array();  // A new Array object
+var x6 = new RegExp();   // A new RegExp object
+var x7 = new Function(); // A new Function object
+var x8 = new Date();   // A new Date object
+
+document.getElementById("demo21").innerHTML =
+"x1: " + typeof x1 + "<br>" +
+"x2: " + typeof x2 + "<br>" +
+"x3: " + typeof x3 + "<br>" +
+"x4: " + typeof x4 + "<br>" +
+"x5: " + typeof x5 + "<br>" +
+"x6: " + typeof x6 + "<br>" +
+"x7: " + typeof x7 + "<br>" +
+"x8: " + typeof x8 + "<br>";
+document.getElementById("demo22").innerHTML =
+"x1: " + x1.name + "<br>" +
+"x2: " + x2 + "<br>" +
+"x3: " + x3 + "<br>" +
+"x4: " + x4 + "<br>" +
+"x5: " + x5 + "<br>" +
+"x6: " + x6 + "<br>" +
+"x7: " + x7 + "<br>" +
+"x8: " + x8 + "<br>";
+
+Person.prototype.news = "News";
+document.getElementById("demo23").innerHTML = "My father has " + father.news;
+</script>
+</html>
