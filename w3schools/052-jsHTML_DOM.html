@@ -36,10 +36,30 @@
 <button onclick="formView()">Try it</button>
 <p id="demo6"></p>
 
-<p id="demo7"></p>
+<p>6) Changing the HTML Output Stream (whole HTML)</p>
+<button type="button" onclick="reloadPage()">Reload Whole Page</button>
+
+<p>7) change HTML elements attributes (.style.color, inline)</p>
+<p id="demo7" onclick="document.getElementById('demo7').style.color = 'red'"></p>
+
+<p>change image (.src)</p>
+<img id="img1" src="https://www.w3schools.com/js/smiley.gif"></br>
+<button type="button" onclick="changeImg()">change image</button>
+
+<p>8) change HTML CSS style (.style and its sub-attributes)</p>
 <p id="demo8"></p>
-<p id="demo9"></p>
+<button type="button" onclick="changeStyle()">change font styles</button>
+
+<p>9) change HTML elements attributes (.style.color, internal function)</p>
+<p id="demo9">Colorfull!</p>
+<button type="button" onclick="cycleColor()">Cycle the colors!</button>
+
+
+<p>10) text visibility</p>
 <p id="demo10"></p>
+<input type="button" value="Hide text" onclick="document.getElementById('demo10').style.visibility='hidden'">
+<input type="button" value="Show text" onclick="document.getElementById('demo10').style.visibility='visible'">
+
 <p id="demo11"></p>
 <p id="demo12"></p>
 <p id="demo13"></p>
@@ -84,6 +104,46 @@ function formView(){
         }
     document.getElementById("demo6").innerHTML = text;
 };
+
+function reloadPage(){
+    document.write(Date());
+}
+
+document.getElementById("demo7").innerHTML = "Demo 7 text.";
+
+function changeImg(){
+    document.getElementById("img1").src = "https://www.w3schools.com/js/landscape.jpg";
+}
+
+document.getElementById("demo8").innerHTML = "Demo 8 text.";
+function changeStyle(){
+    document.getElementById("demo8").style.color = "blue";
+    document.getElementById("demo8").style.fontFamily = "Arial";
+    document.getElementById("demo8").style.fontSize = "40px";
+    document.getElementById("demo8").style.backgroundImage = "linear-gradient(red, yellow)";
+}
+
+function cycleColor(){
+    var demo9 = document.getElementById("demo9");
+    var demo9Color = demo9.style.color;
+    if(demo9Color == "" || demo9Color == "black"){
+        demo9.style.color = "red";
+    } else if (demo9Color == "red"){
+        demo9.style.color = "orange";
+    } else if (demo9Color == "orange"){
+        demo9.style.color = "yellow";
+    } else if (demo9Color == "yellow"){
+        demo9.style.color = "green";
+    } else if (demo9Color == "green"){
+        demo9.style.color = "blue";
+    } else if (demo9Color == "blue"){
+        demo9.style.color = "purple";
+    } else {
+        demo9.style.color = "black";
+    }
+}
+
+document.getElementById("demo10").innerHTML = "Demo 10 text.";
 
 
 </script>
