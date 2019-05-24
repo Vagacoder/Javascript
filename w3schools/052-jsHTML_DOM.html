@@ -3,7 +3,23 @@
 <head>
 <title id="title">JavaScript HTML DOM</title>
 </head>
-<body id="body">
+<style>
+#container {
+    width: 400px;
+    height: 400px;
+    position: relative;
+    background: yellow;
+}
+#animate {
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    background-color: red;
+}
+
+</style>
+
+<body id="body" onload="checkCookies()">
 <h2>JavaScript HTML Document Object Model</h2>
 <img src="https://www.w3schools.com/js/pic_htmltree.gif">
 <p> The HTML DOM is a standard for how to get, change, add, or delete HTML elements.</p>
@@ -60,12 +76,26 @@
 <input type="button" value="Hide text" onclick="document.getElementById('demo10').style.visibility='hidden'">
 <input type="button" value="Show text" onclick="document.getElementById('demo10').style.visibility='visible'">
 
-<p id="demo11"></p>
-<p id="demo12"></p>
-<p id="demo13"></p>
+<p>11) DOM animation</p>
+<div id="container">
+    <div id="animate"></div>
+</div>
+<button type="button" onclick="move()">Moving!</button>
+
+<p>12) HTML DOM events </p>
+<p id="demo11" onclick="this.innerHTML = 'Oooops!'; this.style.color='hotpink'">Click to change!</p>
+<p id="demo12" onclick="changeText(this)">Click to change too!</p>
+<p id="demo13">Click to change as well!</p>
+
+<p>13) onload and onunload events</p>
 <p id="demo14"></p>
-<p id="demo15"></p>
-<p id="demo16"></p>
+
+<p>14) onchange event</p>
+<p id="demo15">Enter your name: </p>
+<input type="text" id="fname" onchange="inputToUpper()">
+
+<p>15) onmouseover and onmouseout events</p>
+<p id="demo16" onmouseover="mOver(this)" onmouseout="mOut(this)">Mouse out</p>
 <p id="demo17"></p>
 <p id="demo18"></p>
 <p id="demo19"></p>
@@ -145,6 +175,55 @@ function cycleColor(){
 
 document.getElementById("demo10").innerHTML = "Demo 10 text.";
 
+function move (){
+    var animateElement = document.getElementById("animate");
+    var pos = 0;
+    var timer = setInterval(frame, 5);
+    function frame() {
+        if (pos >= 350){
+            clearInterval(timer);
+        } else {
+            pos++;
+            animateElement.style.top = pos + "px";
+            animateElement.style.left = pos + "px";
+        }
+    }
+}
 
+function changeText(id){
+    id.innerHTML = "changed!";
+    id.style.color = "white";
+    id.style.backgroundColor="green";
+}
+
+document.getElementById("demo13").onclick = alternateTxt;
+function alternateTxt(){
+    this.innerHTML = "Changed!!!!";
+    this.style.color = "white";
+    this.style.backgroundColor="purple";
+}
+
+function checkCookies() {
+  var text = "";
+  if (navigator.cookieEnabled == true) {
+    text = "Cookies are enabled.";
+  } else {
+    text = "Cookies are not enabled.";
+  }
+  document.getElementById("demo14").innerHTML = text;
+}
+
+function inputToUpper(){
+    var input = document.getElementById("fname");
+    input.value = input.value.toUpperCase();
+}
+
+function mOver(e){
+    e.innerHTML = "Woops, mouse over";
+}
+
+function mOut(e){
+    e.innerHTML = "Mouse out";
+}
 </script>
 </html>
