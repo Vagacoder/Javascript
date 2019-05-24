@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>JavaScript Event Listener</title>
+</head>
+<body>
+<h2>JavaScript DOM Event Listener</h2>
+
+<p>1) addEventListener()</p>
+<button type="button" id="btn1">Try it!</button>
+<p id="demo1"></p>
+<p>The addEventListener() method attaches an event handler to an element 
+    without overwriting existing event handlers.</p>
+<p>You can add many event handlers to one element.<br>
+
+You can add many event handlers of the same type to one element, i.e two "click" events.<br>
+        
+You can add event listeners to any DOM object not only HTML elements. i.e the window object.</p>
+
+<p>Syntax: <div style="color:magenta">element.addEventListener(<i>event</i>, <i>function</i>, <i>useCapture</i>); </div></p>
+<p>The first parameter is the type of the event (like "click" or "mousedown").
+<br>
+The second parameter is the function we want to call when the event occurs.
+<br>        
+The third parameter is a boolean value specifying whether to use event bubbling or event capturing. This parameter is optional.</p>
+
+<p>2) another example</p>
+<p id="demo2">Click to alert</p>
+
+<p>3) can add multiple listeners to one element</p>
+<p id="demo3">Click to do 2 things one time</p>
+
+<p>4) add different type listeners to one element</p>
+<p id="demo4">Mouse over, click, out are different</p>
+
+<P>5) add listener to windows object</P>
+<p id="demo5">waiting for change</p>
+
+<p>6) pass parameter through anonymous function </p>
+<button id="btn2">Try it</button>
+<p id="demo6"></p>
+
+<p>7) Propagation order, bubbling or captureing</p>
+<p>Bubbling inner first, outer latter</p>
+<div id ="demo7out"><p id="demo7">Click here to try</p></div>
+<p>Capturing outer first, inner latter</p>
+<div id ="demo8out"><p id="demo8">Click here to try</p></div>
+
+<p>8) remove listener</p>
+<p id="demo9">0</p>
+<button type="button" onclick="removeListener()">Remove it</button>
+
+<p id="demo10"></p>
+<p id="demo11"></p>
+<p id="demo12"></p>
+<p id="demo13"></p>
+<p id="demo14"></p>
+<p id="demo15"></p>
+<p id="demo16"></p>
+<p id="demo17"></p>
+<p id="demo18"></p>
+<p id="demo19"></p>
+<p id="demo20"></p>
+</body>
+<script>
+document.getElementById("btn1").addEventListener("click", display);
+
+function display(){
+    document.getElementById("demo1").innerHTML = Date();
+}
+
+document.getElementById("demo2").addEventListener("click", function () {alert('Hello World!');});
+
+var demo3 = document.getElementById("demo3");
+demo3.addEventListener("click", changeColor);
+demo3.addEventListener("click", changeBGColor);
+
+function changeColor(){
+    demo3.style.color = "red";
+}
+
+function changeBGColor () {
+    demo3.style.backgroundColor = "green";
+}
+
+var demo4 = document.getElementById("demo4");
+demo4.addEventListener("mouseover", demo4MouseOver);
+demo4.addEventListener("click", demo4Click);
+demo4.addEventListener("mouseout", demo4MouseOut);
+
+function demo4MouseOver(){
+    demo4.innerHTML = "Over";
+}
+
+function demo4Click(){
+    demo4.innerHTML = "Click";
+}
+
+function demo4MouseOut(){
+    demo4.innerHTML = "Out";
+}
+
+window.addEventListener("resize", function(){
+    document.getElementById("demo5").innerHTML = Math.random();
+} );
+
+var demo6 = document.getElementById("demo6");
+var p1 = 2; 
+var p2 = 9;
+document.getElementById("btn2").addEventListener("click", function() {
+  calculate(p1, p2, demo6);
+});
+
+function calculate(a, b, p){
+    p.innerHTML = a * b;
+}
+
+var demo7in = document.getElementById("demo7");
+var demo7out = document.getElementById("demo7out");
+
+demo7in.addEventListener("click", function(){alert("Inside!");}, false);
+demo7out.addEventListener("click", function(){alert("Outside!");}, false);
+
+var demo8in = document.getElementById("demo8");
+var demo8out = document.getElementById("demo8out");
+
+demo8in.addEventListener("click", function(){alert("Inside!");}, true);
+demo8out.addEventListener("click", function(){alert("Outside!");}, true);
+
+var demo9 = document.getElementById("demo9");
+demo9.addEventListener("mouseover", randomDisplay);
+function removeListener(){
+    demo9.removeEventListener("mouseover", randomDisplay);
+}
+
+function randomDisplay(){
+    demo9.innerHTML= Math.random();
+    }
+</script>
+</html>
