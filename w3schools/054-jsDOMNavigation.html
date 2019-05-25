@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>JavaScript DOM Navigation</title>
+</head>
+<body>
+<h2 id="h2">JavaScript DOM Navigation</h2>
+
+<p>1) access child nodes and therir values (node.innerHTML, node.nodeValue)</p>
+<p id="demo1">Original text</p>
+<p id="demo2"></p>
+<p id="demo3"></p>
+<p id="demo4"></p>
+<p><b>Note: </b>
+    nodeValue for element nodes is null<br>
+    nodeValue for text nodes is the text itself<br>
+    nodeValue for attribute nodes is the attribute value<br>
+</p>
+
+<p>2) access full document (root node)</p>
+<button type="button" onclick="alert(document.body.innerHTML)">Use body</button>
+<button type="button" onclick="alert(document.documentElement.innerHTML)">Use documentElement</button>
+
+<p>3) nodeName property</p>
+<p>
+    nodeName is read-only<br>
+    nodeName of an element node is the same as the tag name<br>
+    nodeName of an attribute node is the attribute name<br>
+    nodeName of a text node is always #text<br>
+    nodeName of the document node is always #document<br>
+    <b>Note: </b>nodeName always contains the uppercase tag name of an HTML element.
+</p>
+<p id="demo5"></p>
+
+<p>4) nodeType property</p>
+<p id="demo6"></p>
+<p id="demo7"></p>
+
+<p>5) create a new HTML element (appendChild)</p>
+<div id="demo8">
+<p id="demo9">old</p>
+<button type="button" onclick="createNewP()">Create a new P</button>
+</div>
+
+<p>6) create a new HTML element (insertBefore)</p>
+<dive id="demo10">
+<p id="demo11">old 2</p>
+<button type="button" onclick="insertNewP()">Insert a new P</button>
+</div>
+
+<p>7) remove HTML element (removeChild, need know parent node)</p>
+<div id="demo12">
+<p id="demo13">old 3</p>
+<button type="button" onclick="removeP()">Remove old 3</button>
+</div>
+
+<p>8) easy way to remove HTML element (parentNode.removeChild)</p>
+<div id="demo14">
+<p id="demo15">old 4</p>
+<button type="button" onclick="removeP1()">Remove old 4</button>
+</div>
+
+<p>9) replace HTML element (replaceChild)</p>
+<div id="demo16">
+<p id="demo17">old 5</p>
+<button type="button" onclick="replaceP()">Replace old 5</button>
+</div>
+
+<p id="demo18"></p>
+<p id="demo19"></p>
+<p id="demo20"></p>
+
+</body>
+<script>
+var demo1 = document.getElementById("demo1");
+document.getElementById("demo2").innerHTML = demo1.innerHTML + " 1";
+document.getElementById("demo3").innerHTML = demo1.firstChild.nodeValue + " 2";
+document.getElementById("demo4").innerHTML = demo1.childNodes[0].nodeValue + " 3";
+
+document.getElementById("demo5").innerHTML = document.getElementById("h2").nodeName;
+document.getElementById("demo6").innerHTML = document.getElementById("demo6").nodeType;
+document.getElementById("demo7").innerHTML = document.getElementById("demo6").childNodes[0].nodeType;
+
+function createNewP(){
+    var para = document.createElement("p");
+    var newNode = document.createTextNode("This is New.");
+    para.appendChild(newNode);
+    var demo8 = document.getElementById("demo8");
+    demo8.appendChild(para);
+}
+
+function insertNewP(){
+    var para = document.createElement("p");
+    var newNode = document.createTextNode("This is New 2.");
+    para.appendChild(newNode);
+    var demo10 = document.getElementById("demo10");
+    var demo11 = document.getElementById("demo11");
+    demo10.insertBefore(para, demo11);
+}
+
+function removeP(){
+    var demo12 = document.getElementById("demo12");
+    var demo13 = document.getElementById("demo13");
+    demo12.removeChild(demo13);
+}
+
+function removeP1(){
+    var demo15 = document.getElementById("demo15");
+    demo15.parentNode.removeChild(demo15);
+}
+
+function replaceP(){
+    var demo17 = document.getElementById("demo17");
+    var para = document.createElement("p");
+    var newNode = document.createTextNode("This is new 5");
+    para.appendChild(newNode);
+    demo17.parentNode.replaceChild(para, demo17);
+}
+</script>
+</html>
