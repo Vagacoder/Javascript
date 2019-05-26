@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>JavaScript HTML DOM Collection</title>
+</head>
+<body>
+<h2>JavaScript HTML DOM Collection</h2>
+
+<p>1) getElementsByTagName() method returns an HTMLCollection object</p>
+<p id='demo1'>Example</p>
+<p id='demo2'></p>
+<p id='demo3'></p>
+
+<p>2) length property of HTMLCollection object</p>
+<p id='demo4'></p>
+
+<p>3) loop througn HTMLCollection object</p>
+<p id='demo5'>click to return all p tag to red</p>
+<button type="button" onclick="turnToRed()">Red them all!</button>
+<p id='demo6'><b>Note: </b><u>An HTMLCollection may look like an array, but it is not.</u></p>
+
+<h2>The HTML DOM NodeList Object</h2>
+<p>A NodeList object is a list (collection) of nodes extracted from a document.<br>
+    A NodeList object is almost the same as an HTMLCollection object.<br>
+    All browsers return a NodeList object for the property childNodes. <br>
+    Most browsers return a NodeList object for the method <b>querySelectorAll().</b>
+</p>
+<p>4) get nodelist using querySelectorAll()</p>
+<p id='demo7'></p>
+
+<p>
+    An HTMLCollection (previous chapter) is a collection of HTML elements.<br>
+    A NodeList is a collection of document nodes.<br>
+    A NodeList and an HTML collection is very much the same thing.<br>
+    Both an HTMLCollection object and a NodeList object is an array-like list (collection) of objects. <br>
+    HTMLCollection items can be accessed by their name, id, or index number.<br>
+    NodeList items can only be accessed by their index number.<br>
+    Only the NodeList object can contain attribute nodes and text nodes.
+</p>
+<p id='demo8'></p>
+<p id='demo9'></p>
+<p id='demo10'></p>
+
+</body>
+<script>
+var allP = document.getElementsByTagName("p");
+document.getElementById("demo2").innerHTML = allP[1].childNodes[0].nodeValue;
+document.getElementById("demo3").innerHTML = allP[1].innerHTML;
+
+document.getElementById("demo4").innerHTML = allP.length;
+
+function turnToRed(){
+    var i;
+    for (i= 0; i < allP.length; i++){
+        allP[i].style.color = "red";
+    }
+}
+
+var allP1 = document.querySelectorAll("p");
+document.getElementById("demo7").innerHTML = allP1[9].childNodes[0].nodeValue;
+document.getElementById("demo8").innerHTML = allP1.length;
+</script>
+</html>
