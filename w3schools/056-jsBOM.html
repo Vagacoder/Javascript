@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>JavaScript Browser BOM</title>
+</head>
+<body>
+<h2>JavaScript Browser window</h2>
+
+<p>1) document object is a property of window object </p>
+<p id="demo1"></p>
+
+<p>2) window size innerHeight and innerWidth</p>
+<p id="demo2"></p>
+
+<p>3) window methods</p>
+<p id="demo3">window.open()</p>
+<button type="button" onclick="openWindow()">Open a new window</button>
+<p id="demo4">window.moveTo()</p>
+<button type="button" onclick="moveWindow()">Move window to left up corner</button>
+<p id="demo5">window.resizeTo()</p>
+<button type="button" onclick="resizeWindow()">Resize window to 300 x 200</button>
+<p id="demo6">window.close()</p>
+<button type="button" onclick="closeWindow()">Close new window</button>
+
+<h2>JavaScript Window Screen (Monitor / Display)</h2>
+<p>4) window screen width / height</p>
+<p id="demo7"></p>
+<p id="demo8"></p>
+
+<p>5) window screen available width / height (Monitor w/o taskbar)</p>
+<p id="demo9"></p>
+<p id="demo10"></p>
+
+<p>6) window screen color depth = pixel depth </p>
+<p id="demo11"></p>
+
+<h2>JavaScript Window Location</h2>
+<p>-location.href</p>
+<p id="demo12"></p>
+<p>-location.hostname</p>
+<p id="demo13"></p>
+<p>-location.pathname</p>
+<p id="demo14"></p>
+<p>-location protocol</p>
+<p id="demo15"></p>
+<p>-location port</p>
+<p id="demo16"></p>
+<p><b>Note:</b> If the port number is default (80 for http and 443 for https), 
+    most browsers will display 0 or nothing.</p>
+
+<p>-location assgin</p>
+<p id="demo17">Click button to load a new page</p>
+<input type="button" value="Load new page" onclick="newDoc()">
+<p id="demo18"></p>
+<p id="demo19"></p>
+<p id="demo20"></p>
+
+</body>
+<script>
+window.document.getElementById("demo1").innerHTML = "window.document.getElementById('demo1')";
+
+var w = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+
+var h = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
+
+var x = document.getElementById("demo2").innerHTML = "Browser inner window width: " + w + ", height: " + h + ".";
+
+var newWindow;
+function openWindow(){
+    newWindow = window.open();
+}
+
+function moveWindow(){
+    newWindow.moveTo(0,0);
+}
+
+function resizeWindow(){
+    newWindow.resizeTo(300, 200);
+}
+
+function closeWindow(){
+    newWindow.close();
+}
+
+document.getElementById("demo7").innerHTML = "Screen width: " + screen.width;
+document.getElementById("demo8").innerHTML = "Screen height: " + screen.height;
+document.getElementById("demo9").innerHTML = "Available screen width: " + screen.availWidth;
+document.getElementById("demo10").innerHTML = "Available screen height: " + screen.availHeight;
+document.getElementById("demo11").innerHTML = "Screen Color Depth: " + screen.colorDepth;
+document.getElementById("demo12").innerHTML = "Page location is " + window.location.href;
+document.getElementById("demo13").innerHTML = "Page host is " + window.location.hostname;
+document.getElementById("demo14").innerHTML = "Page pathname is " + window.location.pathname;
+document.getElementById("demo15").innerHTML = "Page protocol is " + window.location.protocol;
+document.getElementById("demo16").innerHTML = "Page port is " + window.location.port;
+
+function newDoc() {
+  window.location.assign("https://www.w3schools.com")
+}
+</script>
+</html>
