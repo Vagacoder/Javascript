@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>JavaScript BOM 2</title>
+</head>
+<body>
+<h2>JavaScript Window History</h2>
+
+<p>1) Window history.back()</p>
+<button type="button" onclick="goBack()">Go Back!</button>
+<p id="demo1">Click button to go back</p>
+
+<p>2) history.forward()</p>
+<button type="button" onclick="goForward()">Go Forward!</button>
+<p id="demo2">Click button to go forward</p>
+
+<h2>JavaScript Window Navigator</h2>
+<p>The window.navigator object contains information about the visitor's browser.<br>
+    The window.navigator object can be written without the window prefix.
+</p>
+<p>3) Enable cookie</p>
+<p id="demo3"></p>
+
+<p>4) AppName</p>
+<p id="demo4"></p>
+
+<P>5) AppCodeName</P>
+<p id="demo5"></p>
+
+<p>6) appProduct</p>
+<p id="demo6"></p>
+
+<p>7) app version</p>
+<p id="demo7"></p>
+
+<p>8) user agent</p>
+<p id="demo8"></p>
+
+<p>9) platform</p>
+<p id="demo9"></p>
+
+<p>10) language</p>
+<p id="demo10"></p>
+
+<p>11) is browser online </p>
+<p id="demo11"></p>
+
+<p>12) is java enabled</p>
+<p id="demo12"></p>
+
+<h2>JavaScript Popup Alert</h2>
+<p>13) Alert box</p>
+<button type="button" onclick="alert('Hello')">Click to Hello</button>
+
+<p>14) Confirm box</p>
+<button type="button" onclick="confirmIt()">Try to confirm</button>
+<p id="demo13"></p>
+
+<p>15) Prompt box</p>
+<button type="button" onclick="enterName()">Try to input name</button>
+<p id="demo14"></p>
+<p id="demo15"></p>
+<p id="demo16"></p>
+<p id="demo17"></p>
+<p id="demo18"></p>
+<p id="demo19"></p>
+<p id="demo20"></p>
+
+</body>
+
+<script>
+function goBack() {
+    window.history.back();
+}
+
+function goForward(){
+    window.history.forward();
+}
+
+document.getElementById("demo3").innerHTML = "navigator.cookieEnabled is " + navigator.cookieEnabled;
+document.getElementById("demo4").innerHTML = "navigator.appName is " + navigator.appName;
+document.getElementById("demo5").innerHTML = "navigator.appCodeName is " + navigator.appCodeName;
+document.getElementById("demo6").innerHTML = "navigator.product is " + navigator.product;
+document.getElementById("demo7").innerHTML = "navigator.appVersion is " + navigator.appVersion;
+document.getElementById("demo8").innerHTML = navigator.userAgent;
+document.getElementById("demo9").innerHTML = navigator.platform;
+document.getElementById("demo10").innerHTML = navigator.language;
+document.getElementById("demo11").innerHTML = navigator.onLine;
+document.getElementById("demo12").innerHTML = navigator.javaEnabled();
+
+
+function confirmIt(){
+    var txt;
+    if (confirm("Press a button")){
+        txt = "You pressed Ok!";
+    } else {
+        txt = "You pressed Cancel!"
+    }
+    document.getElementById("demo13").innerHTML = txt;
+}
+
+function enterName(){
+    var txt;
+    var person = prompt("Please enter a name:");
+    if (person == null || person == "") {
+        txt = "No name is input";
+    } else {
+        txt = "Hello " + person + "!";
+    }
+    document.getElementById("demo14").innerHTML = txt;
+}
+</script>
+</html>
