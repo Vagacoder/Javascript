@@ -59,8 +59,34 @@
 <p>15) Prompt box</p>
 <button type="button" onclick="enterName()">Try to input name</button>
 <p id="demo14"></p>
+
+<h2>JavaScript Timing Events</h2>
+
+<p>16) setTimeout(function, milliseconds)<br>
+    Executes a function, after waiting a specified number of milliseconds.</p>
+
+<button type="button" onclick="timer1 = setTimeout( function () {alert('Time is up!')}, 3000)";>Click for delayed alert</button>
+
+<p>16.2) clearTimeout() to stop setTimeout()</p>
+<button type="button" onclick="clearTimeout(timer1)">Stop timer above</button>
+
+<p>17) setInterval(function, milliseconds) <br>
+    repeat a given function at every given time interval.
+</p>
 <p id="demo15"></p>
+
+<p>17.2) clearInterval() to stop setInterval()</p>
+<button type="button" onclick="clearInterval(timer2)">Stop to update date</button>
+
+<p>Note: The setTimeout() and setInterval() are both methods of the HTML DOM Window object.<br>
+    But window prefix can be ommitted.
+</p>
+
+<h2>JavaScript Cookie</h2>
+<p>18) show Cookie content</p>
 <p id="demo16"></p>
+<button type="button" onclick="deleteCookie()">Delete Cookies </button>
+
 <p id="demo17"></p>
 <p id="demo18"></p>
 <p id="demo19"></p>
@@ -108,6 +134,20 @@ function enterName(){
         txt = "Hello " + person + "!";
     }
     document.getElementById("demo14").innerHTML = txt;
+}
+
+var timer2 = setInterval(repeatTimes, 1500);
+function repeatTimes(){
+    document.getElementById("demo15").innerHTML = (new Date());
+}
+
+document.cookie="username=John Smith; expires=Thu, 18 Dec 20120 12:00:00 UTC; path=/"
+var allCookie = document.cookie;
+document.getElementById("demo16").innerHTML = allCookie;
+
+function deleteCookie(){
+    document.cookie="username=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+    document.getElementById("demo17").innerHTML = document.cookie;
 }
 </script>
 </html>
