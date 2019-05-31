@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>JavaScript AJAX</title>
+</head>
+<body>
+<h2>JavaScript AJAX</h2>
+
+<p>1) The XMLHttpRequest Object</p>
+<p id="demo1"></p>
+<button type="button" onclick="loadDoc()">Click to load</button>
+
+<p id="demo2"></p>
+<p id="demo3"></p>
+<p id="demo4"></p>
+<p id="demo5"></p>
+<p id="demo6"></p>
+<p id="demo7"></p>
+<p id="demo8"></p>
+<p id="demo9"></p>
+<p id="demo10"></p>
+<p id="demo11"></p>
+<p id="demo12"></p>
+<p id="demo13"></p>
+<p id="demo14"></p>
+<p id="demo15"></p>
+<p id="demo16"></p>
+<p id="demo17"></p>
+<p id="demo18"></p>
+<p id="demo19"></p>
+<p id="demo20"></p>
+
+</body>
+<script>
+function loadDoc(){
+
+    // creating an NEW XMLHttp reqyest object 
+    // Note that keyword NEW, it means the object is in heap and
+    // will not destroy out of function scope???
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function (){
+        if (this.readyState == 4 && this.status == 200){
+            document.getElementById("demo1").innerHTML = this.respopnseText;
+        }
+    }
+
+    // XMLHttpRequest.open(method, url, async)
+    // @para method: "GET" / "POST"
+    // @para url: the server(file) location
+    // @para async: true = asynchronous; false = synchronous
+    xhttp.open("GET", "js/ajax_info.txt", true);
+
+    // XMLHttpRequest.send() send request to server
+    xhttp.send();
+}
+
+</script>
+</html>

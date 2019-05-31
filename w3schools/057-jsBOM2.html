@@ -87,7 +87,10 @@
 <p id="demo16"></p>
 <button type="button" onclick="deleteCookie()">Delete Cookies </button>
 
+<p>19) get cookie content</p>
 <p id="demo17"></p>
+
+<p>20) check cookie</p>
 <p id="demo18"></p>
 <p id="demo19"></p>
 <p id="demo20"></p>
@@ -148,6 +151,43 @@ document.getElementById("demo16").innerHTML = allCookie;
 function deleteCookie(){
     document.cookie="username=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
     document.getElementById("demo17").innerHTML = document.cookie;
+}
+
+function setCookie(cname, cvalue, exdays) {
+  var d = new Date();
+  d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+  var expires = "expires="+d.toUTCString();
+  document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+}
+
+function getCookie(cname) {
+  var name = cname + "=";
+  var decodedCookie = decodeURIComponent(document.cookie);
+  var ca = decodedCookie.split(';');
+  for(var i = 0; i <ca.length; i++) {
+    var c = ca[i];
+    while (c.charAt(0) == ' ') {
+      c = c.substring(1);
+    }
+    if (c.indexOf(name) == 0) {
+      return c.substring(name.length, c.length);
+    }
+  }
+  return "";
+}
+
+document.getElementById("demo17").innerHTML = getCookie("username");
+
+function checkCookie() {
+  var username = getCookie("username");
+  if (username != "") {
+   alert("Welcome again " + username);
+  } else {
+    username = prompt("Please enter your name:", "");
+    if (username != "" && username != null) {
+      setCookie("username", username, 365);
+    }
+  }
 }
 </script>
 </html>
