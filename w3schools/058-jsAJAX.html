@@ -23,10 +23,28 @@ First name: <input type="text" onkeyup="showHint(this.value)">
 <p>Suggestions: <span id="demo3"></span></p>
 
 
-<p id="demo4"></p>
+<p>4) AJAX Database example</p>
+<form action="">
+    <select name="customers" onchange="showCustomer(this.value)">
+        <option value="">Select a customer:</option>
+        <option value="ALFKI">Alfreds Futterkiste</option>
+        <option value="NORTS ">North/South</option>
+        <option value="WOLZA">Wolski Zajazd</option>
+    </select>
+</form><br>
+<p id="demo4">Customer info will be listed here...</p>
+
+<p>5) display first CD</p>
 <p id="demo5"></p>
-<p id="demo6"></p>
-<p id="demo7"></p>
+<button type="button" onclick="first()">First CD</button>
+<button type="button" onclick="previous()">&lt&lt</button>
+<button type="button" onclick="next()">&gt&gt</button>
+<button type="button" onclick="last()">Last CD</button>
+
+<p>6) interactive table</p>
+<p id="demo6">a</p>
+<table id="demo7"></table>
+
 <p id="demo8"></p>
 <p id="demo9"></p>
 <p id="demo10"></p>
@@ -117,9 +135,106 @@ function showHint(input){
                 document.getElementById("demo3").innerHTML = this.responseText;
             }
         }
-        request.open("GET", "php/gethint.php?q=" + input, true);
+        request.open("GET", "php/058_gethint.php?q=" + input, true);
         request.send();
     }
 }
+
+
+function showCustomer(str) {
+  var xhttp;
+  if (str == "") {
+    document.getElementById("txtHint").innerHTML = "";
+    return;
+  }
+  xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+    document.getElementById("demo4").innerHTML = this.responseText;
+    }
+  };
+  xhttp.open("GET", "php/058_getcustomer.php?q="+str, true);
+  xhttp.send();
+}
+
+function displayCD(index){
+    var request = new XMLHttpRequest();
+    request.onreadystatechange = function (){
+        if (this.readyState == 4 && this.status == 200){
+            document.getElementById("demo5").innerHTML = extractCDInfo(this, index);
+        }
+    }
+
+    request.open("GET", "js/cd_catalog.xml", true);
+    request.send();
+}
+
+var len = 0;
+
+function extractCDInfo(request, index){
+    var xmlResponse = request.responseXML;
+    var x = xmlResponse.getElementsByTagName("CD");
+    len = x.length;
+    return "Artist: " +
+  x[index].getElementsByTagName("ARTIST")[0].childNodes[0].nodeValue +
+  "<br>Title: " +
+  x[index].getElementsByTagName("TITLE")[0].childNodes[0].nodeValue +
+  "<br>Year: " +
+  x[index].getElementsByTagName("YEAR")[0].childNodes[0].nodeValue;
+}
+
+var currentIndex = 0;
+displayCD(currentIndex);
+
+function previous(){
+    if (currentIndex > 0){
+        currentIndex--;
+        displayCD(currentIndex);
+    }
+}
+
+function next(){
+    if (currentIndex < len-1){
+        currentIndex++;
+        displayCD(currentIndex);
+    }
+}
+
+function first(){
+    currentIndex = 0;
+    displayCD(currentIndex);
+}
+
+function last(){
+    currentIndex = len-1;
+    displayCD(currentIndex);
+}
+
+var x1,xmlhttp1,xmlDoc1
+xmlhttp1 = new XMLHttpRequest();
+xmlhttp1.open("GET", "js/cd_catalog.xml", false);
+xmlhttp1.send();
+xmlDoc1 = xmlhttp1.responseXML; 
+x1 = xmlDoc1.getElementsByTagName("CD");
+var table="<tr><th>Artist</th><th>Title</th></tr>";
+for (var i = 0; i <x1.length; i++) { 
+  table += "<tr onclick='displayCD1(" + i + ")'><td>";
+  table += x1[i].getElementsByTagName("ARTIST")[0].childNodes[0].nodeValue;
+  table += "</td><td>";
+  table +=  x1[i].getElementsByTagName("TITLE")[0].childNodes[0].nodeValue;
+  table += "</td></tr>";
+}
+
+document.getElementById("demo7").innerHTML = table;
+
+function displayCD1(i) {
+  document.getElementById("demo6").innerHTML = "Artist: " +
+  x1[i].getElementsByTagName("ARTIST")[0].childNodes[0].nodeValue +
+  "<br>Title: " +
+  x1[i].getElementsByTagName("TITLE")[0].childNodes[0].nodeValue +
+  "<br>Year: " + 
+  x1[i].getElementsByTagName("YEAR")[0].childNodes[0].nodeValue;
+}
+
 </script>
 </html>
