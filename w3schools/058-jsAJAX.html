@@ -38,6 +38,11 @@ function loadDoc(){
     // Note that keyword NEW, it means the object is in heap and
     // will not destroy out of function scope???
     var xhttp = new XMLHttpRequest();
+
+    // The onreadystatechange property defines a callback function 
+    // to be executed when the readyState changes.
+    // The onreadystatechange event is triggered four times (1-4), 
+    // one time for each change in the readyState.
     xhttp.onreadystatechange = function (){
         if (this.readyState == 4 && this.status == 200){
             document.getElementById("demo1").innerHTML = this.respopnseText;
@@ -50,7 +55,8 @@ function loadDoc(){
     // @para async: true = asynchronous; false = synchronous
     xhttp.open("GET", "js/ajax_info.txt", true);
 
-    // XMLHttpRequest.send() send request to server
+    // XMLHttpRequest.send() send request to server (for GET)
+    // .send(string) Sends the request to the server (for POST)
     xhttp.send();
 }
 
