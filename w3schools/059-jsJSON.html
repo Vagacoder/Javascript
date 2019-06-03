@@ -38,8 +38,14 @@
 <p>8) parsing function from String using eval()</p>
 <p><b>Note: </b>Avoid using functions in JSON, it will lose their scope.</p>
 <p id="demo12"></p>
+
+<p>9) stringify() will remove any function in JS object</p>
 <p id="demo13"></p>
+<p>To avoid this, convert function to string before stringify</p>
 <p id="demo14"></p>
+<p><b>Note: </b>Still avoid using functions in JSON, it will lose their scope.</p>
+
+<p>10) Loop through a JS object (not JSON string) key:value pair </p>
 <p id="demo15"></p>
 <p id="demo16"></p>
 <p id="demo17"></p>
@@ -47,6 +53,15 @@
 <p id="demo19"></p>
 <p id="demo20"></p>
 
+<p>11) Nested JSON object</p>
+<p>access through "."</p>
+<p id="demo21"></p>
+<p>access through ["keyname"]</p>
+<p id="demo22"></p>
+
+<p>12) delete one JSON object property</p>
+<p id="demo23"></p>
+<p id="demo24"></p>
 </body>
 <script>
 var obj1 = {name:"John", age: 31, city:"New York"};
@@ -112,5 +127,41 @@ var json3 =  '{ "name":"John", "age":"function () {return 30;}", "city":"New Yor
 var obj7 = JSON.parse(json3);
 obj7.age = eval("(" + obj7.age + ")");
 document.getElementById("demo12").innerHTML = obj7.age();
+
+var obj8 = {name: "John", age: function () {return 30;}, city: "New York"}
+var json5 = JSON.stringify(obj8);
+document.getElementById("demo13").innerHTML = json5;
+obj8.age = obj8.age.toString();
+var json6 = JSON.stringify(obj8);
+document.getElementById("demo14").innerHTML = json6;
+
+var key;
+for (key in obj7){
+    document.getElementById("demo15").innerHTML += key + "<br>";
+    document.getElementById("demo16").innerHTML += obj7.key + "<br>";
+    document.getElementById("demo17").innerHTML += obj7[key] + "<br>";
+}
+document.getElementById("demo18").innerHTML = obj7.name;
+document.getElementById("demo19").innerHTML = obj7[name];
+document.getElementById("demo20").innerHTML = obj7["name"];
+
+var obj9= {
+  "name":"John",
+  "age":30,
+  "cars": {
+  "car1":"Ford",
+  "car2":"BMW",
+  "car3":"Fiat"
+  }
+}
+
+document.getElementById("demo21").innerHTML = obj9.cars.car2;
+document.getElementById("demo22").innerHTML = obj9["cars"].car1;
+
+delete obj9.cars.car2;
+
+for (var i in obj9.cars){
+    document.getElementById("demo23").innerHTML += obj9.cars[i] + "<br>";
+}
 </script>
 </html>
