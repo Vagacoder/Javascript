@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>JavaScript JSON</title>
+</head>
+<body>
+<h2>JavaScript JSON Arrays</h2>
+
+<p>1) JSON array access through index</p>
+<p id="demo1"></p>
+
+<p>2) Loop through JSON array</p>
+<p id="demo2"></p>
+<p id="demo3"></p>
+
+<p>3) Loop througn nested JSON array</p>
+<p id="demo4"></p>
+<p id="demo5"></p>
+<p id="demo6"></p>
+<p id="demo7"></p>
+<p id="demo8"></p>
+<p id="demo9"></p>
+<p id="demo10"></p>
+<p id="demo11"></p>
+<p id="demo12"></p>
+<p id="demo13"></p>
+<p id="demo14"></p>
+<p id="demo15"></p>
+<p id="demo16"></p>
+<p id="demo17"></p>
+<p id="demo18"></p>
+<p id="demo19"></p>
+<p id="demo20"></p>
+
+</body>
+<script>
+var json1 = {
+"name":"John",
+"age":30,
+"cars":[ "Ford", "BMW", "Fiat" ]
+} 
+document.getElementById("demo1").innerHTML = json1.cars[0];
+
+for(var i in json1.cars){
+    document.getElementById("demo2").innerHTML += json1.cars[i] +"<br>";
+}
+
+for(var i = 0; i < json1.cars.length; i++){
+    document.getElementById("demo3").innerHTML += json1.cars[i] +"<br>";
+}
+
+var json2 = {
+  "name":"John",
+  "age":30,
+  "cars": [
+    { "name":"Ford", "models":[ "Fiesta", "Focus", "Mustang" ] },
+    { "name":"BMW", "models":[ "320", "X3", "X5" ] },
+    { "name":"Fiat", "models":[ "500", "Panda" ] }
+  ]
+ } 
+
+var txt ="";
+
+for (var i in json2.cars){
+    txt += "<h3>" + json2.cars[i].name + "</h3>";
+    for (var j in json2.cars[i].models){
+        txt += json2.cars[i].models[j] + "<br>";
+    }
+}
+
+document.getElementById("demo4").innerHTML = txt;
+</script>
+</html>
