@@ -16,9 +16,25 @@
 <p>3) Loop througn nested JSON array</p>
 <p id="demo4"></p>
 
-<p></p>
+<h2>JSONP</h2>
+<p>JSONP is a method for sending JSON data without worrying about cross-domain issues.<br>
+  JSONP does not use the XMLHttpRequest object.<br>
+  JSONP uses the &ltscript&gt tag instead.<br>
+<b>JSONP means JSON with padding</b></p>
+<p>Requesting a file from another domain can cause problems, due to cross-domain policy.<br>
+  Requesting an external script from another domain does not have this problem.<br>
+  JSONP uses this advantage, and request files using the script tag instead of the XMLHttpRequest object.</p>
+
+<p>4) Request JSON using the script tag (external file)</p>
+<p>The PHP file returns a call to a function that will handle the JSON data.</p>
 <p id="demo5"></p>
+
+<p>5) Create a script tag with src and place it in document</p>
+<p>Then PHP file returns a call to a function with JSON as parameter</p>
+<button onclick="clickButton()">Click me!</button>
 <p id="demo6"></p>
+
+
 <p id="demo7"></p>
 <p id="demo8"></p>
 <p id="demo9"></p>
@@ -71,5 +87,18 @@ for (var i in json2.cars){
 }
 
 document.getElementById("demo4").innerHTML = txt;
+
+function myFunc(obj) {
+  document.getElementById("demo5").innerHTML = obj.name;
+}
+
+function clickButton() {
+  var s = document.createElement("script");
+  s.src = "https://www.w3schools.com/js/demo_jsonp.php";
+  document.body.appendChild(s);
+}
 </script>
+
+<!--<script src="https://www.w3schools.com/js/demo_jsonp.php"></script> -->
+
 </html>
