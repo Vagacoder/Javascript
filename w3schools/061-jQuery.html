@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+<title>jQuery</title>
+</head>
+<body>
+<h2>jQuery</h2>
+
+<p>1) jQuery find HTML elements by ID</p>
+<p id="id01">This text has id="id01"</p>
+<p id="demo1"></p>
+
+<p>2) jQuery find HTML element by Tag name</p>
+<p id="demo2"></p>
+
+<p>3) jQuery find HTML element by class name</p>
+<p class="intro">This is text with class name = "intro"</p>
+<p id="demo3"></p>
+
+<p>4) jQuery find HTML element using CSS selector</p>
+<p id="demo4"></p>
+<p id="demo5"></p>
+<p id="demo6"></p>
+<p id="demo7"></p>
+<p id="demo8"></p>
+<p id="demo9"></p>
+<p id="demo10"></p>
+<p id="demo11"></p>
+<p id="demo12"></p>
+
+</body>
+<script>
+$(document).ready(function(){
+    var elementId01 = $("#id01");
+    $("#demo1").text("The text from id01 is: " + elementId01[0].innerHTML) ;
+});
+
+$(document).ready(function (){
+    var elementTagP = $("p");
+    var txt = "";
+    for (var i = 0; i < 3; i++){
+        txt += (elementTagP[i].innerHTML) + "<br>";
+    }
+    $("#demo2").text(txt);
+});
+
+$(document).ready(function (){
+    var elementClassIntro = $(".intro");
+    $("#demo3").text("Find class intro: " + elementClassIntro[0].innerHTML);
+});
+
+$(document).ready(function() {
+  var myElements = $("p.intro");
+  $("#demo4").text("The first paragraph with class='intro' is: " + myElements[0].innerHTML);
+});
+</script>
+
+</html>
