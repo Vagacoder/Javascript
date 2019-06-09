@@ -20,9 +20,16 @@
 
 <p>4) jQuery find HTML element using CSS selector</p>
 <p id="demo4"></p>
+
+<p>5) $("idname").text("string") to set id text</p>
 <p id="demo5"></p>
+
+<p>6) $("idname").text() to get id text</p>
 <p id="demo6"></p>
-<p id="demo7"></p>
+
+<p>7) set HTML content</p>
+<div id="demo7"><h1>This was H1 tag</h1></div>
+
 <p id="demo8"></p>
 <p id="demo9"></p>
 <p id="demo10"></p>
@@ -53,6 +60,18 @@ $(document).ready(function (){
 $(document).ready(function() {
   var myElements = $("p.intro");
   $("#demo4").text("The first paragraph with class='intro' is: " + myElements[0].innerHTML);
+});
+
+$(document).ready(function(){
+    $("#demo5").text("Hello demo5!");
+});
+
+$(document).ready(function (){
+    $("#demo6").text($("#demo4").text());
+});
+
+$(document).ready(function (){
+    $("#demo7").html("<p>This is P tag now</p>");
 });
 </script>
 
