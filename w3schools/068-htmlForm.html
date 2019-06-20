@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>HTML Forms</title>
+</head>
+<body>
+<h1>HTML Forms</h1>
+<h2>Drop down menu</h2>
+
+<form action="">
+    <select name="cars" size="2">
+        <option value="volvo">Volvo</option>
+        <option value="saab">Saab</option>
+        <option value="fiat" selected>Fiat</option>
+    </select>
+    <br>
+    <input type="submit">
+</form>
+
+<h2>Text area</h2>
+<form action="">
+    <textarea name="message" rows="10" cols="20">Please enter message here.</textarea>
+    <br>
+    <input type="submit">
+</form>
+
+<h2>Data List</h2>
+<form action="">
+    <input list="browsers" name="browser">
+    <datalist id="browsers">
+        <option value="IE"></option>
+        <option value="Firefox"></option>
+        <option value="Chrome"></option>
+        <option value="Opera"></option>
+    </datalist>
+    <br>
+    <input type="submit">
+</form>
+
+<h2>Range, Number and Output</h2>
+<form action="" oninput="x.value=parseInt(a.value)+parseInt(b.value)">
+  0
+  <input type="range" id="a" name="a" value="50">100 +
+  <input type="number" id="b" name="b" value="50">=
+  <output name="x" for="a b"></output>
+  <br>
+  <br>
+  <input type="submit">
+</form>
+
+<h2>Different Input Types</h2>
+<form action="">
+    <input type="color" name="color">
+</form>
+</body>
+
+<script>
+
+</script>
+</html>
