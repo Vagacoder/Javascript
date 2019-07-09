@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>HTML Web Worker</title>
+</head>
+<body>
+<h1>HTML Web Worker</h1>
+<p>1) Counter numbers</p>
+<p>Count number: <output id="demo1"></output></p>
+<button onclick="startWorker()">Start Worker</button>
+<button onclick="stopWorker()">Stop Worker</button>
+
+</body>
+<script>
+var w;
+
+function startWorker(){
+    if (typeof(Worker) !== "undefined" ){
+        if (typeof(w) == "undefined"){
+        w = new Worker("js/075-worker.js");
+        }
+        w.onmessage = function(event){
+            document.getElementById("demo1").innerHTML = event.data;
+        };
+    } else {
+        document.getElementById("demo1").innerHTML = "Sorry!";
+    }
+}
+
+
+function stopWorker(){
+    w.terminate();
+    w = undefined;
+}
+
+
+
+
+
+</script>
+</html>

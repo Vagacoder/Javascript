@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>HTML5 Canvas</title>
+</head>
+<body>
+<h1>HTML5 Canvas</h1>    
+<p>1) By default, canvas has not border or content, use css to set color</p>
+<canvas id="demo1" width="200" height="100" style="background: blue; border:4px solid #ff0000"></canvas>
+
+<p>2) Draw a line using js (moveTo(), lineTo(), stroke())</p>
+<canvas id="demo2" width="200" height="100" style="border:2px solid #00ff00"></canvas>
+
+<p>3) Draw a circle (begin(), arc(). stroke() )</p>
+<canvas id="demo3" width="300" height="200" style="border: 2px solid #990099"></canvas>
+
+<p>4) Draw a text(font(), fillText() )</p>
+<canvas id="demo4" width="300" height="200" style="border:2px solid #0000ff"></canvas>
+
+<p>5) Draw Linear Gradient</p>
+<canvas id="demo5" width="300" height="200" style="border:2px solid #00ffff"></canvas>
+
+<p>6) Draw Linear Gradient</p>
+<canvas id="demo6" width="300" height="200" style="border:2px solid #ff00ff"></canvas>
+
+
+<p>7) Draw a image</p>
+
+<canvas id="demo7" width="300" height="400" style="border:2px solid #ffff00"></canvas>
+
+
+<p>Image to use:</p>
+<img id="scream" src="https://www.w3schools.com/html/img_the_scream.jpg"><br/>
+<p>Canvas to fill:</p>
+<canvas id="myCanvas" width="250" height="300"
+style="border:1px solid #d3d3d3;">
+Your browser does not support the HTML5 canvas tag.</canvas>
+
+<p><button onclick="myCanvas()">Try it</button></p>
+</body>
+<script>
+// 2 =====================================
+var canvas2 = document.getElementById("demo2");
+var canvas2Context = canvas2.getContext("2d");
+canvas2Context.moveTo(0,0);
+canvas2Context.lineTo(100, 50);
+canvas2Context.stroke();
+canvas2Context.moveTo(200,0);
+canvas2Context.lineTo(0, 100);
+canvas2Context.stroke();
+// ======================================
+
+//3 =====================================
+var c3 = document.getElementById("demo3");
+var c3ctx = c3.getContext("2d");
+c3ctx.beginPath();
+c3ctx.arc(150, 100, 75, 0, 2*Math.PI);
+c3ctx.stroke();
+c3ctx.beginPath();
+c3ctx.arc(90, 100, 15, 0, 1.5*Math.PI);
+c3ctx.stroke();
+c3ctx.beginPath();
+c3ctx.arc(120, 75, 75, 0.25*Math.PI, .55*Math.PI);
+c3ctx.stroke();
+c3ctx.beginPath();
+c3ctx.arc(130, 85, 10, 0, 2*Math.PI);
+c3ctx.stroke();
+
+// =======================================
+
+
+// 4 ========================
+var c4 = document.getElementById("demo4");
+var c4ctx = c4.getContext("2d");
+c4ctx.font="30px Arial";
+c4ctx.fillText("Hello World", 10, 50);
+c4ctx.strokeText("Hello World", 120, 100);
+
+// ==========================
+
+// 5 ========================
+var c5 = document.getElementById("demo5");
+var c5ctx= c5.getContext("2d");
+
+var c5grd = c5ctx.createLinearGradient(0,0,300,0);
+c5grd.addColorStop(0, "red");
+c5grd.addColorStop(1, "white");
+
+c5ctx.fillStyle=c5grd;
+c5ctx.fillRect(10,10,290, 190);
+// ==========================
+
+// 6 ========================
+var c6 = document.getElementById("demo6");
+var c6ctx= c6.getContext("2d");
+
+var c6grd = c6ctx.createRadialGradient(75, 50, 5, 90, 60, 100);
+c6grd.addColorStop(0, "red");
+c6grd.addColorStop(1, "white");
+
+c6ctx.fillStyle=c6grd;
+c6ctx.fillRect(10,10,290, 190);
+// ==========================
+
+// 7 ========================
+var c7 =document.getElementById("demo7");
+var c7ctx=c7.getContext("2d");
+
+var img1 =document.createElement("img");
+img1.setAttribute("src", "https://www.w3schools.com/html/img_the_scream.jpg")
+img1.setAttribute("id", "image01");
+//document.body.appendChild(img1);
+//var img_scream = document.getElementById("image01");
+c7ctx.drawImage(img1, 10, 10);
+
+// ==========================
+function myCanvas() {
+  var c = document.getElementById("myCanvas");
+  var ctx = c.getContext("2d");
+  var img = document.getElementById("scream");
+  ctx.drawImage(img,10,10);
+}
+</script>
+</html>
