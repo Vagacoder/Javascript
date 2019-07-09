@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>CSS syntax and selector</title>
+
+    <style>
+        /* tag selector */
+        p {
+            color: #ffffff;
+            background-color: lightblue;
+            text-align:center;
+        }
+        
+        /* id selector */
+        #demo1 {
+            font-family:cursive;
+        }
+
+        /* class selector*/
+        .note {
+            color: crimson;
+            margin: 10px;
+            padding: 20px;
+        }
+
+        /* tag selector plus class selector*/
+        div.note {
+            font-size: 40px;
+        }
+
+        .center {
+            text-align:center;
+        }
+
+        .large {
+            font-size:300%;
+        }
+
+        /* group selectors*/
+        h1, h2 {
+            margin:10px;
+        }
+    </style>
+
+</head>
+
+<body>
+<h1>CSS syntax and selector</h1>
+<p>1) p tag is here.</p>
+
+<h4 id="demo1">2) id selector, #demo1 is here, font is set</h4>
+
+<h4>3) class selector</h4>
+<p class="note">Note 1 in p tag </p>
+<div class="note">Note 2 in div tag </div>
+
+<h4>4) one tag can in multiple classes</h4>
+<div class="center large">This is in Class Center and Class Large.</div>
+</body>
+</html>
