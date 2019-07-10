@@ -17,6 +17,49 @@ p.outset {border-style: outset;}
 p.none {border-style: none;}
 p.hidden {border-style: hidden;}
 p.mix {border-style: dotted dashed solid double;}
+
+#demo4{
+    color: mediumseagreen;
+    border: 2px dotted #ff0000;
+    width: 200px;
+    margin-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 15px;
+
+}
+
+#demo5 {
+    width: 300px;
+    border: 1px solid red;
+    margin-left: 110px;
+
+}
+#subdemo5{
+    margin-left: inherit;
+}
+
+#demo7{
+    width: 500px;
+    border: 2px ridge chartreuse;
+    padding-top:50px;
+    padding-left:20px;
+    padding-right: 40px;
+    padding-bottom: 10px;
+}
+
+#demo8{
+    width: 300px;
+    padding: 50px;
+    border: 2px solid khaki;
+}
+
+#demo9{
+    width: 300px;
+    padding: 50px;
+    border: 2px solid khaki;
+    box-sizing: border-box;
+}
 </style>
 </head>
 <body>
@@ -37,6 +80,27 @@ p.mix {border-style: dotted dashed solid double;}
 <p style="border-left: 6px solid lightskyblue; background-color: lightgray">2) border set for any side</p>
 
 <p style="border: 3px solid lime; border-radius:6px">3) rounded corner</p>
+
+<h1>CSS Margins</h1>
+<p id="demo4">4) marging setting, top bottom left right</p>
+
+<p>5) inherit value</p>
+<div id="demo5">
+    <p id="subdemo5">subdemo5 is here, inside of demo, inheriting margin-left: 110px</p>
+</div>
+
+<p>6) Top and bottom margins of elements are sometimes collapsed into a single margin <br>
+    that is equal to the largest of the two margins.<br>
+
+    This does not happen on left and right margins! Only top and bottom margins!</p>
+
+<h1>CSS Padding</h1>
+<p>7) CSS Paddings</p>
+<p id="demo7"> demo7 is showing padding settings </p>
+
+<p>8) Padding and Element width</p>
+<p id="demo8">this is demo8, actual size = width + 2* padding (300 + 2*50) and text size is width(300)</p>
+<p id="demo9"> this is demo 9. actual size = width(300), and text size = width - 2*padding (300-2*50)</p>
 </body>
 <script>
 
