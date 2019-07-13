@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>CSS display</title>
+
+    <style>
+    div.demo1{
+        display: inline;
+    }
+
+    #demo2{
+        display:none;
+    }
+
+    li{
+        display: inline;
+        border: 2px solid crimson;
+        margin: 5px;
+    }
+
+    .demo3{
+        display: block;
+    }
+
+    .image_item{
+        border: 1px solid #eeeeee;
+        float: left;
+        width: 30%;
+        padding: 15px;
+        text-align: center;
+    }
+
+    .image_title{
+        text-align: center;
+        color: red;
+        background-color: #eeeeee;
+        width: 75%;
+        margin: 5px auto;
+    }
+
+    .image{
+        width:100%;
+    }
+
+    .image_button{
+        text-align:center;
+        font-size:200%;
+        font-family: 'Courier New', Courier, monospace;
+        color: white;
+        background-color: mediumseagreen;
+    }
+
+    @media screen and (max-width: 800px) {
+        .image_item {
+            width: 100%; 
+        }
+    }
+    </style>
+    
+</head>
+<body>
+<h1>CSS display</h1>    
+<p>1) div default is block</p>
+<div style="border: 2px solid mediumseagreen">The &ltdiv&gt element is a block-level element</div>
+<div class="demo1" style="border: 2px solid mediumseagreen">This &ltdiv&gt element is set to inline element.</div>
+
+<p>2) display: none is used to hide element</p>
+<p id="demo2">this &ltp&gt tag is hidden.</p>
+
+<p>3) override the &ltli&gt block to inline</p>
+<ul class="a">
+    <li>Coffee</li>
+    <li>Tea</li>
+    <li>Coca Cola</li>
+</ul>
+with &ltbr&gt
+<ul class="a">
+    <li>Coffee</li><br/><br/>
+    <li>Tea</li><br/><br/>
+    <li>Coca Cola</li>
+</ul>
+
+<p>4) override the &ltspan&gt inline to block</p>
+<p>inline &ltspan&gt:</p>
+<span>These </span> <span>are </span> <span>in </span> <span>&ltspan&gt tags.</span><br>
+<p>block &ltspan&gt:</p>
+<span class="demo3">These </span> <span class="demo3">are </span> <span class="demo3">in </span>
+<span class="demo3">block &ltspan&gt tags.</span>
+
+<p>5) display: none and visibility: hideen</p>
+<div>
+    <div id="displayNone"  class="image_item">
+        <p class="image_title">display: none</p>
+        <img class="image" src="https://www.w3schools.com/css/img_5terre.jpg" />
+        <div class="image_button" onclick="displayNone()">Remove</div>
+    </div>
+    <div id="visibilityHidden" class="image_item">
+        <p class="image_title">visibility: hidden</p>
+        <img class="image" src="https://www.w3schools.com/css/img_forest.jpg"  />
+        <div  class="image_button" onclick="visibilityHidden()">Hide</div>
+    </div>
+    <div class="image_item">
+        <p class="image_title">Reset</p>
+        <img class="image" src="https://www.w3schools.com/css/img_lights.jpg" />
+        <div class="image_button" onclick="reset()">Reset</div>
+    </div>
+</div>
+</body>
+<script>
+// this script element
+function displayNone(){
+    var ele = document.getElementById("displayNone");
+    ele.style.display = "none";
+}
+
+function visibilityHidden(){
+    var ele = document.getElementById("visibilityHidden"); 
+    ele.style.visibility = "hidden";
+}
+
+function reset(){
+    var ele1 = document.getElementById("displayNone");
+    var ele2 = document.getElementById("visibilityHidden"); 
+    ele1.style.display = "block";
+    ele2.style.visibility = "visible";
+}
+</script>
+</html>
