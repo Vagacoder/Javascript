@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>CSS layout position</title>
+    
+    <style>
+    .static{
+        position: static;
+        border: 2px solid #aaaaaa;
+        left:20px; /*this does not work*/
+    }
+
+    .relative{
+        position:relative;
+        border: 2px solid mediumseagreen;
+        left: 20px;
+        width: 50%;
+        height: 250px;
+    }
+
+    .fixed{
+        position: fixed;
+        border: 2px solid crimson;
+        right:0px;
+        top:0px;
+        z-index: 1;
+    }
+
+    .absolute{
+        bottom: 0px;
+        right: 0px;
+        position: absolute;
+        border: 2px solid lightskyblue;
+    }
+
+    .innerRel {
+        position: relative;
+        right:0px;
+        bottom:0px;
+        border: 2px solid blueviolet;
+    }
+
+    .sticky{
+        position: sticky;
+        top: 10px;
+        background-color: #dddddd;
+        border: 2px solid cyan;
+    }
+
+    .image{
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        z-index: -1;
+    }
+
+    .show {
+        width: 100%;
+        height: auto;
+    }
+
+    .topleft {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        color:deeppink;
+        font-size: 400%;
+    }
+
+    .container{
+        position: relative;
+    }
+    </style>
+</head>
+<body>
+<h1>CSS layout posistion</h1>
+<p>1) position: static which is not positioned in any special way</p>
+<div class="static">this &ltdiv&gt tag is position: static</div>
+
+<p>2) position: relative which is relative to its normal position</p>
+<div class="relative">this &ltdiv&gt tag is position: relative</div>
+
+<p>3) position: fixed which is fixed position relative to the viewpoint</p>
+<p style="border: 2px solid crimson; display: inline;">div tag is hanging at top right corner.</p>
+<div class="fixed">this &ltdiv&gt tag is position: fixed</div>
+
+<p>4) position: absolute which is relative to nearest positioned ancestor</p>
+<p><b>Note:</b> position: fixed is to viewpoint, while position: absolute is to ancestor.</p>
+<div class="relative">This box is position: relative
+    <div class="absolute">This box is position: absolute</div>
+    <div class="innerRel">This box is position: relative</div>
+</div>
+
+<p>5) position: sticky which is positioned based on user's scrolling position</p>
+<div class="sticky">This is box is position: sticky</div>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis non libero sed elit blandit</p> 
+<p>finibus eget ut leo. Aliquam ornare tempor ultricies. Duis tortor mauris, elementum et facilisis lacinia, sollicitudin in quam. Donec rhoncus euismod rhoncus. In mattis sodales consectetur. Integer consectetur blandit erat, non posuere eros. Donec facilisis nisl eget dolor dignissim efficitur. Cras in porta nulla. Phasellus sollicitudin ipsum lorem, sed vestibulum est dignissim et.</p>
+<p>Aenean at viverra enim, vitae interdum orci. Proin ut eleifend sem. Etiam vel augue vitae quam dignissim posuere eu a justo. Mauris tempus nulla a ante lacinia pulvinar. Ut lorem nibh, elementum vel odio in, bibendum congue elit. Vestibulum elit nulla, aliquam non tincidunt sed, interdum ac sapien. Donec consequat metus magna, vel pretium massa elementum nec. Nulla aliquet orci non congue mattis. Suspendisse semper orci eu ante eleifend, dignissim rutrum magna consequat. Vivamus nisl tortor, mollis non augue in, cursus laoreet nisi. Ut tincidunt odio vitae orci feugiat ultricies. Praesent quis odio odio. Duis sodales turpis a ullamcorper consectetur. Nunc nec tellus enim. Curabitur rhoncus turpis metus, at viverra justo imperdiet sed. In et bibendum velit.</p>        
+<p>Praesent id bibendum orci. Vivamus ac tincidunt lectus, id mollis lectus. Pellentesque </p> <p>habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Donec fringilla venenatis eros a commodo. Duis nec sem vel ex gravida imperdiet. Praesent sed massa pellentesque, dignissim nunc non, vestibulum erat. Vivamus lacus ex, posuere ut augue iaculis, faucibus venenatis odio. Phasellus facilisis velit et nulla porttitor, ut aliquet mauris congue. Maecenas in mollis risus.</p>
+<p>Aenean in nibh faucibus, viverra sem a, tempus massa. Nullam ex ex, finibus scelerisque </p> <p>efficitur ut, aliquam vel sapien. Pellentesque scelerisque ultricies mi in porta. Mauris quis turpis aliquam, fermentum libero vitae, dapibus lorem. Morbi suscipit neque eget augue volutpat, sed lacinia nunc volutpat. Donec vitae massa eget magna imperdiet porttitor id vel elit. Ut iaculis lacinia ex, condimentum eleifend eros iaculis vitae.</p>     
+<p>Vestibulum fringilla ex id nisl lacinia bibendum sed vel enim. Maecenas finibus fermentum</p> <p></p> ligula. Nunc feugiat eros ut tellus blandit scelerisque. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Fusce accumsan ac mi vitae fringilla. Quisque ex metus, semper pulvinar hendrerit maximus, rhoncus sed neque. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut pulvinar nulla eget ante viverra, id mollis sapien consectetur. Pellentesque efficitur erat vel massa volutpat maximus. Sed ullamcorper nec lectus ut blandit. Integer eu tempus nibh. Maecenas eleifend, velit vitae pharetra cursus, dui arcu molestie nulla, id pellentesque justo diam in orci. Etiam nibh enim, imperdiet eget elementum volutpat, tempor vel justo. </p>
+
+<p>6) z-index for orders when overlapping</p>
+<p>the image's z-index is -1</p>
+<img class="image" src="https://www.w3schools.com/css/w3css.gif" />
+
+<p>7) text over image</p>
+<p>Add some text to an image in the top left corner:</p>
+
+<div class="container">
+  <img class= "show" src="https://www.w3schools.com/css/img_5terre_wide.jpg" alt="Cinque Terre" width="1000" height="300">
+  <div class="topleft">Top Left</div>
+</div>
+</body>
+<script>
+
+</script>
+</html>
