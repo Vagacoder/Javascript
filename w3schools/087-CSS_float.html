@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>CSS Float</title>
+
+    <style>
+    #demo1 {
+        float: right;
+    }
+
+    #demo2 {
+        float: left;
+    }
+
+    #demo3 {
+        float: none;
+    }
+
+    #demo4 {
+        float: left;
+        width: 100px;
+        height: 50px;
+        margin: 10px;
+        border: 3px solid #73AD21;
+    }
+
+    #demo5 {
+        border: 1px solid red;
+    }
+
+    #demo6 {
+        float: left;
+        width: 100px;
+        height: 50px;
+        margin: 10px;
+        border: 3px solid #73AD21;
+    }
+
+    #demo7 {
+        border: 1px solid red;
+        clear: left;
+    }
+
+    </style>
+</head>
+<body>
+<h1>CSS Float</h1>
+<p>1) float: right </p>
+<p>In this example, the image will float to the right.</p>
+
+<p><img id="demo1" src="https://www.w3schools.com/css/pineapple.jpg" alt="Pineapple" style="width:170px;height:170px;margin-left:15px;">
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus imperdiet, nulla et dictum 
+interdum, nisi lorem egestas odio, vitae scelerisque enim ligula venenatis dolor. Maecenas nisl
+ est, ultrices nec congue eget, auctor vitae massa. Fusce luctus vestibulum augue ut aliquet.
+  Mauris ante ligula, facilisis sed ornare eu, lobortis in odio. Praesent convallis urna a 
+  lacus interdum ut hendrerit risus congue. Nunc sagittis dictum nisi, sed ullamcorper ipsum 
+  dignissim ac. </p>
+</body>
+
+<p>2) float: left</p>
+<p>In this example, the image will float to the left</p>
+
+<p><img id="demo2" src="https://www.w3schools.com/css/pineapple.jpg" alt="Pineapple" style="width:170px;height:170px;margin-left:15px;">
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus imperdiet, nulla et dictum 
+interdum, nisi lorem egestas odio, vitae scelerisque enim ligula venenatis dolor. Maecenas nisl
+ est, ultrices nec congue eget, auctor vitae massa. Fusce luctus vestibulum augue ut aliquet.
+  Mauris ante ligula, facilisis sed ornare eu, lobortis in odio. Praesent convallis urna a 
+  lacus interdum ut hendrerit risus congue. Nunc sagittis dictum nisi, sed ullamcorper ipsum 
+  dignissim ac. </p>
+
+<p>3) float: none</p>
+<p>normal position</p>
+
+<p><img id="demo3" src="https://www.w3schools.com/css/pineapple.jpg" alt="Pineapple" style="width:170px;height:170px;margin-left:15px;">
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus imperdiet, nulla et dictum 
+interdum, nisi lorem egestas odio, vitae scelerisque enim ligula venenatis dolor. Maecenas nisl
+ est, ultrices nec congue eget, auctor vitae massa. Fusce luctus vestibulum augue ut aliquet.
+  Mauris ante ligula, facilisis sed ornare eu, lobortis in odio. Praesent convallis urna a 
+  lacus interdum ut hendrerit risus congue. Nunc sagittis dictum nisi, sed ullamcorper ipsum 
+  dignissim ac. </p>
+
+<p>4) clear: left</p>
+<p style="font: bold">Without clear</p>
+<div id="demo4">div1</div>
+<div id="demo5">div2 - Notice that div2 is after div1 in the HTML code. However, 
+    since div1 floats to the left, the text in div2 flows around div1.</div>
+<br><br>
+
+<p style="font: bold">With clear</p>
+<div id="demo6">div3</div>
+<div id="demo7">div4 - Here, clear: left; moves div4 down below the floating div3. 
+    The value "left" clears elements floated to the left. You can also clear "right" and "both".</div>
+
+
+</body>
+<script>
+
+</script>
+</html>
