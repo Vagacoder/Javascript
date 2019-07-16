@@ -44,6 +44,13 @@
         clear: left;
     }
 
+    #demo8{
+        border: 3px solid mediumseagreen;
+    }
+
+    .img1{
+        float: right;
+    }
     </style>
 </head>
 <body>
@@ -94,6 +101,20 @@ interdum, nisi lorem egestas odio, vitae scelerisque enim ligula venenatis dolor
 <div id="demo7">div4 - Here, clear: left; moves div4 down below the floating div3. 
     The value "left" clears elements floated to the left. You can also clear "right" and "both".</div>
 
+
+<p>5) overflow: auto to fix clear problem</p>
+<div id="demo8">
+    <img class="img1" src="https://www.w3schools.com/css/pineapple.jpg" alt="Pineapple" width="170" height="170">
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus imperdiet, 
+    nulla et dictum interdum...
+</div>
+<p>this is not clear:right </p>
+<p style="clear: right;">this is clear:right</p>
+<div id="demo8" style="overflow: auto;">
+    <img class="img1" src="https://www.w3schools.com/css/pineapple.jpg" alt="Pineapple" width="170" height="170">
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus imperdiet, 
+    nulla et dictum interdum...
+</div>
 
 </body>
 <script>

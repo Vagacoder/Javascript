@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>CSS float 2</title>
+    <style>
+    .box{
+        box-sizing: border-box;
+        float: left;
+        width: 33.33%;
+        padding: 50px;
+    }
+
+    .clearfix::after{
+        clear: both;
+        content:"";
+        display: table;
+    }
+
+    .flex-container{
+        display: flex;
+        flex-wrap:nowrap;
+        background-color: dodgerblue;
+    }
+
+    .flex-container .box {
+        background-color: #f1f1f1;
+        width: 50%;
+        margin: 10px;
+        text-align: center;
+        line-height: 75px;
+        font-size: 30px;
+    }
+
+    *{
+        box-sizing: border-box;
+    }
+
+    .header {
+        text-align: center;
+        font-size:400%;
+        background-color: dodgerblue;
+    }
+    .menu{
+        float: left;
+        padding: 10px;
+    }
+    .nav{
+        width:20%;
+    }
+    
+    li{
+        list-style-type:none;
+        padding: 10px;
+        background-color: #33AA44;
+    }
+
+    li:hover{
+        background-color: rgb(50, 250, 67);
+    }
+
+    li:active{
+        background-color: #338844;
+    }
+    .content{
+        box-sizing: border-box;
+        margin: 30px;
+        padding: 10px;
+        width:70%;
+        background-color: #66abec;
+    }
+
+    .footer{
+        clear: both;
+        width: 100%;
+        font-size:200%;
+        background-color: dodgerblue;
+    }
+    </style>
+</head>
+<body>
+<h1>CSS float 2</h1>
+<p>1) Float boxes side by side:</p>
+
+<div class="clearfix">
+    <div class="box" style="background-color: #bbb">
+        <p>Box 1</p>
+    </div>
+    <div class="box" style="background-color: #ccc">
+        <p>Box 2</p>
+    </div>
+    <div class="box" style="background-color: #ddd">
+        <p>Box 3</p>
+    </div>
+</div>
+
+<p>2) flex box</p>
+<div class="flex-container">
+    <div class="box">Box 1 - This is some text to make sure that the 
+        content gets really tall. This is some text to make sure that 
+        the content gets really tall.</div>
+    <div class="box">Box 2 - My height will follow Box 1.</div>
+
+</div>
+
+<p>3) example of page</p>
+<div class="header">Roma</div>
+<div class="menu nav">
+    <ul>
+        <li>The Flight</li>
+        <li>The City</li>
+        <li>The Park</li>
+        <li>The Food</li>
+    </ul>
+</div>
+<div class="menu content">
+    <h3>The City</h3>
+        
+    <p>Roma is the capital of the Chania region on the island of Crete. 
+            The city can be divided in two parts, the old town and the modern city.
+        You will learn more about web layout and responsive web pages in a later chapter.</p>
+</div>
+
+<div class="footer">Copyright </div>
+</body>
+<script>
+</script>
+</html>
