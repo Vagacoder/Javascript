@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>CSS Combinators</title>
+    <style>
+    #demo1 p{
+        color: red;
+    }
+
+    #demo2 > p {
+        background-color: aqua;
+    }
+
+    #demo3 + p {
+        border: 2px solid hotpink;
+    }
+
+    #demo4 ~ p {
+        color:lime;
+    }
+    </style>
+</head>
+<body>
+<h1>CSS Combinator</h1>
+<p>There are four different combinators in CSS:    </p>
+<ul>
+        <li>descendant selector (space)</li>
+        <li>child selector (>)</li>
+        <li>adjacent sibling selector (+)</li>
+        <li>general sibling selector (~)</li>
+</ul>
+
+<p>1) Descendant selector (" ") (all descendants)</p>
+<div id="demo1">
+    <p >This is immediate p inside #demo1 
+        <p>
+            this is grand child of #demo1
+        </p>
+</p>
+</div>
+<p>this is not child of #demo1</p>
+
+<p>2) Child selector ">" (immediate children)</p>
+<div id="demo2">
+    <p>this is p inside #demo2
+        <div>
+        <p>
+            this is a grand child of #demo2
+        </p>
+        </div>
+    </p>
+    <p>this is another p inside #demo2</p>
+    <p>this is third p inside #demo2</p>
+</div>
+<p>this is not child of #demo2</p>
+
+<p>3) Adjacent Sibling Selector "+" (immediately following)</p>
+<p>this is adjacent sibling p before #demo3</p>
+<div id="demo3">
+    <p>this is child p of #demo3</p>
+</div>
+<p>this is adjacent sibling p after #demo3</p>
+
+<p>4) General Sibling selector "~"</p>
+<p>this is adjacent sibling p before #demo4</p>
+<div id="demo4">
+    <p>this is child p of #demo4</p>
+</div>
+<p>this is adjacent sibling p after #demo4
+    <p>this grand child p after #demo4</p>
+    <div>this grand child div after #demo4</div>
+    <p>this grand child p after #demo4</p>
+</p>
+<p>this is sibling p after #demo4</p>
+</body>
+</html>
