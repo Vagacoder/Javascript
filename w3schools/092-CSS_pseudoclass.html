@@ -22,18 +22,69 @@
         a.highlight:hover{
             color:#000000;
         }
+        #demo1{
+            border: 3px solid greenyellow;
+        }
+
+        #demo1:hover p{
+            display: block;
+        }
+
+        #demo2{
+            display: none;
+            padding: 10px;
+            background-color: mediumseagreen;
+        }
+        
+        #demo3 p:first-child{
+            color:red;
+        }
+
+        #demo4 p i:first-child{
+            color:darkorange;
+        }
+
+        #demo5 p:first-child i{
+            color:deepskyblue;
+        }
+
     </style>
 </head>
 <body>
 <h1>CSS Pseudo-class</h1>
+<p><b>Note:</b> a:hover MUST come after a:link and a:visited in the CSS definition in order 
+    to be effective! a:active MUST come after a:hover in the CSS definition in order 
+    to be effective!</p>
 <p>A pseudo-class is used to define a <b>special state</b> of an <b>element</b>.</p>
 <p>1) anchor tag &lta&gt pseudo class</p>
 <a href="http://www.google.com">Go Google here</a><br/>
 <a href="http://www.hipest.com">Go somewhere here</a><br/>
 <a class= "highlight" href="http://www.joppe.com">Go somewhere else here</a>
 
+<p>2) simple tooltip hover</p>
+<div id="demo1">Mouse over me to show the tip
+<p id="demo2">This is a tip </p>
+</div>
+<p>this is text after tip</p>
 
+<p>3) :first-child pseudo class, matches a specified element that is the 
+    first child of another element.</p>
+<div id="demo3">
+    <p>this is first p</p>
+    <p>this is second p</p>
+    <p>this is third p</p>
+</div>
+<p>Example: Matching first &lti&gt element in all &ltp&gt tags</p>
+<div id="demo4">
+<p>I am a <i>strong</i> person. I am a <i>strong</i> person.</p>
+<p>I am a <i>strong</i> person. I am a <i>strong</i> person.</p>
+</div>
 
+<p>Example: Matching all &lti&gt elements in all first child &ltp&gt tags</p>
+<div id="demo5">
+<p>I am a <i>strong</i> person. I am a <i>strong</i> person.</p>
+<p>I am a <i>strong</i> person. I am a <i>strong</i> person.</p>
+</div>
 </body>
 <script>
 
