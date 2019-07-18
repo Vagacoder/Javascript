@@ -48,6 +48,27 @@
             color:deepskyblue;
         }
 
+        q:lang(no) {
+            quotes: "~" "~";
+        }
+
+        #demo6::first-line{
+            color: red;
+            font-variant: small-caps;
+        }
+
+        #demo7::first-letter{
+            color: #ff0000;
+            font-size: xx-large;  
+        }
+
+        #demo8::before, #demo8::after  {
+            content:url("https://www.w3schools.com/css/smiley.gif");
+        }
+
+        *::selection {
+            background-color: yellow;
+        }
     </style>
 </head>
 <body>
@@ -85,6 +106,30 @@
 <p>I am a <i>strong</i> person. I am a <i>strong</i> person.</p>
 <p>I am a <i>strong</i> person. I am a <i>strong</i> person.</p>
 </div>
+
+<p>4) :lang pseudo class</p>
+<p>The :lang pseudo-class allows you to define special rules for different languages.</p>
+<p>Some text <q >A quote in a paragraph</q> Some text.</p>
+<p>Some text <q lang="no">A quote in a paragraph</q> Some text.</p>
+
+<h1>CSS Pseudo elements</h1>
+<p>5) ::first-line</p>
+<p id="demo6">You can use the ::first-line pseudo-element to add a special 
+    effect to the first line of a text. Some more text. And even more, and
+     more, and more, and more, and more, and more, and more, and more, and
+      more, and more, and more, and more.</p>
+
+<p>6) ::first-letter</p>
+<p><b>Note:</b> The ::first-letter pseudo-element can only be applied to 
+    block-level elements.</p>
+<p id="demo7">You can use the ::first-letter pseudo-element to add a special 
+    effect to the first character of a text!</p>
+
+<p>7) ::before and ::after</p>
+<p id="demo8">The ::before pseudo-element inserts content before the content of an element.</p>
+
+<p>8) ::selection</p>
+<p>select any text to see background color</p>
 </body>
 <script>
 
