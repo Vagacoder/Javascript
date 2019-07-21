@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>CSS Attributes Selector</title>
+    <style>
+    .demo1[target] {
+        background: yellow;
+    }
+    
+    .demo2[target="_blank"]{
+        background: cyan;
+    }
+
+    [title~="flower"]{
+        border: 5px solid hotpink;
+    }
+
+    #demo4 ~ [class|=top]{
+        color:brown;
+    }
+
+    #demo5 ~ [class^=top]{
+        color:crimson;
+    }
+
+    #demo6 ~ [class$="test"]{
+        color:deeppink;
+    }
+
+    #demo7 ~ [class*="te"]{
+        color:lime;
+    }
+
+    input[type="text"] {
+        width: 150px;
+        display: block;
+        margin-bottom: 10px;
+        background-color: yellow;
+    }
+
+    input[type="button"] {
+        width: 120px;
+        margin-left: 35px;
+        border-radius: 5px;
+        display: block;
+    }
+    </style>
+
+    
+</head>
+<body>
+<h1>CSS Attributes Selector</h1>
+<p>The <code>[attribute]</code> selector is used to select elements with a specified attribute.</p>
+<p>1) The following example selects all <a> elements with a target attribute:</p>
+    <a class="demo1" href="https://www.w3schools.com">w3schools.com</a>
+    <a class="demo1" href="http://www.disney.com" target="_blank">disney.com</a>
+    <a class="demo1" href="http://www.wikipedia.org" target="_top">wikipedia.org</a><br>
+
+<p>2) The following example selects all <a> elements with a target="_blank" attribute:</p>
+    <a class="demo2" href="https://www.w3schools.com">w3schools.com</a>
+    <a class="demo2" href="http://www.disney.com" target="_blank">disney.com</a>
+    <a class="demo2" href="http://www.wikipedia.org" target="_top">wikipedia.org</a><br>
+
+<p>3) The <code>[attribute~="value"]</code> selector is used to select elements with 
+    an attribute value containing a specified word.</p>
+    <img src="https://www.w3schools.com/css/klematis.jpg" title="klematis flower" width="150" height="113">
+    <img src="https://www.w3schools.com/css/img_flwr.gif" title="flower" width="224" height="162">
+    <img src="https://www.w3schools.com/css/img_tree.gif" title="tree" width="200" height="358">
+
+<p id="demo4">4) The <code>[attribute|="value"]</code> selector is used to select elements with
+     the specified attribute starting with the specified value.</p>
+     <h4 class="top-header">Welcome</h4>
+     <p class="top-text">Hello world!</p>
+     <p class="topcontent">Are you learning CSS?</p>
+<b>Note: The value has to be a whole word, either alone, like class="top", 
+    or followed by a hyphen( - ), like class="top-text"! 
+    NOT like "topcontent"</b>
+
+<p id="demo5">5) The <code>[attribute^="value"]</code> selector is used to select elements
+     whose attribute value begins with a specified value.</p>
+    <h4 class="top-header">Welcome</h4>
+    <p class="top-text">Hello world!</p>
+    <p class="topcontent">Are you learning CSS?</p>
+
+<p id="demo6">6) The <code>[attribute$="value"]</code> selector is used to select elements
+     whose attribute value ends with a specified value.</p>
+     <div class="first_test">The first div element.</div>
+     <div class="second">The second div element.</div>
+     <div class="my-test">The third div element.</div>
+     <p class="mytest">This is some text in a paragraph.</p>
+
+<p id="demo7">7) The <code>[attribute*="value"]</code> selector is used to select elements whose attribute
+     value contains a specified value.</p>
+     <div class="first_test">The first div element.</div>
+     <div class="second">The second div element.</div>
+     <div class="my-test">The third div element.</div>
+     <p class="mytest">This is some text in a paragraph.</p>
+     
+<p>8) The attribute selectors can be useful for styling forms without class or ID:</p>
+<form name="input" action="" method="get">
+    Firstname:<input type="text" name="Name" value="Peter" size="20">
+    Lastname:<input type="text" name="Name" value="Griffin" size="20">
+    <input type="button" value="Example Button">
+</form>
+
+</body>
+<script>
+
+</script>
+</html>

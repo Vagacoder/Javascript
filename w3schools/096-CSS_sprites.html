@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>CSS Sprites</title>
+    <style>
+    #home{
+        width: 46px;
+        height: 44px;
+        background: url(https://www.w3schools.com/css/img_navsprites.gif) 0 0;
+    }
+
+    #next {
+        width: 43px;
+        height: 44px;
+        background: url(https://www.w3schools.com/css/img_navsprites.gif) -91px 0;
+    }
+
+    #navlist {
+        position: relative;
+    }
+    #navlist li{
+        margin:0;
+        padding:0;
+        list-style: none;
+        position: absolute;
+        top: 0;
+    }
+
+    #navlist li, #navlist a{
+        height: 44px;
+        display: block;
+    }
+
+    #home2{
+        left: 0px;
+        width: 46px;
+        background: url("https://www.w3schools.com/css/img_navsprites.gif") 0 0;
+    }
+
+    #prev2{
+        left: 63px;
+        width: 43px;
+        background: url("https://www.w3schools.com/css/img_navsprites.gif") -47px 0;
+    }
+
+    #next2{
+        left: 129px;
+        width: 43px;
+        background: url("https://www.w3schools.com/css/img_navsprites.gif") -91px 0;
+    }
+
+    #home2:hover {
+        /*background: url('https://www.w3schools.com/css/img_navsprites_hover.gif') 0 -45px;*/
+        opacity: 0.5;
+    }
+
+    #prev2 a:hover {
+        background: url('https://www.w3schools.com/css/img_navsprites_hover.gif') -47px -45px;
+    }
+
+    #next2 a:hover {
+        background: url('https://www.w3schools.com/css/img_navsprites_hover.gif') -91px -45px;
+    }
+
+    </style>
+</head>
+<body>
+<h1>CSS Sprites</h1>
+<p>1) simple example: img is transparant image, sprites is background</p>
+<img id="home" src="" width="0" height="0" ><br><br>
+<img id="next" src="https://www.w3schools.com/css/img_trans.gif" width="1" height="1" alt="">
+
+
+<p>2) simple navigation bar</p>
+<p>hover effect is added as well, home is changing opacity, prev and next is showing dark sprite</p>
+<div style="position: relative;">
+<ul id="navlist">
+    <li id="home2"><a href="http://www.google.com"></a></li>
+    <li id="prev2"><a href="http://www.yahoo.com"></a></li>
+    <li id="next2"><a href="http://www.msn.com"></a></li>
+</ul>
+</div>
+</body>
+<script>
+
+</script>
+</html>
