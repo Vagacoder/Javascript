@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>CSS Counters</title>
+    <style>
+    body{
+        counter-reset: h2Numbers;
+        counter-reset: h3Numbers;
+    }
+
+    h2::before{
+        counter-increment: h2Numbers;
+        content: "Section" counter(h2Numbers) ": "
+    }
+
+    h3 {
+        counter-reset: h4Numbers;
+    }
+    h3::before{
+        counter-increment: h3Numbers;
+        content: "Section " counter(h3Numbers) ". ";
+    }
+
+    h4::before{
+        counter-increment: h4Numbers;
+        content: counter(h3Numbers) "." counter(h4Numbers) ". ";
+    }
+
+    ol {
+        counter-reset: section;
+        list-style-type: none;
+    }
+
+    li::before {
+        counter-increment: section;
+        content: counters(section,".") " ";
+    }
+    
+    </style>
+</head>
+<body>
+<h1>CSS Counters</h1>
+<p>1) a counter of &lth2&gt tag</p>
+<h1>Using CSS counter:</h1>
+<h2>HTML</h2>
+<h2>CSS</h2>
+<h2>Javascript</h2>
+
+<p>2) a counter of &lth3&gt tag and a sub counter of &lth4&gt tag</p>
+<h3>HTML tutorials:</h3>
+<h4>HTML Tutorial</h4>
+<h4>CSS Tutorial</h4>
+
+<h3>Scripting tutorials:</h3>
+<h4>JavaScript</h4>
+<h4>VBScript</h4>
+
+<h3>XML tutorials:</h3>
+<h4>XML</h4>
+<h4>XSL</h4>
+
+<p>3) A counter makes outlined list</p>
+<ol>
+    <li>item</li>
+    <li>item   
+    <ol>
+      <li>item</li>
+      <li>item</li>
+      <li>item
+      <ol>
+        <li>item</li>
+        <li>item</li>
+        <li>item</li>
+      </ol>
+      </li>
+      <li>item</li>
+    </ol>
+    </li>
+    <li>item</li>
+    <li>item</li>
+  </ol>
+</body>
+<script>
+
+</script>
+</html>
