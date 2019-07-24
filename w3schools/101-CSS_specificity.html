@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>CSS Specificity</title>
+    <style>
+    h3 {
+        background: yellow;
+        background: red;
+    }
+
+    div#a{
+        color: green;
+    }
+
+    #a {
+        color: red;
+    }
+
+    div[id=a]{
+        color:blue;
+    }
+    </style>
+</head>
+<body>
+<h1>CSS Specificity</h1>
+<p>1) same rule twice in same place, lower one works</p>
+<h3>This is h3 tag, set yellow then red.</h3>
+
+<p>2) same rules (3 times) in same place, the one with highest specificity works</p>
+<div id="a">This is div with id="a"</div>
+
+<h2>Memorize how to calculate specificity!</h2>
+Start at 0, 
+<ul>
+<li> add 1000 for style attribute,</li> 
+<li>add 100 for each ID, </li>
+<li>add 10 for each attribute, class or pseudo-class, </li>
+<li>add 1 for each element name or pseudo-element.</li>
+</ul>
+
+</body>
+<script>
+</script>
+</html>
