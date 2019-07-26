@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,EAAE,CAAC;EACA,KAAK,EAAE,GAAG;CACZ;;AAED,AACI,CADH,CACG,CAAC,CAAA;EACG,MAAM,EAAE,cAAc;CACzB",
+    "sources": [
+        "001-FirstJS.scss"
+    ],
+    "names": [],
+    "file": "001-FirstJS.css"
+}
