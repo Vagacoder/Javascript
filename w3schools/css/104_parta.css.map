@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,MAAM,CAAA;EACF,KAAK,EAAE,UAAU;CACpB;;AAED,AAAA,MAAM,CAAA;EACF,KAAK,EAAE,OAAO;CACjB",
+    "sources": [
+        "104_parta.scss"
+    ],
+    "names": [],
+    "file": "104_parta.css"
+}
