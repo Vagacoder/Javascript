@@ -1,0 +1,59 @@
+@mixin transform($property){
+    -webkit-transform: $property;
+    -ms-transform: $property;
+    transform: $property;
+}
+
+#box {
+    @include transform(rotate(30deg));
+    width:200px;
+    height: 200px;
+    background: mediumaquamarine;
+}
+
+%message-general{
+    color: gold;
+    font-size:150%;
+}
+
+.message{
+    @extend %message-general;
+}
+
+.super-message{
+    @extend %message-general;
+    background: darkblue;
+    font-size: 200%;
+}
+
+.ultra-message{
+    @extend %message-general;
+    background: brown;
+    border: 2px solid crimson;
+    font-size: 300%;
+}
+
+$wide: 200px;
+$high: 100px;
+%box-general{
+    width:$wide;
+    height:$high;
+    background: hotpink;
+}
+
+.box{
+    @extend %box-general;
+}
+
+.small-box{
+    width: $wide / 2;
+    height: $high /2;
+    background: mediumseagreen;
+}
+
+.large-box{
+    width: $wide *2;
+    height: $high *2;
+    background: dodgerblue;
+}
+
