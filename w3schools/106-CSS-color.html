@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>CSS Colors</title>
+    <style>
+    #demo1{background: rgba(255,0,0,0.3);}
+    #demo2{background: rgba(0,255,0,0.3);}
+    #demo3{background: rgba(0,0,255,0.3);}
+    #demo4{background: rgba(111,111,111,0.3);}
+    #demo5{background: rgba(255,255,0,0.3);}
+    #demo6{background: rgba(255,0,255,0.3);}
+    
+    #demo7{background: hsla(120, 100%, 25%);}
+    #demo8{background: hsla(120, 100%, 50%);}
+    #demo9{background: hsla(120, 100%, 75%);}
+    #demo10{background: hsla(120, 60%, 70%);}
+
+    #demo11 {background-color:rgb(255,0,0);opacity:0.6;}    
+    #demo12 {background-color:rgb(0,255,0);opacity:0.6;}  
+    #demo13 {background-color:rgb(0,0,255);opacity:0.6;}  
+    #demo14 {
+        height:50px;
+        background-image: linear-gradient(red, yellow);
+    }
+    #demo15 {
+        height: 50px;
+        background-image: linear-gradient(to right, red, yellow);
+    }
+    #demo16{
+        height: 200px;
+        background-image: linear-gradient(-20deg, red, yellow);
+    }
+    #demo17{
+        height:100px;
+        background-image: linear-gradient(to right, red,orange,yellow,green,blue,indigo,violet);
+    }
+    #demo18{
+        height:100px;
+        background-image: linear-gradient(to right, rgba(255,0,0,0), rgba(255,0,0,1));
+    }
+
+    #demo19{
+        height: 200px;
+        background-color: red; /* For browsers that do not support gradients */
+        background-image: repeating-linear-gradient(45deg,red,violet 7%,hotpink 10%);
+    }
+    #demo20{
+        height: 140px;
+        background-image: radial-gradient(red, violet, hotpink);
+    }
+    #demo21{
+        height: 200px;
+        background-image: radial-gradient(circle, red, yellow, dodgerblue);
+    }
+    </style>
+</head>
+<body>
+<h1>CSS Colors</h1>
+<p>1) RGBA color</p>
+<div id="demo1">demo1</div>
+<div id="demo2">demo2</div>
+<div id="demo3">demo3</div>
+<div id="demo4">demo4</div>
+<div id="demo5">demo5</div>
+<div id="demo6">demo6</div>
+
+<p>2) HSL Colors</p>
+<div id="demo7">demo7</div>
+<div id="demo8">demo8</div>
+<div id="demo9">demo9</div>
+<div id="demo10">demo10</div>
+
+<p>3) Opacity</p>
+<div id="demo11">demo11</div>
+<div id="demo12">demo12</div>
+<div id="demo13">demo13</div>
+
+<p>4) Linear gradient</p>
+<div id="demo14">demo14 vertical gradient</div>
+<div id="demo15">demo15 horizontal gradient</div>
+<div id="demo16">demo16 -20 degree</div>
+
+<p>5) multiple colors</p>
+<div id="demo17">demo17</div>
+
+<p>6) use transparance gradient</p>
+<div id="demo18">demo18</div>
+
+<p>7) repeat gradient</p>
+<div id="demo19">demo19</div>
+
+<p>8) Radial Gradient</p>
+<div id="demo20">demo20</div>
+<div id="demo21">demo21</div>
+</body>
+<script>
+
+</script>
+</html>
