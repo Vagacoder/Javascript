@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>CCS Text Effect</title>
+    <style>
+    #demo1{
+        white-space: nowrap; 
+        width: 200px; 
+        border: 1px solid #000000;
+    }
+
+    #demo2{
+        white-space: nowrap; 
+        width: 200px; 
+        border: 1px solid #000000;
+        overflow: hidden;
+        text-overflow: clip;
+    }
+
+    #demo3{
+        white-space: nowrap; 
+        width: 200px; 
+        border: 1px solid #000000;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    #demo4{
+        white-space: nowrap; 
+        width: 200px; 
+        border: 1px solid #000000;
+        overflow: visible;
+        text-overflow: clip;
+    }
+
+    #demo5{
+        white-space: nowrap; 
+        width: 200px; 
+        border: 1px solid #000000;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    #demo5:hover{
+        overflow: visible;
+    }
+
+    #demo6{
+        width:200px;
+        height:120px;
+        border:2px solid black;
+        word-wrap:break-word;
+    }
+
+    #demo7{
+        width: 140px; 
+        border: 1px solid #000000;
+        word-break: keep-all;
+    }
+
+    #demo8{
+        width: 140px; 
+        border: 1px solid #000000;
+        word-break: break-all;
+    }
+
+    #demo9{
+        width: 140px; 
+        border: 1px solid #000000;
+        word-break: normal;
+    }
+
+    #demo10{
+        writing-mode: horizontal-tb; 
+    }
+
+    #demo11{
+        writing-mode: vertical-rl; 
+    }
+
+    #demo12{
+        writing-mode:sideways-lr; 
+    }
+
+    </style>
+
+</head>
+<body>
+<h1>CSS Text Effect</h1>
+<p>1) Text Overflow</p>
+<h4>text-overflow: default; overflow: default</h4>
+<p id="demo1">This is some long text that will not fit in the box</p>
+
+<h4>text-overflow: clip; overflow: hidden</h4>
+<p id="demo2">This is some long text that will not fit in the box</p>
+
+<h4>text-overflow: ellipsis; overflow: hidden</h4>
+<p id="demo3">This is some long text that will not fit in the box</p>
+
+<h4>text-overflow: clip; overflow: visible</h4>
+<p id="demo4">This is some long text that will not fit in the box</p>
+
+<h4>text-overflow: ellipsis; overflow: visible when hover</h4>
+<p id="demo5">This is some long text that will not fit in the box</p>
+
+<p>2) Word wrapping</p>
+<p>word-wrap property allows you to force the text to wrap - 
+    even if it means splitting it in the middle of a word:</p>
+<p id="demo6"> This paragraph contains a very long word: 
+    <u>thisisaveryveryveryveryveryverylongword. </u>
+    The long word will break and wrap to the next line.</p>
+
+<p>3) Word Breaking</p>
+<p>word-break property specifies line breaking rules.</p>
+<h4>keep-all</h4>
+<p id="demo7">This paragraph contains some text. This line will-break-at-hyphens.</p>
+<h4>break-all</h4>
+<p id="demo8">This paragraph contains some text. This line will-break-at-hyphens.</p>
+<h4>normal</h4>
+<p id="demo9">This paragraph contains some text. This line will-break-at-hyphens.</p>
+
+<p>4) CSS Writing Mode</p>
+<p>writing-mode property specifies whether lines of text are 
+    laid out horizontally or vertically.</p>
+<p id="demo10">Some text with default writing-mode. </p>
+<p>Some text with a span element with a <span id="demo11">vertical-rl</span> writing-mode.</p>
+<p id="demo12">Some text with writing-mode: sideways-lr.</p>
+</body>
+<script>
+
+</script>
+</html>
