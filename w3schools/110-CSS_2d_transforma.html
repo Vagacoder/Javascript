@@ -26,11 +26,48 @@
         transform: translate(-50px, 10px);
         text-align: right;
     }
+
+    #demo4{
+        width: 200px;
+        height: 100px;
+        background: dodgerblue;
+        transform: scale(0.5, 1);
+    }
+
+    #demo5{
+        margin-left:100px;
+        width: 200px;
+        height: 100px;
+        background: powderblue;
+        transform: scaleX(2) scaleY(0.5) scaleZ(-2);
+    }
+
+    #demo6{
+        width: 200px;
+        height: 100px;
+        background: darkred;
+        transform: skewX(-30deg) skewY(15deg);
+    }
+
+    #demo7{
+        margin:50px;
+        width: 200px;
+        height: 100px;
+        background: coral;
+        transform: skew(0, 20deg);
+    }
+
+    #demo8{
+        width: 200px;
+        height: 100px;
+        background: crimson;
+        transform: matrix(0.8, 1, 1, 1.1, 50, 25);
+    }
     </style>
 </head>
 <body>
 <h1>CSS 2d Transforms</h1>
-<p>1) a simple 2d transforms </p>
+<p>1) rotate() method </p>
 <br/>
 <br/>
 <div id="demo1">demo1</div>
@@ -38,8 +75,21 @@
 <p>2) translate() method</p>
 <div id="demo2">demo2</div>
 <div id="demo3">demo3</div>
+<br/>
+<br/>
 
+<p>3) scale() method</p>
+<div id="demo4">demo4</div>
 
+<p>4) scaleX() and scaleY() method</p>
+<div id="demo5">demo5</div>
+
+<p>5) skew(), skewX() and skewY()</p>
+<div id="demo6">demo6</div>
+<div id="demo7">demo7</div>
+
+<p>6) matrix() method</p>
+<div id="demo8">demo8</div>
 
 
 
