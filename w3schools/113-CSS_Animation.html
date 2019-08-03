@@ -100,6 +100,35 @@
         animation-iteration-count: 1;
         animation-fill-mode: forwards;
     }
+
+    #demo6{
+        width: 50px;
+        height: 30px;
+        color: white;
+        background: limegreen;
+        padding-top: 10px;
+        text-align: center;
+        vertical-align: bottom;
+        position: relative;
+        border-radius: 3px;
+        font-weight: bold;
+        font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        animation: rolling-move;
+        animation-duration: 7s;
+        animation-timing-function: ease;
+        animation-delay: 2s;
+        animation-iteration-count:2;
+        animation-fill-mode: forwards;
+    }
+
+    @keyframes rolling-move{
+        0% {transform: rotate(0); left: 0;}
+        15% {transform: rotate(30deg); left:0;}
+        50% {transform: rotate(180deg); background: mediumseagreen; left: 500px;}
+        65% {transform: rotate(210deg); background: lightseagreen; left: 500px;}
+        100% {transform: rotate(360deg); background: seagreen; left: 0;}
+    }
+
     
     </style>
 </head>
@@ -120,6 +149,8 @@
 <p>5) after animation, retain the last frame</p>
 <div id="demo5"></div>
 
+<p>6) a little complicated animation</p>
+<div id="demo6">CSS</div>
 </body>
 <script>
 
