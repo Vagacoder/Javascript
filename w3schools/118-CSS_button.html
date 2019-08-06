@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>CSS Buttons</title>
+    <style>
+    #demo1{
+        padding: 10px 15px;
+        font-size: 24px;
+        color: white;
+        background: green;
+        border-radius: 3px;
+        cursor: pointer;
+        transition: 0.3s ease;
+        box-shadow: 3px 3px 5px darkgrey;
+    }
+    #demo1:hover{
+        color: green;
+        background: white;
+    }
+    #demo2{
+        padding: 10px 15px;
+        font-size: 24px;
+        color: green;
+        background: white;
+        border-radius: 3px;
+        cursor: progress;
+        transition: 0.3s ease;
+    }
+    #demo2:hover{
+        color: white;
+        background: green;
+        box-shadow: 3px 3px 5px darkgrey;
+    }
+    #demo3{
+        padding: 10px 15px;
+        font-size: 24px;
+        color: green;
+        background: white;
+        border-radius: 3px;
+        cursor: not-allowed;
+        opacity: 0.3;
+    }
+
+    #demo4 {
+        width:150px;
+        padding: 10px 15px;
+        font-size: 24px;
+        color: white;
+        background: green;
+        border-radius: 3px;
+        cursor: pointer;
+        box-shadow: 3px 3px 5px darkgrey;
+    }
+
+    #demo4:hover span:after{
+        content: "\00bb";
+    }
+
+    #demo5 {
+        width:200px;
+        padding: 10px 15px;
+        font-size: 24px;
+        color: white;
+        background: green;
+        border-radius: 3px;
+        cursor: pointer;
+        box-shadow: 3px 3px 5px darkgrey;
+        transition: 1s ease;
+        position: relative;
+    }
+
+
+    #demo5 span:after{
+        content: "\00bb";
+        cursor: pointer;
+        transition: 1s ease;
+        position: absolute;
+        opacity: 0;
+    }
+
+    #demo5:hover span{
+        left:0;
+    }
+
+    #demo5:hover span:after{
+        opacity: 1;
+    }
+
+    #demo6{
+        padding: 10px 15px;
+        font-size: 24px;
+        color: white;
+        background: green;
+        border-radius: 3px;
+        border: none;
+        cursor: pointer;
+        transition: 0.3s ease;
+        box-shadow: 1px 8px 0 darkgrey;
+    }
+    #demo6:hover{
+        color: green;
+        background: white;
+    }
+    #demo6:active{
+        color: lightgrey;
+        background: darkgreen;
+        box-shadow: 1px 4px 0 rgb(58, 58, 58);
+        transform:translate(0, 4px);
+    }
+
+    #demo7 {
+        font-size: 24px;
+        color: white;
+        background: green;
+        border: none;
+        width:100px;
+        height: 50px;
+        transition: 0;
+        position: relative;
+        overflow: hidden;
+    }
+
+    #demo7:after {
+        display: block;
+        content:"";
+        background:#f1f1f1;
+        position: absolute;
+        left:0;
+        top:0;
+        padding-top: 50px;
+        padding-left: 100px;;
+        transition:  0.8s;
+        border: 1px solid red;
+        opacity: 0;
+    }
+
+    #demo7:active:after{
+        padding:0;
+        left:0;
+        top:0;
+        opacity:1;
+        transition: 0;
+    }
+    </style>
+</head>
+<body>
+<h1>CSS Buttons</h1>
+<p>1) Hoverable buttons/p>
+<button id="demo1">Button</button>
+<button id="demo2">Button</button>
+
+<p>2) disbale buttons</p>
+<button id="demo3">Button</button>
+
+<p>3) animated button</p>
+<button id="demo4">Hover <span></span></button>
+<button id="demo5">Hover <span></span></button>
+
+<p>4) pressed button</p>
+<button id="demo6">Hover</button>
+
+<p>5) ripple button</p>
+<button id="demo7">Hover</button>
+<br>
+<br>
+
+</body>
+</html>

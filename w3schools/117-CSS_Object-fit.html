@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>CSS Obejct fit property</title>
+    <style>
+    #container img{
+        width: 200px;
+        height: 300px;
+    }
+    </style>
+</head>
+<body>
+<h1>CSS Object fit property</h1>
+<p>1) object-fit property is used to specify how an &ltimg&gt or &ltvideo&gt should be resized to fit its container.</p>
+<p>original picture</p>
+<img src="https://www.w3schools.com/css/paris.jpg" alt="paris">
+<p>squeezed by container</p>
+<div id="container">
+<img src="https://www.w3schools.com/css/paris.jpg" alt="paris" width="400px" height="300px;">
+<img src="https://www.w3schools.com/css/paris.jpg" alt="paris" width="400px" height="300px;" style="object-fit: cover;">
+</div>
+
+
+</body>
+</html>

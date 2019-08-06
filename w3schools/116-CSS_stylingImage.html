@@ -1,0 +1,198 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>CSS Styling Image</title>
+    <style>
+    #demo1 img{
+        border-radius: 50%;
+    }
+
+    #demo2 a img{
+        width: 150px;
+        padding: 5px;
+        border: 1px solid grey;
+
+    }
+
+    #demo2 a img:hover{
+        box-shadow: 0 0 2px 2px dodgerblue;
+    }
+
+    #demo3 img{
+        max-width: 100%;
+        height: auto;
+    }
+
+    #demo4 {
+        display:block;
+        margin:auto;
+        width: 50%;
+    }
+
+    #demo5 img{
+        width: 33%;
+        height: auto;
+        float: left;
+        max-width:230px;
+    }
+
+    .blur{
+        filter:blur(4px);
+    }
+
+    .brightness{
+        filter:brightness(200%);
+    }
+
+    .contrast{
+        filter: contrast(150%);
+    }
+
+    .grayscale{
+        filter: grayscale(80%);
+    }
+
+    .huerotate{
+        filter: hue-rotate(180deg);
+    }
+    .invert{
+        filter:invert(100%);
+    }
+    .opacity{
+        filter: opacity(60%);
+    }
+    .saturate{
+        filter: saturate(7);
+    }
+    .sepia{
+        filter: sepia(100%);
+    }
+    .shadow{
+        filter: drop-shadow(8px 8px 10px green);
+    }
+
+
+    .container{
+        position: relative;
+        width: 200px;;
+    }
+
+    #demo6 .image{
+        display: block;
+        width: 100%;
+        height: auto;
+    }
+
+    #demo6 .text {
+        text-align: center;
+        color: white;
+        font-size: 20px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    .overlay1{
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        height: 100%;
+        width: 100%;
+        opacity: 0;
+        transition: 0.5s ease;
+        background: lightblue;
+    }   
+
+    .container:hover .overlay1{
+        opacity: 1;
+    }
+
+    .overlay2{
+        position: absolute;
+        bottom: 100%;
+        width: 100%;
+        height: 0;
+        transition: 0.5s ease;
+        background: lightblue;
+        overflow: hidden;
+    }
+
+    .container:hover .overlay2{
+        bottom: 0;
+        height: 100%;
+    }
+
+    </style>
+</head>
+<body>
+<h1>CSS Styling Image</h1>
+<p>1) rounded images</p>
+<div id="demo1">
+<img src="http://www.w3schools.com/css/paris.jpg" alt="Paris">
+</div>
+
+<p>2) thumbnail image</p>
+<div id="demo2">
+<a href="http://www.paris.com"><img src="http://www.w3schools.com/css/paris.jpg" alt="paris"></a>
+</div>
+
+<p>3) responsive image</p>
+<div id="demo3">
+    <img src="https://www.w3schools.com/css/img_5terre_wide.jpg" alt="cliff">
+</div>
+
+<p>4) center a image, set to block and left,right margin auto</p>
+<div id="demo4">
+    <img src="http://www.w3schools.com/css/paris.jpg" alt="Paris">
+</div>
+
+<p>5) image filters</p>
+<div id="demo5">
+    <img class="blur" src="https://www.w3schools.com/css/pineapple.jpg" alt="pinneapple">    
+    <img class="brightness" src="https://www.w3schools.com/css/pineapple.jpg" alt="pinneapple">    
+    <img class="contrast" src="https://www.w3schools.com/css/pineapple.jpg" alt="pinneapple">    
+    <img class="grayscale" src="https://www.w3schools.com/css/pineapple.jpg" alt="pinneapple">    
+    <img class="huerotate" src="https://www.w3schools.com/css/pineapple.jpg" alt="pinneapple">    
+    <img class="invert" src="https://www.w3schools.com/css/pineapple.jpg" alt="pinneapple">    
+    <img class="opacity" src="https://www.w3schools.com/css/pineapple.jpg" alt="pinneapple">    
+    <img class="saturate" src="https://www.w3schools.com/css/pineapple.jpg" alt="pinneapple">    
+    <img class="sepia" src="https://www.w3schools.com/css/pineapple.jpg" alt="pinneapple">    
+    <img class="shadow" src="https://www.w3schools.com/css/pineapple.jpg" alt="pinneapple">    
+</div>
+
+
+<p> (6) Image hover overlay</p>
+<div id="demo6">
+<div class="container">
+    <img src="https://www.w3schools.com/css/img_avatar.png" alt="Avatar" class="image">
+    <div class="overlay1">
+        <div class="text">Hello World</div>
+    </div>
+</div>
+
+<div class="container">
+    <img src="https://www.w3schools.com/css/img_avatar.png" alt="Avatar" class="image">
+    <div class="overlay2">
+        <div class="text">Hello World</div>
+    </div>
+</div>
+
+<div class="container">
+    <img src="https://www.w3schools.com/css/img_avatar.png" alt="Avatar" class="image">
+    <div class="overlay3">
+        <div class="text">Hello World</div>
+    </div>
+</div>
+</div>
+
+</body>
+<script>
+</script>
+</html>
