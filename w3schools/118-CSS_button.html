@@ -97,8 +97,8 @@
         border-radius: 3px;
         border: none;
         cursor: pointer;
-        transition: 0.3s ease;
-        box-shadow: 1px 8px 0 darkgrey;
+        transition: 0.1s;
+        box-shadow: 1px 10px 0 darkgrey;
     }
     #demo6:hover{
         color: green;
@@ -107,8 +107,8 @@
     #demo6:active{
         color: lightgrey;
         background: darkgreen;
-        box-shadow: 1px 4px 0 rgb(58, 58, 58);
-        transform:translate(0, 4px);
+        box-shadow: 1px 3px 0 rgb(58, 58, 58);
+        transform:translate(0, 7px);
     }
 
     #demo7 {
@@ -118,7 +118,6 @@
         border: none;
         width:100px;
         height: 50px;
-        transition: 0;
         position: relative;
         overflow: hidden;
     }
@@ -128,21 +127,23 @@
         content:"";
         background:#f1f1f1;
         position: absolute;
-        left:0;
-        top:0;
-        padding-top: 50px;
-        padding-left: 100px;;
-        transition:  0.8s;
+        left:-100px;
+        top:-50px;
+        width:300px;
+        height:150px;
+        transition-duration:  0.5s;
         border: 1px solid red;
+        border-radius:50%;
         opacity: 0;
     }
 
     #demo7:active:after{
-        padding:0;
-        left:0;
-        top:0;
-        opacity:1;
-        transition: 0;
+        width: 0px;
+        height: 0px;
+        left:50%;
+        top:50%;
+        opacity:0.5;
+        transition-duration: 0s;
     }
     </style>
 </head>

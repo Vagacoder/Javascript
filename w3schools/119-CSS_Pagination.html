@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>CSS Pagination</title>
+    <style>
+    #demo1{
+        display: inline-block;
+    }
+    #demo1 a{
+        color: black;
+        float: left;
+        padding: 8px 16px;
+        text-decoration: none;
+    }
+
+    #demo2{
+        display: inline-block;
+    }
+    #demo2 a{
+        color: black;
+        float: left;
+        padding: 8px 16px;
+        text-decoration: none;
+    }
+    #demo2 a.active{
+        background: limegreen;
+        color: white;
+    }
+    #demo2 a:hover:not(.active){
+        background: lightgrey;
+    }
+
+    ul#demo3{
+        padding: 8px 16px;
+        list-style: none;
+        background: #eeeeee;
+    }
+
+    ul#demo3 li{
+        display: inline;
+    }
+
+    ul#demo3 li+li:before{
+        padding: 8px;
+        color: black;
+        content:"/";
+    }
+
+    ul#demo3 li a {
+        color: green;
+    }
+    </style>
+</head>
+<body>
+<h1>CSS Pagination </h1>
+<p>1) a simple example</p>
+<div id="demo1">
+    <a href="#">&laquo;</a>
+    <a href="#">1</a>
+    <a href="#">2</a>
+    <a href="#">3</a>
+    <a href="#">4</a>
+    <a href="#">&raquo;</a>
+</div>
+
+<p>2) a hoverable pagination</p>
+<div id="demo2">
+    <a href="#">&laquo;</a>
+    <a href="#">1</a>
+    <a class="active" href="#">2</a>
+    <a href="#">3</a>
+    <a href="#">4</a>
+    <a href="#">&raquo;</a>
+</div>
+
+<p>3) Breadcrumbs pagination</p>
+<ul id="demo3">
+    <li><a href="#">Home</a></li>
+    <li><a href="#">Pictures</a></li>
+    <li><a href="#">Summer 15</a></li>
+    <li>Italy</li>
+</ul>
+</body>
+</html>
