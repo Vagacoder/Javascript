@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Javascript function invocation and "this"</title>
+</head>
+<body>
+<h1>Javascript function invocation</h1>
+<h3>1) The Core Primitive</h3>
+<p>we have a function named foo, here is function definition: function foo () {/* */}</p>
+<p>Then, we invocate the call() of foo(): foo.call();</p>
+<ul>
+    <li>The first parameter (parameter 0) is thisValue</li>
+    <li>Make an argument list (argList) out of parameters 1 through the end</li>
+    <li>Invoke the function with this set to thisValue and the argList as its argument list</li>
+</ul>
+<p>function foo(...arg){/* */}</p>
+<p>We invocate it as: foo.call(thisValue, ...arg). In this case, thisValue = window.</p>
+<p>Result is below:</p>
+<p id="demo1">demo1 is here</p>
+<p id="demo2"></p>
+<p id="demo3"></p>
+<p id="demo4"></p>
+
+<h3>2. Simple Function Invocation</h3>
+<p>JavaScript allows us to invoke functions directly using the parens syntax: foo("world");</p>
+
+</body>
+<script>
+// 1. The Core Primitive =================================
+function hello(thing){
+    document.getElementById('demo1').innerHTML = (this + " say hello " + thing);
+}
+
+hello.call("Bob", " world");
+// End 1. ================================================
+
+// 2. Simple Function Invocation =========================
+
+
+// End 2. ================================================
+</script>
+</html>
