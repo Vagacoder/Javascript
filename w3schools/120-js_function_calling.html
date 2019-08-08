@@ -1,45 +1,178 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Javascript function invocation and "this"</title>
 </head>
-<body>
-<h1>Javascript function invocation</h1>
-<h3>1) The Core Primitive</h3>
-<p>we have a function named foo, here is function definition: function foo () {/* */}</p>
-<p>Then, we invocate the call() of foo(): foo.call();</p>
-<ul>
-    <li>The first parameter (parameter 0) is thisValue</li>
-    <li>Make an argument list (argList) out of parameters 1 through the end</li>
-    <li>Invoke the function with this set to thisValue and the argList as its argument list</li>
-</ul>
-<p>function foo(...arg){/* */}</p>
-<p>We invocate it as: foo.call(thisValue, ...arg). In this case, thisValue = window.</p>
-<p>Result is below:</p>
-<p id="demo1">demo1 is here</p>
-<p id="demo2"></p>
-<p id="demo3"></p>
-<p id="demo4"></p>
 
-<h3>2. Simple Function Invocation</h3>
-<p>JavaScript allows us to invoke functions directly using the parens syntax: foo("world");</p>
+<body>
+    <h1>Javascript function invocation</h1>
+    <a href="https://yehudakatz.com/2011/08/11/understanding-javascript-function-invocation-and-this/">
+    The Original Article is Here</a><br>
+    <a href="https://www.evernote.com/Home.action?login=true#n=a18bd161-a153-4526-912a-ce7194bca35b&s=s388&ses=4&sh=2&sds=5&">
+    My Evernote is here</a>
+    <h3>1) The Core Primitive</h3>
+    <p>we have a function named foo, here is function definition: function foo () {/* */}</p>
+    <p>Then, we invocate the call() of foo(): foo.call();</p>
+    <ul>
+        <li>The first parameter (parameter 0) is thisValue</li>
+        <li>Make an argument list (argList) out of parameters 1 through the end</li>
+        <li>Invoke the function with this set to thisValue and the argList as its argument list</li>
+    </ul>
+    <p>function foo(...arg){/* */}</p>
+    <p>We invocate it as: foo.call(thisValue, ...arg). In this case, thisValue = window.</p>
+    <p>Result is below:</p>
+    <p id="demo1">demo1 is here</p>
+
+
+
+    <h3>2. Simple Function Invocation</h3>
+    <p>JavaScript allows us to invoke functions directly using the parens syntax: foo("world");</p>
+    <p>Simple invocation is same as using call()</p>
+    <ul>
+        <li>
+            <p>directly invocate function with argument: foo(arg)</p>
+            <p id="demo2">demo2 is here</p>
+        </li>
+        <li>
+            <p>invocate function through call(): foo.call(thisValue, arg), thisValue = window</p>
+            <p id="demo3">demo3 is here</p>
+        </li>
+    </ul>
+
+    <h3>3. Member Functions Invocation</h3>
+    <p>In member function invocation, thisValue is assigned to calling object</p>
+    <p>Below, directly invocation and manually assign thisValue in call() are same</p>
+    <ul>
+        <li>
+            <p>Object directly invocate member function</p>
+            <p id="demo4">demo4 is here</p>
+        </li>
+        <li>
+            <p>invocation through call(), manually assign thisValue to calling object</p>
+            <p id="demo5">demo5 is here</p>
+        </li>
+    </ul>
+    <b>Note that it doesn't matter how the hello method becomes attached to the object in this form.</b>
+    <ul>
+        <li>
+            <p>invocate function attached to object</p>
+            <p id="demo6">demo6 is here</p>
+        <li>
+            <p>invocate same function not attached</p>
+            <p id="demo7">demo7 is here</p>
+        </li>
+    </ul>
+    <p><b>Notice that:</b> the function doesn't have a persistent notion of its 'this'. 
+        It is always set at call time based upon the way it was invoked <b>by its caller</b>.</p>
+    
+    <h4>4. Using Function.prototype.bind</h4>
+    <ul>
+        <li>
+            <p>simple closure trick</p>
+            <p id="demo8">demo8 is here</p>
+        </li>
+        <li>
+            <p>general purpose</p>
+            <p id="demo9">demo9 is here</p>
+        </li>
+    </ul>
+
+    <h4>5. ES5 provide bind() for all functions</h4>
+    <p id="demo10">demo10 is here</p>
+    <div id="click" onclick="handleClick()" style="cursor: pointer;"><p>Click</p></div>
+    <p id="demo11">demo11 is here</p>
+
 
 </body>
 <script>
-// 1. The Core Primitive =================================
-function hello(thing){
-    document.getElementById('demo1').innerHTML = (this + " say hello " + thing);
-}
+    // 1. The Core Primitive =================================
+    function hello(thing) {
+        document.getElementById('demo1').innerHTML = (this + " say hello " + thing);
+    }
 
-hello.call("Bob", " world");
-// End 1. ================================================
+    hello.call("Bob", " world");
+    // End 1. ================================================
 
-// 2. Simple Function Invocation =========================
+    // 2. Simple Function Invocation =========================
+    function hello1(arg1, arg2) {
+        document.getElementById(arg2).innerHTML = (this + " say hello " + arg1);
+    }
+
+    hello1('world', 'demo2');
+    hello1.call(window, 'world', 'demo3');
+
+    // End 2. ================================================
+
+    // 3. Member function ====================================
+    var person = {
+        name: 'Alex',
+        hello: function (arg1, arg2) {
+            document.getElementById(arg2).innerHTML = (this + this.name + " says hello " + arg1);
+        }
+    }
+
+    person.hello('world', 'demo4');
+    person.hello.call(person, 'world', 'demo5');
+
+    var person1 = { name: 'Bob', };
+    person1.hello1 = hello1;
+
+    person1.hello1("world", "demo6");
+    hello1("world", 'demo7');
 
 
-// End 2. ================================================
+    // End 3. ================================================
+
+    // 4. Using Function.prototype.bind ======================
+    // simple trick ================
+    var person2 = {
+        name: "Bob",
+        hello: function(arg1, arg2) {
+            document.getElementById(arg2).innerHTML = (this.name + " say hello " + arg1);
+        }
+    }
+
+    var boundHello = function(arg1, arg2) {
+        return person2.hello.call(person2, arg1, arg2);
+    }
+
+    boundHello('world', 'demo8');
+
+    // general purpose ==============
+    var bind = function(func, thisValue){
+        return function(){
+            return func.apply(thisValue, arguments);
+            // return func.call(thisValue, arg1, arg2);
+        }
+    }
+
+    var boundHello1 = bind(person2.hello, person2);
+
+    boundHello1('world','demo9');
+
+    // End 4. ================================================
+
+    // 5. ES5 bind() =========================================
+    var person3 ={
+        name: "Charlie",
+        hello: function(arg1, arg2) {
+            document.getElementById(arg2).innerHTML = (this.name + " say hello " + arg1);
+        }
+    }
+    var boundHello2 = person3.hello.bind(person3);
+
+    boundHello2("world", "demo10");
+
+    function handleClick(e){
+        alert('Clicked!');
+        person3.hello('world', 'demo11');
+    }
+
+    // End 5. ================================================
 </script>
+
 </html>
