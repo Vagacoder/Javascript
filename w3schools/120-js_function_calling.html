@@ -86,7 +86,10 @@
     <div id="click" onclick="handleClick()" style="cursor: pointer;"><p>Click</p></div>
     <p id="demo11">demo11 is here</p>
 
-
+    <p>here are <b>same member method</b> bound to <b>different this</b></p>
+    <p id="demo12">demo12 is here</p>
+    <p id="demo13">demo13 is here</p>
+    <p id="demo14">demo14 is here</p>
 </body>
 <script>
     // 1. The Core Primitive =================================
@@ -130,7 +133,7 @@
     // 4. Using Function.prototype.bind ======================
     // simple trick ================
     var person2 = {
-        name: "Bob",
+        name: "Charlie",
         hello: function(arg1, arg2) {
             document.getElementById(arg2).innerHTML = (this.name + " say hello " + arg1);
         }
@@ -158,7 +161,7 @@
 
     // 5. ES5 bind() =========================================
     var person3 ={
-        name: "Charlie",
+        name: "Doug",
         hello: function(arg1, arg2) {
             document.getElementById(arg2).innerHTML = (this.name + " say hello " + arg1);
         }
@@ -172,6 +175,14 @@
         person3.hello('world', 'demo11');
     }
 
+    var boundHello3 = person3.hello.bind(person);
+    boundHello3('new world', 'demo12');
+
+    var boundHello4 = person3.hello.bind(person1);
+    boundHello4('find way', 'demo13');
+
+    var boundHello5 = person3.hello.bind(person2);
+    boundHello5('here coming','demo14');
     // End 5. ================================================
 </script>
 
