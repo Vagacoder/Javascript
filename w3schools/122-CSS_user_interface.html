@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>CSS User Interface</title>
+    <style>
+    #demo1{
+        border: 2px solid;
+        padding: 20px;
+        width: 300px;
+        resize:horizontal;
+        overflow:auto;
+    }
+    #demo2{
+        border: 2px solid;
+        padding: 20px;
+        width: 300px;
+        resize:vertical;
+        overflow:auto;
+    }
+
+    #demo4{
+        resize: none;
+    }   
+    
+    #demo5{
+        margin:20px;
+       border: 1px solid black;
+       outline: 4px solid red;
+       outline-offset: 15px; 
+    }
+
+    #demo6{
+        margin: 10px;
+        border: 1px solid blue;
+        outline: 5px dashed green;
+        outline-offset: 5px;
+    }
+    </style>
+
+ 
+</head>
+<body>
+<h1>CSS User Interface</h1>
+<p>1) resize horizontal</p>
+<div id="demo1">
+    <p>Let the user resize only the width of this div element.</p>
+    <p>To resize: Click and drag the bottom right corner of this div element.</p>
+</div>
+
+<p>2) resize veritcal</p>
+<div id="demo2">
+    <p>Let the user resize only the width of this div element.</p>
+    <p>To resize: Click and drag the bottom right corner of this div element.</p>
+</div>
+
+<p>3) resize none</p>
+<textarea name="1" id="demo3" cols="30" rows="10">
+    Text area resizable
+</textarea>
+<br><br>
+<textarea name="2" id="demo4" cols="30" rows="10">
+    Text area not resizable
+</textarea>
+<br>
+
+<p>4) Outline Offset</p>
+<p><b>Note: </b> Outline differes from borders.  
+    outline is drawn outside the element's border, and may overlap other content.</p>
+
+<div id="demo5">This div has a 4 pixels solid red outline 15 pixels outside the border edge.</div>
+<br>
+<div id="demo6">This div has a 5 pixels dashed blue outline 5 pixels outside the border edge.</div>
+</body>
+</html>
