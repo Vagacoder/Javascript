@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>CSS Variables</title>
+    <style>
+        :root {
+            --main-bg-color: dodgerblue;
+            --main-padding: 25px;
+            --main-border: 3px solid darkblue;
+        }
+
+        #demo1 {
+            background-color: var(--main-bg-color);
+            padding: var(--main-padding);
+            border: var(--main-border);
+        }
+        #demo2{
+            width:309px;
+            height:100px;
+            border: 1px solid blue;
+        }
+        #demo3{
+            width:309px;
+            height:100px;
+            border: 1px solid red;
+            padding: 30px;
+        }
+        #demo4{
+            width:309px;
+            height:100px;
+            border: 1px solid lime;
+        }
+        #demo5{
+            width:309px;
+            height:100px;
+            border: 1px solid gold;
+            padding: 30px;
+            box-sizing: border-box;
+        }
+
+
+    </style>
+</head>
+
+<body>
+    <h1>CSS Variables</h1>
+    <h4>Variables in CSS should be declared within a CSS selector that defines its scope.
+        For a global scope you can use either the :root or the body selector.</h4>
+    <p style="color:red;">The variable name must begin with two dashes (--) and is case sensitive!</p>
+    <p>The syntax of the var() function is as follows:</p>
+    <div style="border: 1px solid black; display:inline;padding: 5px; margin: 2px;">var(custom-name, value)</div>
+    <p>1) example of a global color variable</p>
+    <div id="demo1">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam semper diam at erat pulvinar,
+        at pulvinar felis blandit.</div>
+
+
+
+    <h1>CSS Box Sizing</h1>
+    <p>1) default box sizing</p>
+    <div id="demo2">This div is smaller (width is 300px and height is 100px).</div><br>
+    <div id="demo3">This div is larger (width is 300px and height is 100px, plus 30px padding).</div>
+    
+    <p>2) box-sizing: border-box</p>
+    <div id="demo4">This div is same as below(width is 300px and height is 100px).</div><br>
+    <div id="demo5">This div is same as above(width is 300px and height is 100px, plus 30px padding).</div>
+
+</body>
+
+</html>
