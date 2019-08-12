@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Javascript Destructuring</title>
+</head>
+<body>
+    <h1>Javascript Destructuring Assignment</h1>
+    <h2>Array Destructuring</h2>  
+    <p>1) The object and array literal expressions provide an 
+        easy way to create ad hoc packages of data.</p>
+    <p>destructuring assignment uses similar syntax, but on the left-hand side
+        of the assignment to define what values to unpack from the sourced 
+        variable.</p>
+    <div id="demo1-1"></div>
+    <div id="demo1-2"></div>
+
+    <p>2) Basic variabke assignment</p>
+    <div id='demo2-1'></div>
+    <div id='demo2-2'></div>
+    <div id='demo2-3'></div>
+
+    <p>3) default values</p>
+    <div id='demo3'></div>
+    
+    <p>4) swap the variables</p>
+    <div id='demo4'></div>
+
+    <p>5) ignore some values from function return/p>
+    <div id='demo5'></div>
+
+    <p>6) assign rest of array</p>
+    <div id='demo6'></div>
+
+    <h2>Object Destructuring</h2>
+    <p>7) Basic assignment</p>
+    <div id='demo7'></div>
+    <p><b>Note: </b>assignment without declaration must enclosed in () like:</p>
+    <p>({a, b} = {a: 1, b: 2});</p>
+
+    <p>8) assign to new vars</p>
+    <div id='demo8'></div>
+
+
+
+</body>
+<script>
+var x = [1,2,3,4,5];
+document.getElementById('demo1-1').innerHTML = "var x is array [1,2,3,4,5]: " + x;
+var [y, z]= x;
+document.getElementById('demo1-2').innerHTML = "var [y, z] = x results in y: " + y + " z: " + z;
+
+var foo = ['one', 'two', 'three'];
+document.getElementById('demo2-1').innerHTML = foo;
+var [a, b, c] = foo;
+document.getElementById('demo2-2').innerHTML = "var [one, two, three] = foo results in a: " + a
++ " b: " + b + ' c: '+ c;
+
+var a1 , b1;
+[a1, b1] = [1, 2];
+document.getElementById('demo2-3').innerHTML = "declare first: var a1, b1; then destructuring\
+[a1, b1] = [1, 2] reuslts in a1: " + a1 + " b1: " + b1;
+
+var a2, b2,c2;
+[a2= 5, b2= 7, c2] = [1];
+document.getElementById('demo3').innerHTML="set default value: [a2= 5, b2= 7, c2] = [1] reuslts in\
+ a2: " + a2 + " b2: " + b2 + " c2: " + c2;
+
+var f = 1, g = 3;
+[f, g] = [g, f];
+document.getElementById('demo4').innerHTML = "f=1, g=3, [f,g]=[g,f] reuslt in f: " + f + " g: "+ g;
+
+function boo(){
+    return [1,2,3];
+}
+var [h, ,i] = boo();
+document.getElementById('demo5').innerHTML = 'func boo return [1,2,3], var[h,,i]=boo() reuslt in\
+ h: ' + h +' i: ' + i;
+var [j, k, ...l] = x;
+document.getElementById('demo6').innerHTML = 'var [j, k, ...l] = x; result in j: ' + j 
++ ' k: ' + k + ' l: ' + l;
+
+var o = {p:42, q: true};
+var {p, q} =o;
+document.getElementById('demo7').innerHTML= 'var o = {p:42, q: true}; var {p, q} =o; result in \
+p: ' + p + ' q: ' + q;
+
+var {p: hoo, q: kuu} = o;
+document.getElementById('demo8').innerHTML = 'var {p: hoo, q: kuu} = o; result in: \
+hoo: ' + hoo + ' kuu: ' + kuu;
+</script>
+</html>

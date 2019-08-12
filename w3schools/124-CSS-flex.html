@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>CSS Flexbox</title>
+    <style>
+    #flex-container1{
+        display: flex;
+        background: dodgerblue;
+    }
+    #flex-container1 div{
+        background: #f1f1f1;
+        margin: 10px;
+        padding: 20px;
+        font-size: 30px;
+    }
+
+    #flex-container2{
+        display: flex;
+        flex-direction:column;
+        background: dodgerblue;
+    }
+    #flex-container2 div{
+        width: 40px;
+        background: #f1f1f1;
+        margin: 10px;
+        padding: 20px;
+        font-size: 30px;
+    }
+
+    #flex-container3{
+        display: flex;
+        flex-direction:column-reverse;
+        background: dodgerblue;
+    }
+    #flex-container3 div{
+        width: 40px;
+        background: #f1f1f1;
+        margin: 10px;
+        padding: 20px;
+        font-size: 30px;
+    }
+    #flex-container4{
+        display: flex;
+        flex-direction:row-reverse;
+        background: dodgerblue;
+    }
+    #flex-container4 div{
+        width: 40px;
+        background: #f1f1f1;
+        margin: 10px;
+        padding: 20px;
+        font-size: 30px;
+    }
+    #flex-container5{
+        display: flex;
+        flex-wrap: wrap;
+        background: dodgerblue;
+    }
+    #flex-container5 div{
+        width: 40px;
+        background: #f1f1f1;
+        margin: 10px;
+        padding: 20px;
+        font-size: 30px;
+    }
+    #flex-container6{
+        display: flex;
+        background: dodgerblue;
+    }
+    #flex-container6 div{
+        width: 40px;
+        background: #f1f1f1;
+        margin: 10px;
+        padding: 20px;
+        font-size: 30px;
+    }
+    #flex-container7{
+        display: flex;
+        flex-wrap: wrap-reverse;
+        background: dodgerblue;
+    }
+    #flex-container7 div{
+        width: 40px;
+        background: #f1f1f1;
+        margin: 10px;
+        padding: 20px;
+        font-size: 30px;
+    }    
+    
+    #flex-container8{
+        display: flex;
+        justify-content: center;
+        background: dodgerblue;
+    }
+    #flex-container8 div{
+        background: #f1f1f1;
+        margin: 10px;
+        padding: 20px;
+        font-size: 30px;
+    }
+    #flex-container9{
+        display: flex;
+        justify-content: flex-start;
+        background: dodgerblue;
+    }
+    #flex-container9 div{
+        background: #f1f1f1;
+        margin: 10px;
+        padding: 20px;
+        font-size: 30px;
+    }
+    #flex-container10{
+        display: flex;
+        justify-content: space-around;
+        background: dodgerblue;
+    }
+    #flex-container10 div{
+        background: #f1f1f1;
+        margin: 10px;
+        padding: 20px;
+        font-size: 30px;
+    }
+    #flex-container11{
+        display: flex;
+        justify-content: space-between;
+        background: dodgerblue;
+    }
+    #flex-container11 div{
+        background: #f1f1f1;
+        margin: 10px;
+        padding: 20px;
+        font-size: 30px;
+    }
+    </style>
+</head>
+<body>
+<h1>CSS Flexbox</h1>
+<p>1) To use flexbox model, need define a flex container (blue background) </p>
+<div id="flex-container1">
+    <div>1</div>
+    <div>2</div>
+    <div>3</div>
+</div>
+
+<p>2) flex-direction</p>
+<p>column</p>
+<div id="flex-container2">
+    <div>1</div>
+    <div>2</div>
+    <div>3</div>
+</div>
+<p>column-reverse</p>
+<div id="flex-container3">
+    <div>1</div>
+    <div>2</div>
+    <div>3</div>
+</div>
+<p>row-reverse</p>
+<div id="flex-container4">
+    <div>1</div>
+    <div>2</div>
+    <div>3</div>
+</div>
+
+<p>3) flex-wrap</p>
+<p>with wrap</p>
+<div id="flex-container5">
+    <div>1</div>
+    <div>2</div>
+    <div>3</div>  
+    <div>4</div>
+    <div>5</div>
+    <div>6</div>  
+    <div>7</div>
+    <div>8</div>
+    <div>9</div>  
+    <div>10</div>
+    <div>11</div>
+    <div>12</div>  
+</div>
+<p>no wrap</p>
+<div id="flex-container6">
+    <div>1</div>
+    <div>2</div>
+    <div>3</div>  
+    <div>4</div>
+    <div>5</div>
+    <div>6</div>  
+    <div>7</div>
+    <div>8</div>
+    <div>9</div>  
+    <div>10</div>
+    <div>11</div>
+    <div>12</div>  
+</div>
+<p>wrap-reverse</p>
+<div id="flex-container7">
+    <div>1</div>
+    <div>2</div>
+    <div>3</div>  
+    <div>4</div>
+    <div>5</div>
+    <div>6</div>  
+    <div>7</div>
+    <div>8</div>
+    <div>9</div>  
+    <div>10</div>
+    <div>11</div>
+    <div>12</div>  
+</div>
+
+<p>4) justify-content</p>
+<p>center</p>
+<div id="flex-container8">
+    <div>1</div>
+    <div>2</div>
+    <div>3</div>
+</div>
+<p>flex-start</p>
+<div id="flex-container9">
+    <div>1</div>
+    <div>2</div>
+    <div>3</div>
+</div>
+<p>space-around</p>
+<div id="flex-container10">
+    <div>1</div>
+    <div>2</div>
+    <div>3</div>
+</div>
+<p>spaca-between</p>
+<div id="flex-container11">
+    <div>1</div>
+    <div>2</div>
+    <div>3</div>
+</div>
+
+
+</body>
+<script>
+
+</script>
+</html>
