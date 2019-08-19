@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Javascript Promise</title>
+    <style>
+    </style>
+</head>
+
+<body>
+<h1>JavaScript Promise</h1>
+<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Reference #1</a>
+
+<h4>The Promise object represents the eventual completion (or failure) of an asynchronous operation,
+     and its resulting value.</h4>
+
+<p>1) Simple example using Promise constructor</p>
+<pre>
+        var promise1 = new Promise(function(resolve, reject) {
+            setTimeout(function(){
+                resolve('resolve!');
+            }, 900);
+            console.log(resolve);
+            console.log(reject);
+        });
+        
+        promise1.then(function(value){
+            document.getElementById('demo1').innerHTML=value;
+        })
+</pre>
+<p id="demo1">demo1 is here, Loading ... </p>
+
+<p>2) Syntax</p>
+<pre>
+    new Promise(executor);
+</pre>
+<p><b>executor:</b>
+a function that is passed with arguments resolve and reject.</p>
+
+</body>
+
+<script>
+// 1. =================
+var promise1 = new Promise(function(resolve, reject) {
+    setTimeout(function(){
+        resolve('resolve!');
+    }, 900);
+    console.log(resolve);
+    console.log(reject);
+});
+
+promise1.then(function(value){
+    document.getElementById('demo1').innerHTML=value;
+})
+// ====================
+
+
+
+</script>
+</html>
