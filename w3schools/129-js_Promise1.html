@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,14 +11,14 @@
 </head>
 
 <body>
-<h1>JavaScript Promise</h1>
-<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Reference #1</a>
+    <h1>JavaScript Promise</h1>
+    <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Reference #1</a>
 
-<h4>The Promise object represents the eventual completion (or failure) of an asynchronous operation,
-     and its resulting value.</h4>
+    <h4>The Promise object represents the eventual completion (or failure) of an asynchronous operation,
+        and its resulting value.</h4>
 
-<p>1) Simple example using Promise constructor</p>
-<pre>
+    <p>1) Simple example using Promise constructor</p>
+    <pre>
         var promise1 = new Promise(function(resolve, reject) {
             setTimeout(function(){
                 resolve('resolve!');
@@ -30,84 +31,123 @@
             document.getElementById('demo1').innerHTML=value;
         })
 </pre>
-<p id="demo1">demo1 is here, Loading ... </p>
+    <p id="demo1">demo1 is here, Loading ... </p>
 
-<p>2) Syntax</p>
-<pre>
+    <p>2) Syntax</p>
+    <pre>
     new Promise(executor);
 </pre>
-<p><b>executor:</b>
-a function that is passed with arguments resolve and reject.</p>
-<ul>
-    <li>executor is called before the Promise constructor even returns the created object.</li>
-    <li>The resolve and reject functions, when called, resolve or reject the promise, respectively. </li>
-    <li>The executor normally initiates some asynchronous work.</li>    
-    <li>The return value of the executor is ignored.</li>
-</ul>
+    <p><b>executor:</b>
+        a function that is passed with arguments resolve and reject.</p>
+    <ul>
+        <li>executor is called before the Promise constructor even returns the created object.</li>
+        <li>The resolve and reject functions, when called, resolve or reject the promise, respectively. </li>
+        <li>The executor normally initiates some asynchronous work.</li>
+        <li>The return value of the executor is ignored.</li>
+    </ul>
 
-<button onclick="tstPromise()">click it </button>
-<p id="demo2">demo2 is here, Loading ... </p>
+    <button onclick="tstPromise()">click it </button>
+    <p id="demo2">demo2 is here, Loading ... </p>
 
 
-<br/>
-<p>3)
+    <br />
+    <p>3) then() method returns a Promise. It takes up to two arguments:
+        callback functions for the success and failure cases of the Promise.</p>
+    <b>Syntax</b>
+    <pre>
+        p.then(onFulfilled[, onRejected]);
 
-</p>
+        p.then(value => {
+          // fulfillment
+        }, reason => {
+          // rejection
+        });
+</pre>
+    <b>example</b>
+    <pre>
+        var promise3 = new Promise(function (resolve, reject) {
+            resolve('Sucess!');
+        });
+    
+        promise3.then(function (value) {
+            window.setTimeout(() => {
+                document.getElementById('demo3').innerHTML = value;
+            }, 1000);
+        }, function (reason) {
+            document.getElementById('demo3').innerHTML = reason;
+        }
+        )
+</pre>
+    <p>Wait 1 second to see Success!</p>
+    <p id="demo3">demo3 is here</p>
+
 </body>
 
 <script>
-// 1. =================
-var promise1 = new Promise(function(resolve, reject) {
-    setTimeout(function(){
-        resolve('resolve!');
-    }, 900);
-    console.log(resolve);
-    console.log(reject);
-});
-
-promise1.then(function(value){
-    document.getElementById('demo1').innerHTML=value;
-})
-// ====================
-
-// 2. =================
-var promiseCount =0 ;
-
-function tstPromise(){
-    let thisPromiseCount = ++promiseCount;
-
-    let log = document.getElementById("demo2");
-    log.insertAdjacentHTML('beforeend', '<br/>' +thisPromiseCount +
-    ') Started (<small>Sync code started</small>)<br/>');
-
-    let p1 = new Promise( (resolve, reject) => {
-        log.insertAdjacentHTML('beforeend', thisPromiseCount +
-        ') Promise started (<small>Async code started</small>)<br/>');
-
-        window.setTimeout(
-            function () {
-                resolve(thisPromiseCount);
-            }, Math.random() * 2000 + 1000
-        );
+    // 1. =================
+    var promise1 = new Promise(function (resolve, reject) {
+        setTimeout(function () {
+            resolve('resolve!');
+        }, 900);
+        console.log(resolve);
+        console.log(reject);
     });
 
-    p1.then(
-        function(val) {
-            log.insertAdjacentHTML('beforeend', val + 
-            ') Promise fulfilled (<small>Async code terminated</small>)<br/>');
-        }).catch(
-            (reason) => {
-                console.log('Handle rejected promise (' + reason + ') here.');
-            }
-        );
+    promise1.then(function (value) {
+        document.getElementById('demo1').innerHTML = value;
+    })
+    // ====================
 
-    log.insertAdjacentHTML('beforeend', thisPromiseCount + 
-    ') Promise made (<small> Sync code termianted </small>)<br/>');
-}
+    // 2. =================
+    var promiseCount = 0;
+
+    function tstPromise() {
+        let thisPromiseCount = ++promiseCount;
+
+        let log = document.getElementById("demo2");
+        log.insertAdjacentHTML('beforeend', '<br/>' + thisPromiseCount +
+            ') Started (<small>Sync code started</small>)<br/>');
+
+        let promise2 = new Promise((resolve, reject) => {
+            log.insertAdjacentHTML('beforeend', thisPromiseCount +
+                ') Promise started (<small>Async code started</small>)<br/>');
+
+            window.setTimeout(
+                function () {
+                    resolve(thisPromiseCount);
+                }, Math.random() * 2000 + 1000
+            );
+        });
+
+        promise2.then(
+            function (val) {
+                log.insertAdjacentHTML('beforeend', val +
+                    ') Promise fulfilled (<small>Async code terminated</small>)<br/>');
+            }).catch(
+                (reason) => {
+                    console.log('Handle rejected promise (' + reason + ') here.');
+                }
+            );
+
+        log.insertAdjacentHTML('beforeend', thisPromiseCount +
+            ') Promise made (<small> Sync code termianted </small>)<br/>');
+    }
 
 
-// ====================
+    // ====================
 
+    var promise3 = new Promise(function (resolve, reject) {
+        resolve('Sucess!');
+    });
 
+    promise3.then(function (value) {
+        window.setTimeout(() => {
+            document.getElementById('demo3').innerHTML = value;
+        }, 1000);
+    }, function (reason) {
+        document.getElementById('demo3').innerHTML = reason;
+    }
+    )
 </script>
+
 </html>
