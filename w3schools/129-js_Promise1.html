@@ -38,7 +38,21 @@
 </pre>
 <p><b>executor:</b>
 a function that is passed with arguments resolve and reject.</p>
+<ul>
+    <li>executor is called before the Promise constructor even returns the created object.</li>
+    <li>The resolve and reject functions, when called, resolve or reject the promise, respectively. </li>
+    <li>The executor normally initiates some asynchronous work.</li>    
+    <li>The return value of the executor is ignored.</li>
+</ul>
 
+<button onclick="tstPromise()">click it </button>
+<p id="demo2">demo2 is here, Loading ... </p>
+
+
+<br/>
+<p>3)
+
+</p>
 </body>
 
 <script>
@@ -56,6 +70,43 @@ promise1.then(function(value){
 })
 // ====================
 
+// 2. =================
+var promiseCount =0 ;
+
+function tstPromise(){
+    let thisPromiseCount = ++promiseCount;
+
+    let log = document.getElementById("demo2");
+    log.insertAdjacentHTML('beforeend', '<br/>' +thisPromiseCount +
+    ') Started (<small>Sync code started</small>)<br/>');
+
+    let p1 = new Promise( (resolve, reject) => {
+        log.insertAdjacentHTML('beforeend', thisPromiseCount +
+        ') Promise started (<small>Async code started</small>)<br/>');
+
+        window.setTimeout(
+            function () {
+                resolve(thisPromiseCount);
+            }, Math.random() * 2000 + 1000
+        );
+    });
+
+    p1.then(
+        function(val) {
+            log.insertAdjacentHTML('beforeend', val + 
+            ') Promise fulfilled (<small>Async code terminated</small>)<br/>');
+        }).catch(
+            (reason) => {
+                console.log('Handle rejected promise (' + reason + ') here.');
+            }
+        );
+
+    log.insertAdjacentHTML('beforeend', thisPromiseCount + 
+    ') Promise made (<small> Sync code termianted </small>)<br/>');
+}
+
+
+// ====================
 
 
 </script>
