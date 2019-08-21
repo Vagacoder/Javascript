@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Javascript Promise 2</title>
+    <style>
+    </style>
+</head>
+<body>
+<h1>Javascript Promise 2</h1>
+<p>1) When a value is simply returned from within a then handler,
+     it will effectively return Promise.resolve</p>
+    
+
+    
+</body>
+<script>
+var promise1 = new Promise(function(resolve, reject){
+    resolve(1);
+})
+
+promise1.then(function(value) {
+    console.log(value);
+    return value + 1;
+}).then(function(value){
+    console.log(value + ' - A sync value works')
+});
+
+promise1.then(function(value){
+    console.log(value);
+})
+
+promise1.then(function(value){
+    setTimeout(
+        function () {value++;
+        console.log(value);}, 1000
+    )
+    value++;
+    console.log(value);
+})
+
+</script>
+
+</html>

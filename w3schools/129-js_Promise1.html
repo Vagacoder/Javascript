@@ -17,6 +17,7 @@
     <h4>The Promise object represents the eventual completion (or failure) of an asynchronous operation,
         and its resulting value.</h4>
 
+    <!-- 1. -->
     <p>1) Simple example using Promise constructor</p>
     <pre>
         var promise1 = new Promise(function(resolve, reject) {
@@ -33,6 +34,7 @@
 </pre>
     <p id="demo1">demo1 is here, Loading ... </p>
 
+    <!-- 2. -->
     <p>2) Syntax</p>
     <pre>
     new Promise(executor);
@@ -51,6 +53,7 @@
 
 
     <br />
+    <!-- 3. -->
     <p>3) then() method returns a Promise. It takes up to two arguments:
         callback functions for the success and failure cases of the Promise.</p>
     <b>Syntax</b>
@@ -79,7 +82,72 @@
         )
 </pre>
     <p>Wait 1 second to see Success!</p>
+    <p id="demo3-1">demo3-1 is here</p>
     <p id="demo3">demo3 is here</p>
+
+    <!-- 4. -->
+    <p>4) then() method simple example</p>
+    <pre>
+        var promise4_1 = new Promise((resolve, reject) => {
+            resolve('Success!');
+        })
+    
+        promise4_1.then(value => {demo4-1}, reason => {demo4-2}
+    </pre>
+    <p id="demo4-1">demo4-1 is here</p>
+    <p id="demo4-2">demo4-2 is here</p>
+    <pre>
+        var promise4_2 = new Promise((resolve, reject) => {
+            resolve('Success!');
+        })
+    
+        promise4_2.then(value => {demo4-3}, reason => {demo4-4}
+    </pre>
+    <p id="demo4-3">demo4-3 is here</p>
+    <p id="demo4-4">demo4-4 is here</p>
+
+    <!-- 5. -->
+    <p>5) async then()</p>
+    <pre>
+        const resolvedProm = Promise.resolve(33);
+        console.log("5: ");
+        let thenProm = resolvedProm.then(value => {
+            console.log("this gets called after the end of the main stack. \
+            The value received and return is: " + value);
+            return value;
+        })
+    
+        console.log(thenProm);
+    
+        setTimeout(() => {
+            console.log(thenProm);
+        })
+
+    </pre>
+
+    <!-- 6. -->
+    <p>6) Chaining then()</p>
+    <pre>
+        Promise.resolve('foo')
+        .then(function(string){
+            return new Promise(function(resolve, reject) {
+                setTimeout(function(){
+                    string +='bar';
+                    console.log(string);
+                    resolve(string);
+                }, 1);
+            });
+        }).then(function(string){
+            setTimeout(function(){
+                string +='baz';
+                console.log(string);
+            }, 1)
+            return string;
+        }).then(function(string){
+            console.log("Last then")
+            console.log(string);
+        })
+    </pre>
 
 </body>
 
@@ -136,9 +204,15 @@
 
     // ====================
 
+    // 3. =================
+    console.log("3: ");
     var promise3 = new Promise(function (resolve, reject) {
         resolve('Sucess!');
     });
+
+    document.getElementById('demo3-1').innerHTML = promise3;
+    console.log(promise3);
+    console.log(promise3.then());
 
     promise3.then(function (value) {
         window.setTimeout(() => {
@@ -148,6 +222,77 @@
         document.getElementById('demo3').innerHTML = reason;
     }
     )
+
+    // ====================
+
+    // 4. =================
+
+    var promise4_1 = new Promise((resolve, reject) => {
+        resolve('Success!');
+    })
+
+    promise4_1.then(value => {
+        document.getElementById("demo4-1").innerHTML = value;
+    }, reason => {
+        document.getElementById("demo4-2").innerHTML = reason;
+    })
+
+    var promise4_2 = new Promise((resolve, reject) => {
+        reject('Error!');
+    })
+
+    promise4_2.then(value => {
+        document.getElementById("demo4-3").innerHTML = value;
+    }, reason => {
+        document.getElementById("demo4-4").innerHTML = reason;
+    })
+    // ====================
+
+    // 5. =================
+    const resolvedProm = Promise.resolve(33);
+    console.log("5: ");
+    let thenProm = resolvedProm.then(value => {
+        console.log("this gets called after the end of the main stack. \
+        The value received and return is: " + value);
+        return value;
+    })
+
+    console.log(thenProm);
+
+    setTimeout(() => {
+        console.log(thenProm);
+    })
+
+    // ==================
+
+    // 6.==================
+
+    Promise.resolve('foo')
+        .then(function (string) {
+            return new Promise(function (resolve, reject) {
+                setTimeout(function () {
+                    string += 'bar';
+                    console.log('6: ');
+                    console.log(string);
+                    resolve(string);
+                }, 1);
+            });
+        }).then(function (string) {
+            setTimeout(function () {
+                string += 'baz';
+                console.log(string);
+            }, 1)
+            return string;
+        }).then(function (string) {
+            console.log("Last then")
+            console.log(string);
+        })
+
+
+    // ====================
+
+
+
 </script>
 
 </html>
