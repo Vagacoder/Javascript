@@ -13,10 +13,143 @@
 <p>1) When a value is simply returned from within a then handler,
      it will effectively return Promise.resolve</p>
     
+<pre>
+        var promise1 = new Promise(function(resolve, reject){
+            resolve(1);
+        })
+        
+        promise1.then(function(value) {
+            console.log(value);
+            return value + 1;
+        }).then(function(value){
+            console.log(value + ' - A sync value works')
+        });
+        
+        promise1.then(function(value){
+            console.log(value);
+        })
+        
+        promise1.then(function(value){
+            setTimeout(
+                function () {value++;
+                console.log(value);}, 1000
+            )
+            console.log(value);
+            value++;
+            console.log(value);
+        })
+</pre>
+<ul>Check the console log, return order
+    <li>any functions inside then() which is directly followed with promise1</li>
+    <li>any functions inside chained then()</li>
+    <li>any functions is called inside setTimeout()</li>
+</ul>
 
-    
+<p>2) chaining error handler</p>
+<pre>
+        Promise.resolve()
+        .then(() =>{
+            throw new Error('Oh no!');
+        })
+        .then((value) => {
+            document.getElementById('demo2').innerHTML = value;
+        }, (error) => {
+            document.getElementById('demo3').innerHTML = error;
+        })
+</pre>
+<p id="demo2">demo2 is here</p>
+<p id="demo2-1">demo3 is here</p>
+
+<p>3) chaining examples</p>
+<p>1st then() takes resolve, 2nd then() takes resolve</p>
+<pre>
+        Promise.resolve()
+        .then(() =>99, () => 42 )
+        .then(value => {
+            document.getElementById('demo3-1').innerHTML = value;
+        }, error => {
+            document.getElementById('demo3-2').innerHTML = error;
+        })
+    </pre>
+    <p id="demo3-1">demo3-1</p>
+    <p id="demo3-2">demo3-2</p>
+<p>1st then() takes reject, 2nd then() takes resolve</p>
+<pre>
+        Promise.reject()
+        .then(() =>99, () => 42 )
+        .then(value => {
+            document.getElementById('demo3-3').innerHTML = value;
+        }, error => {
+            document.getElementById('demo3-4').innerHTML = error;
+        })
+</pre>
+    <p id="demo3-3">demo3-3</p>
+    <p id="demo3-4">demo3-4</p>
+<p>1st then() takes reject, but no handler, 2nd then() takes reject</p>
+<pre>
+        Promise.reject()
+        .then(() =>99)
+        .then(value => {
+            document.getElementById('demo3-5').innerHTML = value;
+        }, error => {
+            document.getElementById('demo3-6').innerHTML = error;
+        })
+</pre>
+<p id="demo3-5">demo3-5</p>
+<p id="demo3-6">demo3-6</p>
+
+<p>4) In practice, it is often desirable to catch rejected promises rather
+     than use then's two case syntax </p>
+<pre>
+
+</pre>
+<p id="demo4-1">demo4-1</p>
+<p id="demo4-2">demo4-2</p>
+
+<p>5) If then()'s onFulfilled returns a promise (a promise inside then()), 
+    the return value of then() will be resolved/rejected by that returned promise.</p>
+
+<pre>
+        const resolveLater = (resolve, reject) => {
+            setTimeout(()=>{
+                resolve(56);
+            }, 1000);
+        }
+
+        var p5_1 = Promise.resolve('foo');
+        var p5_2 = p5_1.then(() => {
+            return new Promise(resolveLater);
+        });
+        p5_2.then((value) => {
+            document.getElementById('demo5-1').innerHTML = value;
+        }, (error) => {
+            document.getElementById('demo5-2').innerHTML = error;
+        })
+</pre>
+    <p id="demo5-1">demo5-1</p>
+    <p id="demo5-2">demo5-2</p>
+<pre>
+        const rejectLater = (resolve, reject) => {
+            setTimeout(() => {
+                reject(new Error('Error'));
+            }, 1000);
+        }
+
+        var p5_3 = p5_1.then(() => {
+            return new Promise(rejectLater);
+        });
+        p5_3.then((value) => {
+            document.getElementById('demo5-3').innerHTML = value;
+        }, (error) => {
+            document.getElementById('demo5-4').innerHTML = error;
+        })
+</pre>
+    <p id="demo5-3">demo5-3</p>
+    <p id="demo5-4">demo5-4</p>
 </body>
 <script>
+
+// 1. ============================
 var promise1 = new Promise(function(resolve, reject){
     resolve(1);
 })
@@ -37,10 +170,97 @@ promise1.then(function(value){
         function () {value++;
         console.log(value);}, 1000
     )
+    console.log(value);
     value++;
     console.log(value);
 })
+// ===============================
 
+// 2. ============================
+Promise.resolve()
+.then(() =>{
+    throw new Error('Oh no!');
+})
+.then((value) => {
+    document.getElementById('demo2').innerHTML = value;
+}, (error) => {
+    document.getElementById('demo2-1').innerHTML = error;
+})
+
+// ===============================
+
+// 3. =========================
+Promise.resolve()
+.then(() =>99, () => 42 )
+.then(value => {
+    document.getElementById('demo3-1').innerHTML = value;
+}, error => {
+    document.getElementById('demo3-2').innerHTML = error;
+})
+
+Promise.reject()
+.then(() =>99, () => 42 )
+.then(value => {
+    document.getElementById('demo3-3').innerHTML = value;
+}, error => {
+    document.getElementById('demo3-4').innerHTML = error;
+})
+
+Promise.reject()
+.then(() =>99)
+.then(value => {
+    document.getElementById('demo3-5').innerHTML = value;
+}, error => {
+    document.getElementById('demo3-6').innerHTML = error;
+})
+
+// ============================
+
+// 4. ====================
+Promise.resolve()
+.then(() =>{
+    throw new Error("Oh no!");
+})
+.catch(error => {
+    document.getElementById("demo4-1").innerHTML = error.message;
+}).then(() => {
+    document.getElementById("demo4-2").innerHTML = "even previous then's promise is rejected , this then is still called.";
+})
+
+// =======================
+
+// 5. ==================
+const resolveLater = (resolve, reject) => {
+    setTimeout(()=>{
+        resolve(56);
+    }, 1000);
+}
+
+const rejectLater = (resolve, reject) => {
+    setTimeout(() => {
+        reject(new Error('Error'));
+    }, 1000);
+}
+
+var p5_1 = Promise.resolve('foo');
+var p5_2 = p5_1.then(() => {
+    return new Promise(resolveLater);
+});
+p5_2.then((value) => {
+    document.getElementById('demo5-1').innerHTML = value;
+}, (error) => {
+    document.getElementById('demo5-2').innerHTML = error;
+})
+
+var p5_3 = p5_1.then(() => {
+    return new Promise(rejectLater);
+});
+p5_3.then((value) => {
+    document.getElementById('demo5-3').innerHTML = value;
+}, (error) => {
+    document.getElementById('demo5-4').innerHTML = error;
+})
+// =====================
 </script>
 
 </html>
