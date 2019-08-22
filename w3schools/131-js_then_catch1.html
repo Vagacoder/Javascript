@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Javascript Promise.then() Promise.catch()</title>
+
+    <style>
+    
+    </style>
+</head>
+<body>
+<h1>Javascript Promise.then() Promise.catch()</h1>
+<p>1) simple example of catch()</p>
+<pre>
+    var promise1 = new Promise(function(resolve, reject){
+        throw 'Uh-oh!';
+    })
+    
+    promise1.catch(function(error){
+        document.getElementById('demo1').innerHTML = error;
+    })
+</pre>
+<p id="demo1">demo1 is here</p>
+
+<p>2) .catch(onRejected) internally call .then(undefined, onRejected)</p>
+<p>code below shows .catch() calling .then(), check console</p>
+<pre>
+    (function(Promise){
+        var originalThen = Promise.prototype.then;
+        var originalCatch = Promise.prototype.catch;
+    
+        Promise.prototype.then = function(){
+            console.log('>>> called .then() on %o with argument: %o', this, arguments);
+            return originalThen.apply(this, arguments);
+        };
+    
+        Promise.prototype.catch = function (){
+            console.log('>>> called .catch on %o with arguments: %o', this, arguments);
+            return originalCatch.apply(this, arguments);
+        };
+    })(this.Promise);
+    
+    //calling catch on an already resolved promise
+    Promise.resolve().catch(function xxx() {});
+</pre>
+
+</body>
+<script>
+// 1. ====================
+var promise1 = new Promise(function(resolve, reject){
+    throw 'Uh-oh!';
+})
+
+promise1.catch(function(error){
+    document.getElementById('demo1').innerHTML = error;
+});
+// =========================
+
+// 2. =========================
+// overriding original Promise.prototype.then/catch by adding some logs
+(function(Promise){
+    var originalThen = Promise.prototype.then;
+    var originalCatch = Promise.prototype.catch;
+
+    Promise.prototype.then = function(){
+        console.log('>>> called .then() on %o with argument: %o', this, arguments);
+        return originalThen.apply(this, arguments);
+    };
+
+    Promise.prototype.catch = function (){
+        console.log('>>> called .catch on %o with arguments: %o', this, arguments);
+        return originalCatch.apply(this, arguments);
+    };
+})(this.Promise);
+
+//calling catch on an already resolved promise
+Promise.resolve().catch(function xxx() {});
+
+// ===========================
+</script>
+</html>
