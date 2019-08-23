@@ -13,3 +13,7 @@ Study CSS:
 Study Bootstrap4
 1) tutorial at w3schools.com
 
+Study Typescript
+1) Typescript in 5 minutes
+
+
