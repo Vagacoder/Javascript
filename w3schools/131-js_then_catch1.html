@@ -46,6 +46,100 @@
     Promise.resolve().catch(function xxx() {});
 </pre>
 
+
+<p>3) .catch() can be chaining as .then()</p>
+<pre>
+    var p3 = new Promise((resolve, reject) => {
+        resolve('Success');
+    })
+    
+    p3.then((value) =>{
+        console.log(value);
+        throw new Error('Oh, no!');
+    }).catch((e) => {
+        console.log(e.message);
+    }).then(() => {
+        console.log('after a catch the chain is restored');
+    }, () => {
+        console.lgo('Note fire due to catch');
+    })
+</pre>
+<p>Check the log to see the how to restore chaining after a catch()</p>
+
+<p>Code below is same result as above, but not throw error, by returning a rejected Promise</p>
+<pre>
+    p3.then((value) =>{
+        document.getElementById('demo3-1').innerHTML = value;
+        return Promise.reject('Oh, no!');
+    }).catch((error) =>{
+        document.getElementById('demo3-2').innerHTML = error;
+    }).then((value) => {
+        document.getElementById('demo3-3').innerHTML = 'after a catch the chain is restored';
+    }, (error) => {
+        document.getElementById('demo3-4').innerHTML = 'Note fire due to catch';
+    })
+</pre>
+
+<p id='demo3-1'>demo3-1 is here</p>
+<p id='demo3-2'>demo3-2 is here</p>
+<p id='demo3-3'>demo3-3 is here</p>
+<p id='demo3-4'>demo3-4 is here</p>
+
+<p>4) can not catch async error or reject</p>
+<pre>
+    var p4 = new Promise( function ( resolve, reject) {
+        throw new Error('Uh-oh!');
+    });
+    
+    p4.catch((error) => {
+        console.log(error);
+        document.getElementById('demo4-1').innerHTML = error;
+    })
+    
+    var p4_2 = new Promise((resolve, reject) => {
+        setTimeout(() =>{
+            throw new Error('async error!');
+        }, 1000);
+    })
+    
+    p4_2.catch((error) => {
+        console.log(error);
+        document.getElementById('demo4-2').innerHTML = error;
+    })
+    
+    var p4_3 = new Promise((resolve, reject) => {
+        resolve();
+        throw new Error('Silenced Exception!');
+    });
+    
+    p4_3.catch((error) => {
+        console.log(error);
+        document.getElementById('demo4-3').innerHTML = error;
+    })
+</pre>
+<p id='demo4-1'>demo4-1 is here</p>
+<p id='demo4-2'>demo4-2 is here</p>
+<p id='demo4-3'>demo4-3 is here</p>
+
+
+<p>5) if promise is resolved, .catch() will not execute, 
+    but pass return value to next handler if available</p>
+<pre>
+    var p5_1 = Promise.resolve('calling next');
+
+var p5_2 = p5_1.catch((reason) => {
+    console.log("catch p5_1!");
+    console.log(reason);
+})
+
+p5_2.then((value) => {
+    console.log("next promise is fulfilled");
+    console.log(value);
+}, (reason) => {
+    console.log("next promise is rejected");
+    console.log(reason);
+})
+</pre>
 </body>
 <script>
 // 1. ====================
@@ -77,6 +171,85 @@ promise1.catch(function(error){
 
 //calling catch on an already resolved promise
 Promise.resolve().catch(function xxx() {});
+
+// ===========================
+
+// 3. ========================
+var p3 = new Promise((resolve, reject) => {
+    resolve('Success');
+})
+
+p3.then((value) =>{
+    console.log(value);
+    throw new Error('Oh, no!');
+}).catch((e) => {
+    console.log(e.message);
+}).then(() => {
+    console.log('after a catch the chain is restored');
+}, () => {
+    console.lgo('Note fire due to catch');
+})
+
+p3.then((value) =>{
+    document.getElementById('demo3-1').innerHTML = value;
+    return Promise.reject('Oh, no!');
+}).catch((error) =>{
+    document.getElementById('demo3-2').innerHTML = error;
+}).then((value) => {
+    document.getElementById('demo3-3').innerHTML = 'after a catch the chain is restored';
+}, (error) => {
+    document.getElementById('demo3-4').innerHTML = 'Note fire due to catch';
+})
+
+// ===========================
+
+// 4. ========================
+var p4 = new Promise( function ( resolve, reject) {
+    throw new Error('Uh-oh!');
+});
+
+p4.catch((error) => {
+    console.log(error);
+    document.getElementById('demo4-1').innerHTML = error;
+})
+
+var p4_2 = new Promise((resolve, reject) => {
+    setTimeout(() =>{
+        throw new Error('async error!');
+    }, 1000);
+})
+
+p4_2.catch((error) => {
+    console.log(error);
+    document.getElementById('demo4-2').innerHTML = error;
+})
+
+var p4_3 = new Promise((resolve, reject) => {
+    resolve();
+    throw new Error('Silenced Exception!');
+});
+
+p4_3.catch((error) => {
+    console.log(error);
+    document.getElementById('demo4-3').innerHTML = error;
+})
+// ===========================
+
+// 5. ========================
+var p5_1 = Promise.resolve('calling next');
+
+var p5_2 = p5_1.catch((reason) => {
+    console.log("catch p5_1!");
+    console.log(reason);
+})
+
+p5_2.then((value) => {
+    console.log("next promise is fulfilled");
+    console.log(value);
+}, (reason) => {
+    console.log("next promise is rejected");
+    console.log(reason);
+})
 
 // ===========================
 </script>

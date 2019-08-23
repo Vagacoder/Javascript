@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Javascript finally()</title>
+    <style>
+    
+    </style>
+</head>
+
+<body>
+<h1>Javascript .finally()</h1>    
+<p>1) simple example </p>
+<pre>
+        let isLoading = true;
+
+        fetch(myRequest).then(() => {
+            var contentType = response.headers.get('content-type');
+            if (contentType && contentType.includes("application/json")){
+                return response.json();
+            }
+            throw new TypeError('Oops, we haven\'t got JSON!');
+        }).then((json) =>{ 
+            console.log(json.toString());
+        }).catch((error) =>{
+            console.log(error);
+        }).finally(() =>{isLoading = false;});
+
+</pre>
+
+
+</body>
+
+<script>
+let isLoading = true;
+
+fetch(myRequest).then(() => {
+    var contentType = response.headers.get('content-type');
+    if (contentType && contentType.includes("application/json")){
+        return response.json();
+    }
+    throw new TypeError('Oops, we haven\'t got JSON!');
+}).then((json) =>{ 
+    console.log(json.toString());
+}).catch((error) =>{
+    console.log(error);
+}).finally(() =>{isLoading = false;});
+</script>
+</html>
