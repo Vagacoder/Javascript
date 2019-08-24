@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Javascript Event Loop</title>
+    <style>
+    
+    </style>
+</head>
+<body>
+<h1>Javascript Event Loop</h1>
+
+<div>
+    <a href="https://medium.com/front-end-weekly/javascript-event-loop-explained-4cd26af121d4">Reference here</a>
+</div>
+<br/>
+<p>1) Example 1</p>
+<img style="height: 300px;" src="https://miro.medium.com/max/2120/1*64BQlpR00yfDKsXVv9lnIg.png" alt="JS event loop">
+<p>Fig 1. JS event loop</p>
+<pre>
+        function main() {
+            console.log('A');
+            setTimeout(
+                function exec() {
+                    console.log('B');
+                }, 0
+            );
+            console.log('C');
+        }
+        
+        main();
+</pre>
+<p>2. setTimeout() with callback exec() and 0ms wait time is pushed into the call stack and execution starts.  </p>
+<p>3. console.log(‘C’) is pushed to the stack while the timer runs in the browser for the callback to the exec() function.</p>
+<p>4. For the browser to push any message from the queue to the call stack, the call stack has to be empty first.</p>
+<p><b>That is why</b> even though the delay provided in the setTimeout() was 0 
+    seconds, the callback to exec() has to wait till the execution of all the 
+    frames in the call stack is complete.</p>
+
+<p>2) Example 2</p>
+<img style="height: 400px;" src="https://miro.medium.com/max/400/1*RuCaP1t09YaF7wfernuLWA.png" alt="while loope for N seconds">
+<p>Fig 2. While loop for N seconds</p>
+<p><b>Note: </b>while loop (like many others) is a blocking statement meaning its execution happens
+     on the call stack and does not use the browser APIs.</p>
+<pre>
+        function whileLooPForNSeconds(sec){
+            let start = Date.now();
+            let now = start;
+            while (now - start < (sec * 1000)){
+                now = Date.now()
+            }
+        }
+</pre>
+
+</body>
+
+<script>
+// 1. ========================
+function main() {
+    console.log('A');
+    setTimeout(
+        function exec() {
+            console.log('B');
+        }, 0
+    );
+    console.log('C');
+}
+
+main();
+// =============================
+
+// 2. ==========================
+
+function whileLooPForNSeconds(sec){
+    let start = Date.now();
+    let now = start;
+    while (now - start < (sec * 1000)){
+        now = Date.now()
+    }
+}
+
+
+// ==============================
+
+</script>
+
+
+</html>
