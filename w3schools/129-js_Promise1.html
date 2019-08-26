@@ -149,6 +149,24 @@
         })
     </pre>
 
+    <!-- 7. -->
+    <p>7. Timing of then()</p>
+    <p>To avoid surprises, functions passed to then() will never be called synchronously,
+         even with an already-resolved promise:</p>
+    <p>Instead of running immediately, the passed-in function is put on a microtask queue, 
+        which means it runs later when the queue is emptied at the end of the current run
+         of the JavaScript event loop,</p>
+    <pre>
+            const wait = (ms) => {
+                return new Promise(resolve => setTimeout(resolve, ms));
+            };
+        
+            wait().then(() => console.log('7-4'));
+            Promise.resolve().then(() => {console.log('7-2')})
+            .then(() =>{console.log('7-3');});
+            console.log('#7 start ....');
+            console.log('7-1');
+    </pre>
 </body>
 
 <script>
@@ -286,11 +304,23 @@
         }).then(function (string) {
             console.log("Last then")
             console.log(string);
-        })
-
+        });
 
     // ====================
 
+    // 7. ==================
+
+    const wait = (ms) => {
+        return new Promise(resolve => setTimeout(resolve, ms));
+    };
+
+    wait().then(() => console.log('7-4'));
+    Promise.resolve().then(() => {console.log('7-2')})
+    .then(() =>{console.log('7-3');});
+    console.log('#7 start ....');
+    console.log('7-1');
+
+    // ========================
 
 
 </script>

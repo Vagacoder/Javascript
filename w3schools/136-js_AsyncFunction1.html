@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Javascript Async function</title>
+    <style>
+    
+    </style>
+</head>
+<body>
+<h1>Javascript Async Functions</h1>
+<p>1) Compare async and sync calling</p>
+<pre>
+    const resolveAfter2Seconds = () => {
+        return new Promise((resolve) => {
+            setTimeout(()=>{
+                resolve('resolve');
+            }, 2000);
+        });
+    }
+    
+    const asyncCall = async () => {
+        console.log('async calling start ...');
+        let result = await resolveAfter2Seconds();
+        console.log(result);
+        console.log('async calling end ...');
+    }
+    
+    const syncCall = () => {
+        console.log('sync calling start ...');
+        let result = resolveAfter2Seconds();
+        console.log(result);
+        console.log('sync calling end ...');
+    }
+    
+    syncCall();
+    
+    asyncCall();
+</pre>
+<p><b>Note: </b>check the console to see the results.</p>
+
+</body>
+
+<script>
+// 1. ==================
+const resolveAfter2Seconds = () => {
+    return new Promise((resolve) => {
+        setTimeout(()=>{
+            resolve('resolve');
+        }, 2000);
+    });
+}
+
+const asyncCall = async () => {
+    console.log('async calling start ...');
+    let result = await resolveAfter2Seconds();
+    console.log(result);
+    console.log('async calling end ...');
+}
+
+const syncCall = () => {
+    console.log('sync calling start ...');
+    let result = resolveAfter2Seconds();
+    console.log(result);
+    console.log('sync calling end ...');
+}
+
+syncCall();
+
+asyncCall();
+
+// ======================
+
+</script>
+</html>
