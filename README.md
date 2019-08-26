@@ -14,6 +14,7 @@ Study Bootstrap4
 1) tutorial at w3schools.com
 
 Study Typescript
-1) Typescript in 5 minutes
+1) Typescript official tutorial and handbook at www.typescriptlang.org
+
 
 
