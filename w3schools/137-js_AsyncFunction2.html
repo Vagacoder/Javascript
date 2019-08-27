@@ -17,7 +17,7 @@
 <p>1.1 sequential async, excute and wait for one by one</p>
 <pre>
         var sequentialStart = async () =>{
-            console.log(" === Squential Start === ");
+            console.log(" === 1. Squential Start === ");
         
             const slow = await resolveAfter2Seconds();
             console.log(slow);
@@ -31,7 +31,7 @@
 <p><b>Note: </b>slow ends later, but it's called first, so that result is presented first.</p>
 <pre>
         var concurrentStart = async () => {
-            console.log(" === Concurrent Start with await === ");
+            console.log(" === 2. Concurrent Start with await === ");
             const slow = resolveAfter2Seconds();
             const fast = resolveAfter1Seconds();
         
@@ -41,6 +41,42 @@
 </pre>
 
 <p>1.3 start at same time. </p>
+<p>using return Promise.all()</p>
+<p><b>key</b> is <b>return Promise.....</b>, without it, no error is caught.</p>
+<pre>
+    var concurrentPromise = () => {
+        console.log(" === 3. Concurrent Start with Promise.all === ");
+    
+        return Promise.all([
+            (async () => {console.log(await resolveAfter2Seconds())})(),
+            (async () => {console.log(await resolveAfter1Seconds())})()
+        ]);
+    };
+</pre>
+<p>using await Promise.all()</p>
+<p><b>key</b> is <b>await Promise.....</b>, without it, no error is caught.</p>
+<pre>
+    var parallel = async () => {
+        console.log(" ==== 4. Parallel with await Promise.all === ");
+    
+        await Promise.all([
+           (async () => {console.log(await resolveAfter2Seconds())})(),
+           (async () => {console.log(await resolveAfter1Seconds())})()
+        ]);
+    };
+    
+</pre>
+<p>This one does not handle errors at all!</p>
+<p>No async, await or return</p>
+<pre>
+    var parallelPromise = () =>{
+        console.log(" === 5. Paralle with Promise.then === ");
+        resolveAfter2Seconds().then((message) => {console.log(message);});
+        resolveAfter1Seconds().then((message) => {console.log(message);});
+    };
+</pre>
+
+
 </body>
 <script>
 var resolveAfter2Seconds = () => {
@@ -64,7 +100,7 @@ var resolveAfter1Seconds = () => {
 };
 
 var sequentialStart = async () =>{
-    console.log(" === Squential Start === ");
+    console.log(" === 1. Squential Start === ");
 
     const slow = await resolveAfter2Seconds();
     console.log(slow);
@@ -74,7 +110,7 @@ var sequentialStart = async () =>{
 };
 
 var concurrentStart = async () => {
-    console.log(" === Concurrent Start with await === ");
+    console.log(" === 2. Concurrent Start with await === ");
     const slow = resolveAfter2Seconds();
     const fast = resolveAfter1Seconds();
 
@@ -83,7 +119,7 @@ var concurrentStart = async () => {
 };
 
 var concurrentPromise = () => {
-    console.log(" === Concurrent Start with Promise.all === ");
+    console.log(" === 3. Concurrent Start with Promise.all === ");
 
     return Promise.all([
         (async () => {console.log(await resolveAfter2Seconds())})(),
@@ -92,7 +128,7 @@ var concurrentPromise = () => {
 };
 
 var parallel = async () => {
-    console.log(" ==== Parallel with await Promise.all === ");
+    console.log(" ==== 4. Parallel with await Promise.all === ");
 
     await Promise.all([
        (async () => {console.log(await resolveAfter2Seconds())})(),
@@ -101,7 +137,7 @@ var parallel = async () => {
 };
 
 var parallelPromise = () =>{
-    console.log(" === Paralle with Promise.then === ");
+    console.log(" === 5. Paralle with Promise.then === ");
     resolveAfter2Seconds().then((message) => {console.log(message);});
     resolveAfter1Seconds().then((message) => {console.log(message);});
 };

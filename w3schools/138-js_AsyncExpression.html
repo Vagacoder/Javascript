@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Javascript Async Expression</title>
+    <style>
+    
+    </style>
+</head>
+<body>
+<h1>Javascript Async Expression</h1>
+<p>1) function name, which can be omitted in async function expressions
+     to create anonymous functions. </p>
+<p>An async function expression can be used as an IIFE (Immediately Invoked Function Expression)
+     which runs as soon as it is defined. </p>
+<pre>
+    function resolveAfter2Seconds(x) {
+        return new Promise(resolve => {
+            setTimeout(() => {
+                resolve(x);
+            }, 2000);
+        });
+    };
+    
+    var add = async function(x) {
+        var a = await resolveAfter2Seconds(20);
+        var b = await resolveAfter2Seconds(30);
+        return x + a + b;
+    };
+    
+    add(10).then(value => {
+        console.log(value); // prints 60 after 4 seconds.
+    });
+    
+    (async function(x){
+        var p_a = resolveAfter2Seconds(7);
+        var p_b = resolveAfter2Seconds(9);
+        return x + await p_a + await p_b;
+    })(10).then(value => {
+        console.log(value); // prints 26 after 2 seconds.
+    });
+</pre>
+
+</body>
+<script>
+// 1. =================
+function resolveAfter2Seconds(x) {
+    return new Promise(resolve => {
+        setTimeout(() => {
+            resolve(x);
+        }, 2000);
+    });
+};
+
+var add = async function(x) {
+    var a = await resolveAfter2Seconds(20);
+    var b = await resolveAfter2Seconds(30);
+    return x + a + b;
+};
+
+add(10).then(value => {
+    console.log(value); // prints 60 after 4 seconds.
+});
+
+(async function(x){
+    var p_a = resolveAfter2Seconds(7);
+    var p_b = resolveAfter2Seconds(9);
+    return x + await p_a + await p_b;
+})(10).then(value => {
+    console.log(value); // prints 26 after 2 seconds.
+});
+
+// ====================
+
+</script>
+
+</html>
