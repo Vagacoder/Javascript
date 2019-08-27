@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Javascript Async XMLHttprequest</title>
+    <style>
+    
+    </style>
+</head>
+<body>
+<h1>Javascript Async XMLHttprequest</h1>
+<p>1) a manual written XHR to read a json file</p>
+<pre>
+
+</pre>
+<p id='demo1'>demo1, response goes here</p>
+<p id='demo2'>demo2, error goes here</p>
+
+</body>
+<script>
+/* This is a mauanl function of get() to fetch data using 
+XMLHttprequest.
+@para url: url of data to fetch
+@return promise: a promise
+ */
+
+function get(url) {
+    // return a new promise
+    return new Promise((resolve, reject) => {
+        // using XHR
+        var req= new XMLHttpRequest();
+        req.open('GET', url);
+
+        // onload property fires when an XHR completes successfully
+        req.onload = () => {
+            // note this is called even 404, so that need check status
+            if (req.status == 200){
+                resolve(req.response);
+            } else {
+                reject(Error(req.statusText));
+            }
+        };
+        // onerror property fires when an XHR encounters an error.
+        req.onerror = () =>{
+            reject(Error('Network Error'));
+        };
+        // 
+        req.send();
+    });
+};
+
+get('./json/story.json').then((response)=> {
+    document.getElementById('demo1').innerHTML = response;
+}, (error) =>{
+    document.getElementById('demo2').innerHTML = error;
+})
+</script>
+</html>
