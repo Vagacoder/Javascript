@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Javascript Async Function 2</title>
+    <style>
+    
+    </style>
+</head>
+<body>
+<h1>Javascript Async Function</h1>
+<p>1) A simple example</p>
+<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function#Simple_example">Reference here</a>
+<br>
+<p>1.1 sequential async, excute and wait for one by one</p>
+<pre>
+        var sequentialStart = async () =>{
+            console.log(" === Squential Start === ");
+        
+            const slow = await resolveAfter2Seconds();
+            console.log(slow);
+        
+            const fast = await resolveAfter1Seconds();
+            console.log(fast);
+        };
+</pre>
+
+<p>1.2 start one by one, present result one by one </p>
+<p><b>Note: </b>slow ends later, but it's called first, so that result is presented first.</p>
+<pre>
+        var concurrentStart = async () => {
+            console.log(" === Concurrent Start with await === ");
+            const slow = resolveAfter2Seconds();
+            const fast = resolveAfter1Seconds();
+        
+            console.log(await slow);
+            console.log(await fast);
+        };
+</pre>
+
+<p>1.3 start at same time. </p>
+</body>
+<script>
+var resolveAfter2Seconds = () => {
+    console.log("starting slow promise...");
+    return new Promise(resolve => {
+        setTimeout(() => {
+            resolve("slow");
+            console.log("slow promise is done.");
+        }, 2000);
+    });
+};
+
+var resolveAfter1Seconds = () => {
+    console.log("starting fast promise...");
+    return new Promise(resolve => {
+        setTimeout(() => {
+            resolve("fast");
+            console.log("fast promise is done.");
+        }, 1000);
+    });
+};
+
+var sequentialStart = async () =>{
+    console.log(" === Squential Start === ");
+
+    const slow = await resolveAfter2Seconds();
+    console.log(slow);
+
+    const fast = await resolveAfter1Seconds();
+    console.log(fast);
+};
+
+var concurrentStart = async () => {
+    console.log(" === Concurrent Start with await === ");
+    const slow = resolveAfter2Seconds();
+    const fast = resolveAfter1Seconds();
+
+    console.log(await slow);
+    console.log(await fast);
+};
+
+var concurrentPromise = () => {
+    console.log(" === Concurrent Start with Promise.all === ");
+
+    return Promise.all([
+        (async () => {console.log(await resolveAfter2Seconds())})(),
+        (async () => {console.log(await resolveAfter1Seconds())})()
+    ]);
+};
+
+var parallel = async () => {
+    console.log(" ==== Parallel with await Promise.all === ");
+
+    await Promise.all([
+       (async () => {console.log(await resolveAfter2Seconds())})(),
+       (async () => {console.log(await resolveAfter1Seconds())})()
+    ]);
+};
+
+var parallelPromise = () =>{
+    console.log(" === Paralle with Promise.then === ");
+    resolveAfter2Seconds().then((message) => {console.log(message);});
+    resolveAfter1Seconds().then((message) => {console.log(message);});
+};
+
+sequentialStart();
+
+setTimeout(concurrentStart, 4000);
+
+setTimeout(concurrentPromise, 7000);
+
+setTimeout(parallel, 10000);
+
+setTimeout(parallelPromise, 13000);
+
+</script>
+</html>
