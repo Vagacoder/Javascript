@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Javascript Promise: get Url</title>
+    <style>
+    </style>
+</head>
+<body>
+<h1>Javascript Promise Example: get Url</h1>
+<p>1) test get()</p>
+<div id="demo1">demo1 is here</div>
+
+</body>
+<script>
+function get(url){
+    return new Promise((resolve, reject)=>{
+        var req = new XMLHttpRequest();
+        req.open('GET',url);
+
+        req.onload = () => {
+            if (req.readyState == 4 && req.status == 200){
+                resolve(req.response);
+            }else{
+                reject(Error(req.statusText));
+            }
+        };
+
+        req.onerror = ()=>{
+            console.log(req.status);
+            reject(Error("Network Error"));
+        };
+
+        req.send();
+    }
+    );
+}
+
+// get('http://www.google.com')
+get('./js/ajax_info.txt')
+.then((resolve)=>{
+    console.log(resolve);
+    document.getElementById('demo1').innerHTML = resolve;
+}, (reject) => {
+    console.log(reject);
+    document.getElementById('demo1').innerHTML = reject;
+}
+);
+
+</script>
+</html>
