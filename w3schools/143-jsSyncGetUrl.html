@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Javascript Sync Get Url</title>
+</head>
+<body>
+<div class="network-fake">
+    <label><input type="checkbox">Fake network delay</label>
+</div>
+<div class="story"></div>
+<svg class="spinner" viewBox="0 0 100 100" width="20" height="20">
+    <circle cx="50" cy="50" r="42" transform="rotate(-90, 50,50)"></circle>
+</svg>
+
+</body>
+<script>
+var fakeSlowNetwork;
+
+(function() {
+  var lsKey = 'fake-slow-network';
+  var networkFakeDiv = document.querySelector('.network-fake');
+  var checkbox = networkFakeDiv.querySelector('input');
+
+  fakeSlowNetwork = Number(localStorage.getItem(lsKey)) || 0;
+
+  networkFakeDiv.style.display = 'block';
+  checkbox.checked = !!fakeSlowNetwork;
+
+  checkbox.addEventListener('change', function() {
+    localStorage.setItem(lsKey, Number(checkbox.checked));
+    location.reload();
+  });
+}());
+
+function wait(ms){
+    return new Promise((resolve) => {
+        setTimeout(resolve, ms);
+    })
+}
+
+function get(url){
+    var fakeNetWorkWait = wait(3000 * Math.random() * fakeSlowNetWork);
+
+    var requestPromise = new Promise((resolve, reject)=>{
+        var req = new XMLHttpRequest();
+        req.open('get', url);
+
+        req.onload = ()=>{
+            if (req.status == 200){
+                resolve(req.response);
+            } else {
+                reject(Error(req.response));
+            }
+        };
+        
+        req.onerror = () =>{
+            reject(Error("network error"));
+        };
+
+        req.send();
+    });
+
+    return Promise.all([fakeNetWorkWait, requestPromise]).then((result)=>result[1]);
+}
+
+
+function getJson(url){
+    return get(url).then(JSON.parse);
+}
+
+function getSync(url){
+    var startTime = Date.now();
+    var waitTime = 3000 * Math.random() * fakeSlowNetwork;
+
+    var req = new XMLHttpRequest();
+    req.open('get', url, false);
+    req.send();
+
+    while (waitTime > Date.now() - startTime);
+
+    if (req.status == 200){
+        return req.response;
+    } else {
+        throw Error(req.statusText || "Request failed");
+    }
+}
+
+function getJsonSync(url){
+    return JSON.parse(getSync(url));
+}
+
+var storyDiv = document.querySelector('.story');
+
+function addHtmlToPage(content){
+    var div = document.createElement('div');
+    div.innerHTML = content;
+    storyDiv.appendChild(div);
+}
+
+function addTextToPage(content){
+    var p = document.createElement('p');
+    p.textContent= content;
+    storyDiv.appendChild(p);
+}
+
+
+try{
+    var story = getJsonSync('./json/story1.json');
+    addHtmlToPage(story.heading);
+
+    story.chapterUrls.forEach((chapterUrl)=>{
+        var chapter = getJsonSync(chapterUrl);
+        addHtmlToPage(chapter.html);
+    });
+
+    addTextToPage("All done");
+}
+catch(error){
+    addTextToPage("Ahh, " + error.message);
+}
+
+</script>
+</html>
