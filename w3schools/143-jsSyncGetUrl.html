@@ -17,6 +17,8 @@
 
 </body>
 <script>
+
+// set up Fake network delay
 var fakeSlowNetwork;
 
 (function() {
@@ -35,12 +37,15 @@ var fakeSlowNetwork;
   });
 }());
 
+// a simple function to delay resolve for n milliseconds
 function wait(ms){
     return new Promise((resolve) => {
         setTimeout(resolve, ms);
     })
 }
 
+
+// get url, it does not work for local files
 function get(url){
     var fakeNetWorkWait = wait(3000 * Math.random() * fakeSlowNetWork);
 
@@ -66,11 +71,12 @@ function get(url){
     return Promise.all([fakeNetWorkWait, requestPromise]).then((result)=>result[1]);
 }
 
-
+// get JSON from url, it does not work for local files
 function getJson(url){
     return get(url).then(JSON.parse);
 }
 
+// get url function, synchronouse version
 function getSync(url){
     var startTime = Date.now();
     var waitTime = 3000 * Math.random() * fakeSlowNetwork;
@@ -79,6 +85,7 @@ function getSync(url){
     req.open('get', url, false);
     req.send();
 
+    // this is synchronouse version wait()
     while (waitTime > Date.now() - startTime);
 
     if (req.status == 200){
@@ -88,25 +95,28 @@ function getSync(url){
     }
 }
 
+// get JSON from url, synchronouse version
 function getJsonSync(url){
     return JSON.parse(getSync(url));
 }
 
 var storyDiv = document.querySelector('.story');
 
+// add text to a div tag on web page
 function addHtmlToPage(content){
     var div = document.createElement('div');
     div.innerHTML = content;
     storyDiv.appendChild(div);
 }
 
+// add text to a p tag on web page
 function addTextToPage(content){
     var p = document.createElement('p');
     p.textContent= content;
     storyDiv.appendChild(p);
 }
 
-
+// get JSON files, no promise 
 try{
     var story = getJsonSync('./json/story1.json');
     addHtmlToPage(story.heading);
