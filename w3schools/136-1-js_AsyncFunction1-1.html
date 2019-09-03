@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Javascript Async function</title>
+    <style>
+    </style>
+</head>
+
+<body>
+    <h1>avascript Async function</h1>
+    <p>1) </p>
+
+
+</body>
+<script>
+    // 1. sync, not get async result ===
+    const resolveAfter2Seconds = () => {
+        return setTimeout(() => {
+            return 'resolve';
+        }, 1000);
+    };
+
+    console.log("Start 1 ...");
+    console.log(resolveAfter2Seconds());  // this returns a timeout handler id
+
+    // =====================
+
+    // 2. pass callback to get async result ====
+    const resolveAfter2Seconds1 = (callback) => {
+        return setTimeout(() => {
+            var result = 'resolve';
+            callback(result);
+        }, 1000);
+    };
+    console.log("Start 2 ...");
+    console.log(resolveAfter2Seconds1((res) => {  // this console.log returns a timeout handler id
+        console.log(res);                        // this console.log returns a result
+    })
+    );
+
+    // =====================
+
+    //
+</script>
+
+</html>
