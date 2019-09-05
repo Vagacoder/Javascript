@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Javascript Old School Way to handle Async</title>
+    <style></style>
+</head>
+<body>
+<h1>Old way to handle async chaining calls</h1>
+<p>1) <b>Code</b></p>
+<pre>
+    const getCurrentTime = (onSuccess, onFail) => {
+        return setTimeout( () => {
+            var checkSuccess = Math.random() >= 0.5;
+            console.log(checkSuccess);
+            if (checkSuccess) {
+                var currentTime = new Date();
+                onSuccess(currentTime);
+            } else {
+                onFail('Error!');
+            }
+        }, 1000);
+    };
+    
+    getCurrentTime((time) =>{
+        getCurrentTime((newTime) =>{
+            console.log('Time is ' + newTime);
+        }, (newError) => {
+            console.log('New error');
+        });
+    }, (error) => {
+        console.log(error);
+    });
+</pre>
+
+<p>2) <b>Flow chart</b></p>
+<pre>
+getCurrentTime#1(getCurrentTime#2,  errorHandler#1 )
+    |
+    &#x21B3; checkSuccess
+       console.log(check random #1)
+            |
+            &#x21B3; success: getCurrentTime#2(displayTime,  errorHandler#2)
+            |       |
+            |       &#x21B3; checkSuccess
+            |          console.log(check random #2)
+            |               |
+            |               &#x21B3; success: displayTime
+            |               |
+            |               &#x21B3; error: errorHandler#2 'New Error!'
+            |
+            &#x21B3; error: errorHandler#1 'Error!'
+</pre>
+</body>
+<script>
+const getCurrentTime = (onSuccess, onFail) => {
+    return setTimeout( () => {
+        var checkSuccess = Math.random() >= 0.5;
+        console.log(checkSuccess);
+        if (checkSuccess) {
+            var currentTime = new Date();
+            onSuccess(currentTime);
+        } else {
+            onFail('Error!');
+        }
+    }, 1000);
+};
+
+getCurrentTime((time) =>{
+    getCurrentTime((newTime) =>{
+        console.log('Time is ' + newTime);
+    }, (newError) => {
+        console.log('New error');
+    });
+}, (error) => {
+    console.log(error);
+});
+
+</script>
+
+</html>
