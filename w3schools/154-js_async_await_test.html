@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Test Async/await functions</title>
+    <style>
+    </style>
+</head>
+<body>
+<h1>Javascript Test Async/await functions</h1>
+<p>1) wait in sequentail</p>
+<pre>
+    async function series(){
+        console.log("start series ...");
+        await wait(2000);
+        await wait(2000);
+        console.log("end series ...");
+    }
+</pre>
+<button onclick="series()">Series</button>
+
+<p>2) await in parallel</p>
+<pre>
+    async function parallel(){
+        console.log('start parallel ...');
+        const wait1 = wait(2000);
+        const wait2 = wait(2000);
+        await wait1;
+        await wait2;
+        console.log('end parallel ...');
+    }
+</pre>
+<button onclick="parallel()">Parallel</button>
+
+<p>3) not a real parallel</p>
+<pre>
+    async function parallel2(){
+        console.log('start parallel ...');
+        const wait1 = await wait(2000);
+        const wait2 = await wait(2000);
+        console.log('end parallel ...');
+    }
+</pre>
+<button onclick="parallel2()">Not a real Parallel</button>
+</body>
+<script>
+function wait(ms) {
+  return new Promise(r => setTimeout(r, ms));
+}
+
+async function series(){
+    console.log("start series ...");
+    await wait(2000);
+    await wait(2000);
+    console.log("end series ...");
+}
+
+// when wait1 is assgined with wait(2000),
+// wait(2000) is called and executed. wait1 takes the return value of wait(2000)
+async function parallel(){
+    console.log('start parallel ...');
+    const wait1 = wait(2000);
+    const wait2 = wait(2000);
+    await wait1;
+    await wait2;
+    console.log('end parallel ...');
+}
+
+async function parallel2(){
+    console.log('start Not Real parallel ...');
+    const wait1 = await wait(2000);
+    const wait2 = await wait(2000);
+    console.log('end Not Real parallel ...');
+}
+</script>
+
+</html>
