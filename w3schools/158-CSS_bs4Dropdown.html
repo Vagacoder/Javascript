@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+  <!-- jQuery library -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <!-- Popper JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <!-- Latest compiled JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <title>Bootstrap4 Dropdown menu</title>
+  <style>
+  .dropleft{
+    float:right;
+  }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h1>Bootstrap4 Dropdown menu</h1>
+    <p>1) basic drop down menu with divider</p>
+    
+    <div class="dropdown">
+      <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+        Dropdown button
+      </button>
+      <div class="dropdown-menu">
+        <h6 class="dropdown-header">Dropdown menu header</h6>
+        <a class="dropdown-item" href="#">Link 1</a>
+        <a class="dropdown-item" href="#">Link 2</a>
+        <a class="dropdown-item disabled" href="#" >Link 3</a>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item" href="#">Another Link</a>
+        <h6 class="dropdown-header">Dropdown menu header</h6>
+      </div>
+    </div>
+
+    <p>2) Dropdown position</p>
+    <div class="dropdown dropright">
+      <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+        Drop right
+      </button>
+      <div class="dropdown-menu">
+        <a href="#" class="dropdown-item">Link 1</a>
+        <a href="#" class="dropdown-item">Link 2</a>
+      </div>
+    </div>
+    <div class="dropdown dropleft">
+        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+          Drop left
+        </button>
+        <div class="dropdown-menu">
+          <a href="#" class="dropdown-item">Link 1</a>
+          <a href="#" class="dropdown-item">Link 2</a>
+        </div>
+      </div>
+  
+    <p>3) dropup</p>
+    <div class="dropup">
+      <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+        Dropup button
+      </button>
+      <div class="dropdown-menu">
+        <a href="#" class="dropdown-item">Link 1</a>
+        <a href="#" class="dropdown-item">Link 2</a>
+      </div>
+    </div>
+  </div>
+
+</body>
+
+</html>
