@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <title>Bootstrap4 Collapse</title>
+    <style>
+
+    </style>
+</head>
+
+<body>
+<div class="container">
+<h1>Bootstrap5 Collapse</h1>
+<p>1) Simple collapsible button</p>
+<button type="button" class="btn btn-primary" 
+data-toggle="collapse" data-target="#demo">Simple collapse</button>
+<div id="demo" class="collapse">
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+    sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+</div>
+
+<hr>
+
+<p>2) simple collapsible link, and default is show</p>
+<a href="#demo1" data-toggle="collapse">Clikc to show/hide data</a>
+<div id="demo1" class="collapse show">
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+    sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+</div>
+
+<hr>
+
+<p>3) Accordion</p>
+<div id="accordion">
+    <div class="card">
+        <div class="card-header">
+            <a href="#collapse1" class="card-link" data-toggle="collapse">
+                Collapsible group item #1
+            </a>
+        </div>
+        <div id="collapse1" class="collapse show" data-parent="#accordion">
+            <div class="card-body">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+                sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-header">
+            <a href="#collapse2" class="card-link" data-toggle="collapse">
+                Collapsible group item #2
+            </a>
+        </div>
+        <div id="collapse2" class="collapse" data-parent="#accordion">
+            <div class="card-body">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+                sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-header">
+            <a href="#collapse3" class="card-link" data-toggle="collapse">
+                Collapsible group item #3
+            </a>
+        </div>
+        <div id="collapse3" class="collapse" data-parent="#accordion">
+            <div class="card-body">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+                sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+            </div>
+        </div>
+    </div>
+
+</div>
+
+</div>
+
+</body>
+<script>
+
+
+</script>
+
+
+</html>
