@@ -39,11 +39,89 @@
     <button type="submit" class="btn btn-primary">Submit</button>
 </form>
 
+<p>2) Inline form</p>
+<form action="" class="form-inline">
+    <label for="email">Email address: </label>
+    <input type="email" class="form-control" id="email">
+    <label for="pwd">Password: </label>
+    <input type="password" class="form-control" id="pwd">
+    <div class="form-check">
+        <label class="form-check-label">
+            <input type="checkbox" class="form-check-input">Remember me
+        </label>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
 
+<p>3) form validation using .was-validated</p>
+<form action="" class="was-validated">
+    <div class="form-group">
+        <label for="uname">Username: </label>
+        <input type="text" class="form-control" id="uname" placeholder="Enter username" name="uname" required>
+        <div class="valid-feedback">Valid.</div>
+        <div class="invalid-feedback">Please fill the username</div>
+    </div>
+    <div class="form-group">
+        <label for="pwd">Password: </label>
+        <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pswd" required>
+        <div class="valid-feedback">Valid.</div>
+        <div class="invalid-feedback">Please fill out password</div>
+    </div>
+    <div class="form-group form-check">
+        <label class="form-check-label">
+            <input type="checkbox" class="form-check-input" name="remember" required>
+            I agree on the user terms
+            <div class="valid-feedback">Valid.</div>
+            <div class="invalid-feedback">Check this box to continue</div>
+        </label>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
 
-
-
+<p>4) form validation using .need-validation</p>
+<form action="" class="needs-validation" novalidate>
+    <div class="form-group">
+        <label for="uname">Username: </label>
+        <input type="text" class="form-control" id="uname" placeholder="Enter username" name="uname" required>
+        <div class="valid-feedback">Valid</div>
+        <div class="invalid-feedback">Please fill username</div>
+    </div>
+    <div class="form-group">
+        <label for="pwd">Password: </label>
+        <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pswd" required>
+        <div class="valid-feedback">Valid</div>
+        <div class="invalid-feedback">Please fill the password</div>
+    </div>
+    <div class="form-group form-check">
+        <label class="form-check-label">
+            <input type="checkbox" class="form-check-input" name="remember" required>I agree on user terms
+            <div class="valid-feedback">Valid</div>
+            <div class="invalid-feedback">Check this box to continue</div>
+        </label>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+</form>
 </div>
     
 </body>
+<script>
+
+function formValidate(){
+    'use strict';
+    window.addEventListener('load', function(){
+        var forms= document.getElementsByClassName('needs-validation');
+        var validation = Array.prototype.filter.call(forms, function(form){
+            form.addEventListener('submit', function(event){
+                if(form.checkValidity()===false){
+                    event.preventDefault();
+                    event.stopPropagation();
+                }
+                form.classList.add('was-validated');
+            }, false);
+        });
+    }, false);
+};
+
+formValidate();
+</script>
 </html>
