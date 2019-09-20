@@ -1,0 +1,25 @@
+.container {
+	border: 3px solid black;
+	display: flex;
+	padding: 5px;
+}
+
+.left {
+	flex: 1;
+	border: 1px solid red;
+	padding: 5px;
+	margin: 5px;
+}
+
+.right {
+	flex: 1;
+	border: 1px solid green;
+	padding: 5px;
+	margin: 5px;
+}
+
+.text {
+	border: 1px solid violet;
+	padding: 5px;
+	margin: 5px;
+}	
