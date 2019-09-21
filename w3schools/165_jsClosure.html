@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>JavaScript Closure</title>
+    <style>
+    
+    </style>
+</head>
+<body>
+<h1>JavaScript Closure</h1>
+<p>1) In JavaScript, whenever you declare a function inside another function, 
+    the inside function(s) is/are recreated again 
+    each time the outside function is called.</p>
+
+<p>2) </p>
+
+<b>Summary</b>
+<ul>
+<li>Whenever you use <b>function</b> inside another <b>function</b>, a closure is used.</li>
+<li>Whenever you use <b>eval()</b> inside a function, a closure is used. 
+    The text you eval can reference local variables of the function, 
+    and within eval you can even create new local variables by using eval('var foo = …')</li>
+<li>When you use <b>new Function(…)</b> (the Function constructor) inside a function, 
+    <b>it does not create a closure.</b> (The new function cannot reference the local variables 
+    of the outer function.)</li>
+<li>A closure in JavaScript is like keeping a copy of all the local variables, 
+    just as they were when a function exited.</li>
+<li>It is probably best to think that a closure is always created just an entry to a function,
+     and the local variables are added to that closure.</li>
+<li>A new set of local variables is kept every time a function with a closure is called 
+    (given that the function contains a function declaration inside it, 
+    and a reference to that inside function is either returned or an external reference 
+    is kept for it in some way).</li>
+<li>Two functions might look like they have the same source text, 
+    but have completely different behavior because of <b>their 'hidden' closure</b>. 
+    I don't think JavaScript code can actually find out if a function reference 
+    has a closure or not.</li>
+<li>It is possible to get function declarations within function declarations 
+    within functions… and you can get closures at more than one level.</li>
+</ul>
+</body>
+<script>
+// 1. ====================
+console.log('1.======')
+var showNumber, increaseNumber, setNumber;
+
+function setupNumber () {
+    var num = 42;
+
+    showNumber = ()=> {console.log(num)};
+    increaseNumber = () => {num++};
+    setNumber = (x) => {num = x};
+}
+
+setupNumber();
+showNumber();
+increaseNumber();
+showNumber();
+setNumber(5);
+showNumber();
+
+var oldNumber = showNumber;
+oldNumber();
+
+setupNumber();
+showNumber();
+oldNumber();
+
+// 2. ====================
+console.log('2.======');
+function sayHello(){
+    var say = function(message){
+        console.log(message);
+    };
+    var hello = "Hello";
+    return say(hello);
+}
+
+sayHello();
+
+function sayMorning() {
+    var say = function(){
+        console.log(morning);
+    };
+    var morning = "morning";
+    return say;
+}
+
+sayMorning()();
+
+// 3. =======================
+console.log('3. ======');
+console.log('3.1 ===');
+
+function buildList(list) {
+    var result = [];
+    for (var i=0; i<list.length; i++){
+        var item = 'item' + i;
+        result.push( function(){console.log(item + '' + list[i])});
+    }
+    return result;
+}
+
+function testList(){
+    var fnlist = buildList([1, 2, 3]);
+    for (var j = 0; j< fnlist.length; j++){
+        fnlist[j]();
+    }
+}
+testList();
+
+console.log('3.2 ==')
+function buildList1(list) {
+    var result = [];
+    for (var i=0; i<list.length; i++){
+        let item = 'item' + i;
+        result.push( function(){console.log(item + '' + list[i])});
+    }
+    return result;
+}
+
+function testList1(){
+    var fnlist = buildList1([1, 2, 3]);
+    for (var j = 0; j< fnlist.length; j++){
+        fnlist[j]();
+    }
+}
+testList1();
+
+console.log('3.3 ==')
+function buildList2(list) {
+    var result = [];
+    for (let i=0; i<list.length; i++){
+        let item = 'item' + i;
+        result.push( function(){console.log(item + '' + list[i])});
+    }
+    return result;
+}
+
+function testList2(){
+    var fnlist = buildList2([1, 2, 3]);
+    for (var j = 0; j< fnlist.length; j++){
+        fnlist[j]();
+    }
+}
+testList2();
+
+// 4. =========
+console.log('4. ======');
+function newClosure(num, ref){
+    var n = num;
+    var arr = [1, 2, 3 ];
+    var r = ref;
+    return function(a) {
+        n += a;
+        arr.push(n);
+        console.log(`n: ${n}, arr: ${arr}, r.value: ${r.value}`);
+    }
+}
+
+var foo = {value: 'old value'};
+var bar1 = newClosure(4, foo);
+var bar2 = newClosure(5, foo);
+bar1(1);
+bar2(1);
+foo.value = "new value";
+bar1(10);
+bar2(10);
+
+
+</script>
+</html>
