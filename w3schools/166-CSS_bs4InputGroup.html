@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+    <title>Bootstrap4 Input Group</title>
+    <style>
+    
+    </style>
+</head>
+<body>
+<h1>Bootstrap4 Input Group</h1>
+<p>1) Input Groups</p>
+<form>
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+            <span class="input-group-text">@</span>
+        </div>
+        <input type="text" class="form-control" placeholder="Username">
+    </div>
+
+    <div class="input-group mb-3">
+        <input type="text" class="form-control" placeholder="Your Email">
+        <div class="input-group-append">
+            <span class="input-group-text">@example.com</span>
+        </div>
+    </div>
+</form>
+
+<p>2) Input size</p>
+<form>
+    <div class="input-group mb-3 input-group-sm">
+        <div class="input-group-prepend">
+            <span class="input-group-text">Small</span>
+        </div>
+        <input type="text" class="form-control">
+    </div>
+</form>
+<form>
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+            <span class="input-group-text">Default</span>
+        </div>
+        <input type="text" class="form-control">
+    </div>
+</form>
+
+<p>3) Multiple inputs and helpers</p>
+<form action="">
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+            <span class="input-group-text">Person</span>
+        </div>
+        <input type="text" class="form-control" placeholder="First Name">
+        <input type="text" class="form-control" placeholder="Last Name"> 
+    </div>
+</form>
+<form action="">
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+            <span class="input-group-text">One</span>
+            <span class="input-group-text">Two</span>
+            <span class="input-group-text">Three</span>
+        </div>
+        <input type="text" class="form-control">
+    </div>
+</form>
+
+<p>4) Input group wit checkbox and radio button</p>
+<div class="input-group mb-3">
+    <div class="input-group-prepend">
+        <div class="input-group-text">
+            <input type="checkbox">
+        </div>
+    </div>
+    <input type="text" class="form-control" placeholder="Some text">
+</div>
+
+<div class="input-group mb-3">
+    <div class="input-group-prepend">
+        <div class="input-group-text">
+            <input type="radio">
+        </div>
+    </div>
+    <input type="text" class="form-control" placeholder="Some text">
+    <div class="input-group-prepend">
+            <div class="input-group-text">
+                <input type="radio">
+            </div>
+        </div>
+    <input type="text" class="form-control" placeholder="Some text">
+    <div class="input-group-prepend">
+            <div class="input-group-text">
+                <input type="radio">
+            </div>
+        </div>
+    <input type="text" class="form-control" placeholder="Some text">
+</div>
+
+<p>5) input group buttons</p>
+<div class="input-group mb-3">
+    <div class="input-group-prepend">
+        <button class="btn btn-outline-primary" type="button">Basic Button</button>
+    </div>
+    <input type="text" class="form-control" placeholder="some text">
+</div>
+
+<div class="input-group mb-3">
+    <input type="text" class="form-control" placeholder="Search">
+    <div class="input-group-append">
+        <button class="btn btn-success" type="submit">Go</button>
+    </div>
+</div>
+
+<div class="input-group mb-3">
+    <input type="text" class="fomr-control" placeholder="Something">
+    <div class="input-group-append">
+        <button class="btn btn-primary" type="button">Ok</button>
+        <button class="btn btn-danger" type="button">Cancel</button>
+    </div>
+</div>
+
+<p>6) input group with dropdown button</p>
+<div class="input-group mb-3 mt-3">
+    <div class="input-group-prepend">
+        <button type="button" class="btn btn-outline-secondary dropdown-toggle" data-toggle="dropdown" >
+            Dropdown button
+        </button>
+        <div class="dropdown-menu">
+            <a href="#" class="dropdown-item">Link 1</a>
+            <a href="#" class="dropdown-item">Link 2</a>
+            <a href="#" class="dropdown-item">Link 3</a>
+        </div>
+    </div>
+    <input type="text" class="form-control" placeholder="Username">
+</div>
+
+<p>7) input group label</p>
+<label for="demo">Write your email here: </label>
+<div class="input-group mb-3">
+    <input type="text" class="form-control" placeholder="Email" id="demo" name="email">
+    <div class="input-group-append">
+        <span class="input-group-text">@example.com</span>
+    </div>
+</div>
+</body>
+<script>
+
+
+
+</script>
+
+</html>
