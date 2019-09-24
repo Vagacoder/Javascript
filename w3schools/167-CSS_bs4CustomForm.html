@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    
+    <title>Bootstrap4 Custom Forms</title>
+    <style>
+    </style>
+</head>
+<body>
+<h1>Bootstrap4 Custom Forms</h1>
+<p>1) custom checkbox</p>
+<form action="">
+    <div class="custom-control custom-checkbox">
+        <input type="checkbox" class="custom-control-input" id="customcheck" name="example1">
+        <label for="customcheck" class="custom-control-label">Check this custom checkbox</label>
+    </div>
+</form>
+
+<p>2) custom switch</p>
+<form>
+    <div class="custom-control custom-switch">
+        <input type="checkbox" class="custom-control-input" id="switch1">
+        <label for="switch1" class="custom-control-label">Toggle me</label>
+    </div>
+</form>
+
+<p>3) custom radio</p>
+<form action="">
+    <div class="custom-control custom-radio">
+    <input type="radio" class="custom-control-input" id="customRadio" name="example2" value="customEx">
+    <label for="customRadio" class="custom-control-label" >Custom radio</label>
+    </div>
+</form>
+
+<p>4) inline custom form control</p>
+<form action="">
+    <div class="custom-control custom-radio custom-control-inline">
+        <input type="radio" class="custom-control-input" id="customRadio1" name="example3" value='customEx1'>
+        <label for="customRadio1" class="custom-control-label">C radio 1</label>
+    </div>
+    <div class="custom-control custom-radio custom-control-inline">
+        <input type="radio" class="custom-control-input" id="customRadio1" name="example3" value='customEx1'>
+        <label for="customRadio1" class="custom-control-label">C radio 2</label>
+    </div>
+</form>
+
+<p>5) custom select menu</p>
+<form action="">
+    <select name="cars" class="custom-select" id="">
+        <option selected>Custom select menu</option>
+        <option value="volvo">Volvo</option>
+        <option value="fiat">Fiat</option>
+        <option value="audi">Audi</option>
+    </select>
+</form>
+
+<p>6) Custom range</p>
+<form action="">
+    <label for="customRange">Custom range</label>
+    <input type="range" class="custom-range" id="customRange" name="points1"> 
+</form>
+
+<p>7) custom file upload</p>
+<form action="">
+    <div class="custom-file">
+        <input type="file" class="custom-file-input" id="customFile">
+        <label for="customFile" class="custom-file-label">Choose a file</label>
+    </div>
+</form>
+
+</body>
+<script>
+
+</script>
+</html>
