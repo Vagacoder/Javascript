@@ -1,3 +1,5 @@
 w3schools/.idea
 w3schools/.idea/*.*
 .idea/*.*
+*/node_modules
+*/build
