@@ -1,3 +1,5 @@
+// * ch1, how to setup and use babel
+
 import 'core-js';
 
 let input = ['a', 'b', 'c', 'd'];
