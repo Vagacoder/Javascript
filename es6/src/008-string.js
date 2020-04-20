@@ -48,6 +48,7 @@ let b = 10;
 
 // * paramenter s = [all parts not replace,], v1 = first replaced, v2 = second replaced
 function tag(s, v1, v2) {
+    console.log(s);
     console.log(s[0]);
     console.log(s[1]);
     console.log(s[2]);
