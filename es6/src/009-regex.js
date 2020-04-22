@@ -93,3 +93,63 @@ console.log(/^(\d+)(\d+)$/.exec('1053'));
 console.log('\n4.3. Note the position of \\1');
 console.log(/(?<=\1d(o))r/.exec('hodor'));
 console.log(/(?<=(o)d\1)r/.exec('hodor'));
+
+// ? Ex.5 Unicode property escape
+// ? 5.1. \p{...}
+console.log('\n5.1. Unicode property escape: p{...}');
+console.log('π'.match(/\p{Script=Greek}/u));
+
+// ? 5.2 match all kinds of decimal numbers
+console.log('\n5.2. Match all kind of decimal number  ...');
+console.log('𝟏𝟐𝟑𝟜𝟝𝟞𝟩𝟪𝟫𝟬𝟭𝟮𝟯𝟺𝟻𝟼'.match(/\p{Decimal_Number}+?/ug));
+
+// ? 5.3 match all kinds of numbers, even Roma
+console.log('\n5.3. Match all kinds of number ...');
+console.log('²³¹¼½¾㉛㉜㉝ⅠⅡⅢⅣⅤⅥⅦⅧⅨⅩⅪⅫ'.match(/\p{Number}/ug));
+
+// ? 5.4 match white space
+console.log('\n5.4. match all white space ...');
+console.log('\n\r\t\v '.match(/\p{White_Space}/ug));
+
+// ? Ex.6 Named Capture Group
+// ? 6.1. example
+console.log('\n6.1. Named capture group ...');
+let date1 = '1992-05-17';
+console.log(date1);
+let matchResult = date1.match(/(?<year>\d{4})-(?<month>\d{2})-(?<day>\d{2})/);
+console.log(matchResult);
+console.log(matchResult.groups);
+console.log(matchResult.groups.year);
+console.log(matchResult.groups.month);
+console.log(matchResult.groups.day);
+
+// ? 6.2. With destructuring, assign variables
+console.log('\n6.2. with destructuring to assign variables ...');
+let {groups:{one, two}} = /(?<one>\w+):(?<two>\w+)/.exec('foo:bar');
+console.log(one);
+console.log(two);
+
+// ? 6.3 another example with destructureing
+console.log('\n6.3. changing date format ...');
+let regex1 = /(?<year>\d{4})-(?<month>\d*)-(?<day>\d*)/u;
+console.log('2015-01-02'.replace(regex1, '$<day>/$<month>/$<year>'));
+console.log(
+    '2015-01-02'.replace(regex1, (
+        matched, // 整个匹配结果 2015-01-02
+        capture1, // 第一个组匹配 2015
+        capture2, // 第二个组匹配 01
+        capture3, // 第三个组匹配 02
+        position, // 匹配开始的位置 0
+        S, // 原字符串 2015-01-02
+        groups // 具名组构成的一个对象 {year, month, day}
+      ) => {
+      let {day, month, year} = groups;
+      return `${day}/${month}/${year}`;
+     }));
+
+// ? 6.4. named capture group can be used inside regex (with number cap group)
+console.log('\n6.4. named cap group inside regex, with number cap group ...');
+let regex2 = /^(?<word>[a-z]+)!\k<word>!\1!/;
+console.log('abc!abc!abc!abcdefg!!'.match(regex2));
+console.log('abc!abc!abcd!abcdefg!!'.match(regex2));
+
