@@ -98,3 +98,17 @@ function add(...values){
 }
 
 console.log(add(2, 3, 4, 5, 10));
+
+
+// ? Ex.4 For Tail call
+// ? 4.1. factorial
+console.log('\n4.1. Tail call for factorial recursive ...');
+function factorial(n, total = 1){
+    if (n === 1){
+        return total;
+    }
+    return factorial(n-1, n*total);
+}
+
+console.log(factorial(5));
+console.log(factorial(100));

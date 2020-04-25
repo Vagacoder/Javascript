@@ -18,6 +18,11 @@ Init at 2019/04/18
 
 6. ES6
 6.1. [ECMAScript 6 入门](https://es6.ruanyifeng.com/)
+All scripts in `es6` folder are based on [Node.js](https://nodejs.org/en/).
+There is no `window`, but `global`.
+Usage:
+
+    ``` $ node filename```
 
 2019-11-06:
 HTML, CSS and Bootstrap4 are moved to new repo: htmlandCSS
