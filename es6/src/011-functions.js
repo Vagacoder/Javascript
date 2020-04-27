@@ -112,3 +112,93 @@ function factorial(n, total = 1){
 
 console.log(factorial(5));
 console.log(factorial(100));
+
+// ? 4.2. currying factorial
+console.log('\n4.2. Currying, tail call for factorial recursive ...');
+function currying(fn, n){
+    return function(m){
+        return fn.call(this, m, n);
+    }
+}
+
+function tailFactorial(n, total){
+    if(n === 1) {
+        return total;
+    }
+    return tailFactorial(n-1, n*total);
+}
+
+const factorialCurry = currying(tailFactorial, 1);
+console.log(factorialCurry(5));
+console.log(factorialCurry(100));
+
+// ? 4.3 es6 default parameter for tail call recursive
+console.log('\n4.3. ES6 default parameter makes tail call recur fac easier ...');
+function factorialEs6(n, total = 1){
+    if(n === 1)return total;
+    return factorialEs6(n-1, n*total);
+}
+
+console.log(factorialEs6(5));
+console.log(factorialEs6(100));
+
+// ? 4.4. trampoline convert recursive to loop
+console.log('\n4.4. Trampoline convert recursive to loop ...');
+console.log('\nNote: trampoline is not tail call');
+// * regular recursive
+function sum(x, y){
+    if(y > 0){
+        return sum(x+1, y-1);
+    }else{
+        return x;
+    }
+}
+
+// * trampoline + modified recursive
+function trampoline(fn) {
+    while(fn && fn instanceof Function){
+        fn = fn();
+    }
+    return fn;
+}
+
+function sumTrampoline(x, y){
+    if(y > 0){
+        return sumTrampoline.bind(null, x+1, y-1);
+    }else {
+        return x;
+    }
+}
+console.log(sum(0, 100));
+console.log(trampoline(sumTrampoline(0, 100)));
+
+// ? 4.5 real tail call recursive
+console.log('\n4.5. real tail call recursive ...');
+// ! NEED understand this !
+function tco(f){
+    let value;
+    let active = false;
+    let accumulated = [];
+
+    return function accumulator(){
+        accumulated.push(arguments);
+        if(!active){
+            active = true;
+            while(accumulated.length){
+                value = f.apply(this, accumulated.shift());
+            }
+            active = false;
+            return value;
+        }
+    };
+}
+
+let sumTco = tco(function(x, y){
+    if(y > 0){
+        return sumTco(x + 1, y - 1);
+    }else {
+        return x;
+    }
+});
+
+console.log(sumTco(1,100));
