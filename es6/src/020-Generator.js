@@ -106,3 +106,80 @@ try{
 console.log('Note: .throw() only be catachable after .next() has been executed');
 
 console.log(g4.next());
+
+// ? Ex.6 Generator.prototype.return()
+// ? 5.1 return() terminate generator
+console.log('\n5.1 .return() terminate generator execution ...');
+let g5 = fn5();
+
+console.log(g5.next());
+console.log(g5.return('foo'));
+console.log(g5.next());
+
+// ? 5.2 if generator in try{}, .return() results in immediate execution in finally
+console.log('\n5.2 if generator in try{}, .return() results in immediate execution in finally ...');
+function * fn6(){
+    yield 1;
+    try{
+        yield 2;
+        yield 3;
+    }finally{
+        yield 4;
+        yield 5;
+    }
+    yield 6;
+}
+
+let g6 = fn6();
+console.log(g6.next());
+console.log(g6.next());
+console.log(g6.return(7));
+console.log(g6.next());
+console.log(g6.next());
+
+// ? Ex.6 yield*
+// ? 6.1 yield* iterator a nested generator
+console.log('\n6.1 yield* iterator a nested generator ...');
+function * fn7(){
+    yield 'a';
+    yield* fn8();
+    yield 'b';
+}
+
+function * fn8(){
+    yield 'x';
+    yield 'y';
+}
+
+for(let x of fn7()){
+    console.log(x);
+}
+
+// ? 6.2 iterate nested array
+console.log('\n6.2 iterate nested array ...');
+function * flatArray(arr){
+    if(Array.isArray(arr)){
+        for(let item of arr){
+            yield * flatArray(item);
+        }
+    }else {
+        yield arr;
+    }
+}
+
+let arr1 = ['a', ['b', 'c'], ['d', ['e','f']]];
+console.log(arr1);
+
+for(let x of flatArray(arr1)){
+    console.log(x);
+}
+
+console.log('flate nested array ...');
+console.log([...flatArray(arr1)]);
+
+
+
+
+
+
+
