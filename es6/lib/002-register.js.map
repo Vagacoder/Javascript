@@ -1,0 +1,1 @@
+{"version":3,"sources":["../src/002-register.js"],"names":["require"],"mappings":";;AAAAA,OAAO,CAAC,iBAAD,CAAP;;AACAA,OAAO,CAAC,eAAD,CAAP","sourcesContent":["require('@babel/register');\nrequire('./001-example');"],"file":"002-register.js"}
