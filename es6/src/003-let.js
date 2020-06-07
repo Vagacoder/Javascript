@@ -2,6 +2,7 @@
 
 // ? EX.1 in for loop
 // * 1.1. index i is declared by var
+console.log('1.1 index i is declared by var ...');
 let a = [];
 for(var i = 0; i < 10; i ++){
     a[i] = function(){
@@ -12,6 +13,7 @@ for(var i = 0; i < 10; i ++){
 a[6]();
 
 // * 1.2. index i is declared by let
+console.log('\n1.2 index i is declared by let ...');
 let b = [];
 for(let j = 0; j < 10; j++){
     b[j] = function(){
@@ -22,6 +24,7 @@ for(let j = 0; j < 10; j++){
 b[6]();
 
 // * 1.3. for loop condition is a parent scope, for loop statement is a child scope
+console.log('\n1.3 for loop condition is a parent scopt, inside loop is child scope ...');
 for (let k = 0; k < 3; k++){
     let k = 'abc';
     console.log(k);
@@ -29,6 +32,7 @@ for (let k = 0; k < 3; k++){
 
 // ? Ex.2 let binding the variable to its current local block scope
 // * 2.1. TDZ starts and ends
+console.log('\2.1 TDZ starts and ends ...');
 let temp = 123;
 
 if(true){
@@ -43,6 +47,7 @@ if(true){
 }
 
 // * 2.2. typeof is not always safe any longer
+console.log('\n2.2 typeof is not always safe ... ');
 {
     // typeof temp; // ! ReferenceError: Cannot access 'temp' before initialization
     let temp;
@@ -70,6 +75,7 @@ var h = h;
 // let g = g; // ! ReferenceError: Cannot access 'temp' before initialization
 
 // ? Ex.3 Cannot re-declare same variable in same scope
+console.log('\n3.1 Cannot re-declare same variable in same scope ...');
 function fn1(arg){
     // let arg;    // ! ReferenceError: Cannot access 'temp' before initialization
 }   
