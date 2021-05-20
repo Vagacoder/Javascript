@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<h1>Testing &lthead&gt tag manipulate</h1>
+
+<script>
+    const mapUrlToAppId = {
+        "": "wrong_url",
+        "demo.localhost.localdomain:3003": "1234068517",
+        "demo.localhost.localdomain:3009": "1234068517",
+        "pas-dev1.visitnow.org": "1234068517",
+    };
+    const mapUrlToAppProtocol = {
+        "": "wrong_url",
+        "demo.localhost.localdomain:3003": "truclinicapp",
+        "demo.localhost.localdomain:3009": "truclinicapp", 
+        "pas-dev1.visitnow.org": "truclinicapp",
+    };
+
+    // console.log(window.location.href.split('/'))
+    const practiceUrl = window.location.href.split('/')[2];
+    const appId = mapUrlToAppId[practiceUrl];
+    const appProtocol = mapUrlToAppProtocol[practiceUrl];
+    
+    // console.log(appId)
+    // console.log(appProtocol)
+    // console.log(window.location.href);
+
+    const newMeta = document.createElement('meta');
+    newMeta.setAttribute('name', 'apple-itunes-app');
+
+    // newMeta.setAttribute('content', `app-id=1234068517 app-argument=${window.location.href}`)
+    
+    // newMeta.setAttribute('content', 
+    //     `app-id=${appId} app-argument=${appProtocol}://?webUrl=${encodeURIComponent(window.location.href)}`)
+    
+    // newMeta.setAttribute('content', `app-id=${appId} app-argument=${window.location.href}`)
+
+    newMeta.setAttribute('content', `app-id=${appId} app-argument=${encodeURIComponent(window.location.href)}`)
+    
+    // let head = document.getElementsByTagName('head')[0]
+    // head.appendChild(newMeta)
+    document.head.appendChild(newMeta)
+
+</script>
+</body>
+</html>

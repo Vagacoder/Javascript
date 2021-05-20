@@ -7,7 +7,7 @@
 <h2>JavaScript HTML DOM Collection</h2>
 
 <p>1) getElementsByTagName() method returns an HTMLCollection object</p>
-<p id='demo1'>Example</p>
+<p id='demo1'>innetText of Demo1</p>
 <p id='demo2'></p>
 <p id='demo3'></p>
 
@@ -44,8 +44,8 @@
 </body>
 <script>
 var allP = document.getElementsByTagName("p");
-document.getElementById("demo2").innerHTML = allP[1].childNodes[0].nodeValue;
-document.getElementById("demo3").innerHTML = allP[1].innerHTML;
+document.getElementById("demo2").innerHTML = allP[1].childNodes[0].nodeValue + ' in demo2';
+document.getElementById("demo3").innerHTML = allP[1].innerHTML + ' in demo3';
 
 document.getElementById("demo4").innerHTML = allP.length;
 
