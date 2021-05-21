@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document 2 - Provider side</title>
+</head>
+
+<body>
+  <h2>Testing &lthead&gt tag manipulate 2, making http request on Provider side</h2>
+
+  <script>
+    function getPracticeApiUrl() {
+      const urlParts = window.location.href.split("/")
+      const rootUrl = urlParts.slice(0, 3).join("/")
+      const practice = urlParts[2].split(".")[0]
+      const apiUrl = rootUrl + "/qapi/practices/" + practice
+      return apiUrl
+    }
+
+    const practiceSettingsRequest = new XMLHttpRequest()
+
+    function practiceSettingsHandler() {
+      if (practiceSettingsRequest.readyState === XMLHttpRequest.DONE) {
+        let practiceInfo
+        const status = practiceSettingsRequest.status
+        if (status === 0 || (status >= 200 && status < 400)) {
+          try {
+            practiceInfo = JSON.parse(practiceSettingsRequest.responseText)
+          } catch { }
+        }
+        if (practiceInfo && practiceInfo.iosAppLink.providerLaunchSetting === 0) {
+          const providerAppLinkParts = practiceInfo.iosAppLink.providerAppLink.split('/')
+          const appId = providerAppLinkParts[providerAppLinkParts.length-1].replace('id', '')
+          const appProtocol = practiceInfo.iosAppLink.providerAppProtocol
+          const newMeta = document.createElement('meta');
+          newMeta.setAttribute('name', 'apple-itunes-app');
+          newMeta.setAttribute('content', `app-id=${appId} app-argument=${encodeURIComponent(window.location.href)}`);
+          document.head.appendChild(newMeta);
+        } else {
+          failureHandler()
+        }
+      }
+    }
+
+    function failureHandler() {
+      console.error('http request failed');
+    }
+
+    practiceSettingsRequest.onreadystatechange = practiceSettingsHandler
+    practiceSettingsRequest.open("GET", getPracticeApiUrl())
+    practiceSettingsRequest.timeout = 3000
+    practiceSettingsRequest.onerror = failureHandler
+    practiceSettingsRequest.onabort = failureHandler
+    practiceSettingsRequest.ontimeout = failureHandler
+    practiceSettingsRequest.send()
+
+  </script>
+
+</body>
+
+</html>

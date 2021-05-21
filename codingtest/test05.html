@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document 3 - Patient side</title>
+</head>
+
+<body>
+  <h2>Testing &lthead&gt tag manipulate 3, making http request on Patient side</h2>
+
+  <script>
+    function getUrlType(urlParts) {
+      const firstSubDomain = urlParts[2].split(".")[0]
+      if (
+        urlParts.length === 5 &&
+        firstSubDomain === "patient" &&
+        urlParts[3] === "guest"
+      ) {
+        return "guest"
+      } else if (urlParts.length === 5 && urlParts[3] === "start") {
+        return "patientStart"
+      } else if (urlParts.length === 4) {
+        return "patient"
+      } else {
+        throw new Error("Failed parsing URL: " + window.location.href)
+      }
+    }
+
+    function getApiUrl(rootUrl, urlType, uuid) {
+      const urlStart = rootUrl + "/qapi/"
+      if (urlType === "guest") {
+        return urlStart + "guests/" + uuid + "/practice"
+      } else if (urlType === "patient") {
+        return urlStart + "visit-now/waiting-room"
+      } else{
+        return urlStart + "online/waiting-rooms/" + uuid
+      }
+    }
+
+    function parseUrl() {
+      const urlParts = window.location.href.split("/")
+      const rootUrl = urlParts.slice(0, 3).join("/")
+      const uuid = urlParts[urlParts.length - 1]
+      const urlType = getUrlType(urlParts)
+      const apiUrl = getApiUrl(rootUrl, urlType, uuid)
+      return {
+        urlType,
+        apiUrl,
+        uuid,
+      }
+    }
+
+    const urlInfo = parseUrl()
+    const practiceSettingsRequest = new XMLHttpRequest()
+
+    function practiceSettingsHandler() {
+      if (practiceSettingsRequest.readyState === XMLHttpRequest.DONE) {
+        let practiceInfo
+        const status = practiceSettingsRequest.status
+        if (status === 0 || (status >= 200 && status < 400)) {
+          try {
+            const response = JSON.parse(practiceSettingsRequest.responseText)
+            practiceInfo =
+              urlInfo.urlType === "guest" ? response : response?.practice
+          } catch { }
+        }
+        console.log('practiceInfo', practiceInfo);
+        if (practiceInfo && practiceInfo.iosAppLink.patientLaunchSetting === 0) {
+          const appLinkParts = practiceInfo.iosAppLink.appLink.split('/')
+          const appId = appLinkParts[appLinkParts.length-1].replace('id', '')
+          const appProtocol = practiceInfo.iosAppLink.appProtocol
+          const newMeta = document.createElement('meta');
+          newMeta.setAttribute('name', 'apple-itunes-app');
+          newMeta.setAttribute('content', `app-id=${appId} app-argument=${encodeURIComponent(window.location.href)}`);
+          document.head.appendChild(newMeta);
+        } else {
+          failureHandler()
+        }
+      }
+    }
+
+    function failureHandler() {
+      console.error('http request failed');
+    }
+
+    practiceSettingsRequest.onreadystatechange = practiceSettingsHandler
+    practiceSettingsRequest.open("GET", urlInfo.apiUrl)
+    practiceSettingsRequest.timeout = 5000
+    practiceSettingsRequest.onerror = failureHandler
+    practiceSettingsRequest.onabort = failureHandler
+    practiceSettingsRequest.ontimeout = failureHandler
+    if (urlInfo.urlType === "patient") {
+      practiceSettingsRequest.setRequestHeader("waiting-room", urlInfo.uuid)
+    }
+    practiceSettingsRequest.send()
+
+
+
+  </script>
+
+</body>
+
+</html>
