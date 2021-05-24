@@ -12,11 +12,23 @@
   <h2>Testing &lthead&gt tag manipulate 3, making http request on Patient side</h2>
 
   <script>
+    // ! this function reset url to original url format
+    function getUrlParts(){
+      let urlParts = window.location.href.split("/")
+      if (urlParts[urlParts.length-1] === "welcome" || urlParts[urlParts.length-1] === ""){
+        urlParts = urlParts.slice(0, urlParts.length-1)
+      }
+      if (urlParts[3] === "check-in"){
+        urlParts[3] = "start"
+      }
+      return urlParts
+    }
+
     function getUrlType(urlParts) {
       const firstSubDomain = urlParts[2].split(".")[0]
       if (
         urlParts.length === 5 &&
-        firstSubDomain === "patient" &&
+        // firstSubDomain === "patient" &&
         urlParts[3] === "guest"
       ) {
         return "guest"
@@ -25,7 +37,8 @@
       } else if (urlParts.length === 4) {
         return "patient"
       } else {
-        throw new Error("Failed parsing URL: " + window.location.href)
+        // throw new Error("Failed parsing URL: " + window.location.href)
+        return ""
       }
     }
 
@@ -41,7 +54,7 @@
     }
 
     function parseUrl() {
-      const urlParts = window.location.href.split("/")
+      const urlParts = getUrlParts()
       const rootUrl = urlParts.slice(0, 3).join("/")
       const uuid = urlParts[urlParts.length - 1]
       const urlType = getUrlType(urlParts)
@@ -88,7 +101,7 @@
 
     practiceSettingsRequest.onreadystatechange = practiceSettingsHandler
     practiceSettingsRequest.open("GET", urlInfo.apiUrl)
-    practiceSettingsRequest.timeout = 5000
+    practiceSettingsRequest.timeout = 3000
     practiceSettingsRequest.onerror = failureHandler
     practiceSettingsRequest.onabort = failureHandler
     practiceSettingsRequest.ontimeout = failureHandler
@@ -96,8 +109,6 @@
       practiceSettingsRequest.setRequestHeader("waiting-room", urlInfo.uuid)
     }
     practiceSettingsRequest.send()
-
-
 
   </script>
 
